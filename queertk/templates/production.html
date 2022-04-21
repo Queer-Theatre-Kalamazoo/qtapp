@@ -1,0 +1,32 @@
+<h1>Production Description:</h1>
+{{ production.description }}
+
+<h1>Season:</h1>
+{{ season.description }}
+
+{% if notices %}
+<h1>Notices:</h1>
+{% endif %}
+
+{% for pn, n, nt in notices %}
+<h4>{{ nt.description }}</h4>
+<p>{{ n.content }}</p>
+{% endfor %}
+
+{% if performances %}
+<h1>Performances:</h1>
+{% endif %}
+<ol>
+    {% for p in performances %}
+    <li>{{ p.datetime }}</li>
+    {% endfor %}
+</ol>
+
+{% if credits %}
+<h1>Credits:</h1>
+{% endif %}
+<ol>
+    {% for c in credits %}
+    <li>{{ c.credit_name }} as {{ c.role }}</li>
+    {% endfor %}
+</ol>
