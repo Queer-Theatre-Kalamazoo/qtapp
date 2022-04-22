@@ -44,6 +44,7 @@ class RegisterForm(FlaskForm):
             EqualTo('password', message='Passwords must match.')
         ]
     )
+    submit = SubmitField('Register')
 
 
 class LoginForm(FlaskForm):
