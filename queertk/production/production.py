@@ -8,8 +8,8 @@ bp_productions = Blueprint("productions", __name__, static_folder = "static", te
 from queertk.models import Production, ProductionNotice, Notice, NoticeType, Season, Credit, Performance
 from database import db
 
-@login_required
 @bp_productions.route("/<int:prod_id>/<string:slug>")
+@login_required
 def display_production(prod_id, slug):
     production = db.session.query(Production).filter_by(production_id = prod_id).one()
     season = db.session.query(Season).filter_by(season_id = production.season_id).one()

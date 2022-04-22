@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class User(UserMixin, db.Model):
     __tablename__ = 'flasklogin_users'
 
-    user_id = db.Column(
+    id = db.Column(
         db.Integer,
         primary_key=True
     )
@@ -55,7 +55,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password, password)
 
     def get_id(self):
-        return str(self.user_id)
+        return str(self.id)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
