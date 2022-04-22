@@ -36,7 +36,7 @@
                     <span>Hi, {{ current_user.name }}. <a href="{{ url_for('authentication.logout') }}">Logout.</a></span>
                     {% endif %}
                     {% if not current_user.is_authenticated %}
-                    <a href="{{ url_for('authentication.login') }}">Login</a>
+                    <span>You're not logged in. <a href="{{ url_for('authentication.login') }}"> Login?</a></span>
                     {% endif %}
                     {% endblock %}
                 </div>
