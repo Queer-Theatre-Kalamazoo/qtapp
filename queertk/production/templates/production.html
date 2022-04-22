@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <h4 class="squeeze">{{ production.description }}</h4>
 <p class="hug">{{ season.description }}</p>
 
@@ -12,25 +13,30 @@
 {% endfor %}
 {% endif %}
 
-
-
-{% if performances %}
-<h4 class="squeeze">Performances:</h4>
-{% endif %}
-<ol class="hug">
-    {% for p in performances %}
-    <span><li>{{ p.datetime }}</li></span>
-    {% endfor %}
-</ol>
-
 {% if credits %}
 <h4 class="squeeze">Credits:</h4>
 {% endif %}
-<ol class="hug">
+<ol>
     {% for c in credits %}
     <li>{{ c.credit_name }} as {{ c.role }}</li>
     {% endfor %}
 </ol>
+
 {% endblock %}
 
+
+{% block aside %}
+
+{% if performances %}
+<h4 class="squeeze">Performances:</h4>
+{% endif %}
+<ol>
+    {% for p in performances %}
+    <span>
+        <li>{{ p.datetime }}</li>
+    </span>
+    {% endfor %}
+</ol>
+
+{% endblock %}
 

@@ -1,0 +1,143 @@
+$bg-dark: #262626
+$bg-dark-blur: #1f1e1fcd
+$theme-primary: #913d94
+$theme-primary-dark: #700c74
+$theme-secondary: #4b4a9c
+$theme-secondary-dark: #25246d
+
+$bg-corner-radius: 6px
+$fg-corner-radius: 4px
+
+html
+    background: url("../background.jpg") no-repeat center center fixed
+    -webkit-background-size: cover
+    -moz-background-size: cover
+    -o-background-size: cover
+    background-size: cover
+
+body
+    overflow: hidden
+    height: 100%
+    margin: 0
+    padding: 0
+
+aside
+    margin: 0
+    padding: 20px
+
+.badge
+    padding: 3px 6px
+    margin: 0 4px
+    border-radius: $fg-corner-radius
+    background: $theme-primary
+    color: #fff
+    font-size: 0.8rem
+    user-select: none
+
+    img
+        display: inline-block
+        vertical-align: middle
+
+header
+    background: $bg-dark
+    margin-bottom: 20px
+    padding: 10px
+
+    .header
+        display: flex
+        flex-direction: row
+
+.window-title
+    display: flex
+    justify-content: center
+    align-items: center
+    background: $bg-dark-blur
+    backdrop-filter: blur(10px)
+    height: 40px
+    border-radius: 6px 6px 0 0
+    text-size: 0.65rem
+    color: #ffffffb4
+
+.accordion, .panel
+        color: $bg-dark
+        -webkit-transition: all 0.2s ease-in-out
+        transition: all 0.2s ease-in-out
+        height: auto
+        overflow: hidden
+
+    .panel
+        background: #eed2b1
+        display: none
+
+        &.active
+            padding: 15px 10px 10px 10px
+            opacity: 1
+            height: auto
+            max-height: 500px
+
+    .toggle
+        padding: 8px
+        margin: 0
+        background: #eed2b1
+        transition-duration: 0.4s
+        border-radius: 4px 0 0 0
+
+        &:hover
+            background: #d5aa78
+
+.content
+    background: #2a2828
+    padding-top: 1rem
+    overflow: auto
+    color: #f3ecf2
+    border-radius: 0 0 6px 0
+    height: 100%
+
+    .wrapper
+        margin: auto
+        max-width: 90%
+
+.sidebar
+    display: flex
+    flex-direction: column
+    align-items: center
+    background: $bg-dark-blur
+    backdrop-filter: blur(10px)
+    border-radius: 0 0 0 6px
+    width: 20rem
+
+.flex-container_inner
+    display: flex
+    flex-direction: column
+    width: 100%
+
+.wrapper
+    margin: auto
+    max-width: 90rem
+
+.flex-container
+    height: calc(100vh - 150px)
+    margin: auto
+    flex: 1 100%
+
+@media screen and (min-width: 640px)
+    .flex-container
+        display: flex
+
+@media screen and (max-width: 640px)
+    .sidebar
+        display: none
+
+@keyframes fade-in
+  from
+    opacity: 0
+
+  to
+    opacity: 1
+
+@keyframes fade-out
+  from
+    opacity: 1
+
+  to
+    opacity: 0
