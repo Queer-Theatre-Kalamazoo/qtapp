@@ -19,7 +19,7 @@ aside {
   padding: 3px 6px;
   margin: 0 4px;
   border-radius: 4px;
-  background: #913d94;
+  background: #b71e1e;
   color: #fff;
   font-size: 0.8rem;
   -webkit-user-select: none;
@@ -35,7 +35,6 @@ aside {
 
 header {
   background: #262626;
-  margin-bottom: 20px;
   padding: 10px;
 }
 
@@ -53,7 +52,7 @@ header .header span {
   color: #fff;
 }
 
-.window-title {
+.page-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -63,12 +62,10 @@ header .header span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #700c74;
+  background: #511b1b;
   height: 40px;
   text-size: 0.65rem;
   color: #ffffffb4;
-  border-radius: 3px 3px 0 0;
-  border-bottom: 2px solid #1f1e1fe6;
 }
 
 .accordion, .panel {
@@ -127,7 +124,7 @@ header .header span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #1f1e1fe6;
+  background: #1f1e1fde;
   -webkit-backdrop-filter: blur(15px);
           backdrop-filter: blur(15px);
   width: 20rem;
@@ -151,11 +148,10 @@ header .header span {
 
 .wrapper {
   margin: auto;
-  width: 95%;
 }
 
 .flex-container {
-  height: calc(100vh - 150px);
+  height: calc(100vh - 40px);
   margin: auto;
   -webkit-box-flex: 1;
       -ms-flex: 1 100%;

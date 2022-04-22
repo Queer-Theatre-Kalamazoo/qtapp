@@ -1,7 +1,7 @@
 $bg-dark: #262626
-$bg-dark-blur: #1f1e1fe6
-$theme-primary: #913d94
-$theme-primary-dark: #700c74
+$bg-dark-blur: #1f1e1fde
+$theme-primary: #b71e1e
+$theme-primary-dark: #511b1b
 $theme-secondary: #4b4a9c
 $theme-secondary-dark: #25246d
 
@@ -40,7 +40,6 @@ aside
 
 header
     background: $bg-dark
-    margin-bottom: 20px
     padding: 10px
 
     .header
@@ -50,7 +49,7 @@ header
         span
             color: #fff
 
-.window-title
+.page-title
     display: flex
     justify-content: center
     align-items: center
@@ -58,8 +57,6 @@ header
     height: 40px
     text-size: 0.65rem
     color: #ffffffb4
-    border-radius: 3px 3px 0 0
-    border-bottom: 2px solid $bg-dark-blur
 
 .accordion, .panel
     color: $bg-dark
@@ -117,10 +114,9 @@ header
 
 .wrapper
     margin: auto
-    width: 95%
 
 .flex-container
-    height: calc(100vh - 150px)
+    height: calc(100vh - 40px)
     margin: auto
     flex: 1 100%
 
