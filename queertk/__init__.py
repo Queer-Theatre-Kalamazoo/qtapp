@@ -10,12 +10,14 @@ if app.config["ENV"] == "production":
 else:
     app.config.from_object("queertk.config.DevelopmentConfig")
 
-from queertk.blueprints.admin import bp_admin
-from queertk.blueprints.production import bp_productions
+from queertk.admin.admin import bp_admin
+from queertk.production.production import bp_productions
+from queertk.authentication.authentication import bp_authentication
 
 # Register blueprints
 app.register_blueprint(bp_admin)
 app.register_blueprint(bp_productions)
+app.register_blueprint(bp_authentication)
 
 # Database setup
 db_conn_string = app.config["SQLALCHEMY_DATABASE_URI"] # Pull URI from config
