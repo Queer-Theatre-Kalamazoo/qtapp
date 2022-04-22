@@ -7,44 +7,70 @@ h5,
 p,
 li {
     font-size: clamp(var(--min), var(--val), var(--max));
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
-    --min: 2em;
-    /* minimum value */
-    --val: 5vw;
-    /* preferred value = 5% viewport width */
-    --max: 3em;
-    /* maximum value */
+    --min: 1.9em; /* minimum value */
+    --val: 4.70vw; /* preferred value = 5% viewport width */
+    --max: 3em; /* maximum value */
 }
 
 h2 {
-    --min: 1.75em;
-    --val: 4.5vw;
-    --max: 2.8em;
-}
-
-h3 {
-    --min: 1.5em;
-    --val: 4vw;
-    --max: 2.6em;
-}
-
-h4 {
-    --min: 1.25em;
-    --val: 3.5vw;
+    --min: 1.6em;
+    --val: 3.9vw;
     --max: 2.4em;
 }
 
-h5 {
-    --min: 1em;
+h3 {
+    --min: 1.3em;
     --val: 3vw;
-    --max: 2.20em;
+    --max: 1.8em;
+}
+
+h4 {
+    --min: 1em;
+    --val: 2.1vw;
+    --max: 1.2em;
+}
+
+h5 {
+    --min: 0.85em;
+    --val: 1.2vw;
+    --max: 1em;
 }
 
 p,
 li {
-    --min: 1em;
-    --val: 1.75vw;
-    --max: 1.25em;
+    --min: 0.85em;
+    --val: 1.2vw;
+    --max: 1em;
+}
+
+/* Pretty link underlines */
+a {
+    position: relative;
+    color: rgb(171, 18, 18);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(103, 11, 11);
+}
+
+a::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform: scaleX(0);
+    transition: transform 0.15s ease;
+}
+
+a:hover::before {
+    transform: scaleX(1);
 }

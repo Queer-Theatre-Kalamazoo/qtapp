@@ -15,18 +15,18 @@
 
 
 {% if performances %}
-<h1>Performances:</h1>
+<h1 class="squeeze">Performances:</h1>
 {% endif %}
-<ol>
+<ol class="hug">
     {% for p in performances %}
     <span><li>{{ p.datetime }}</li></span>
     {% endfor %}
 </ol>
 
 {% if credits %}
-<h1>Credits:</h1>
+<h1 class="squeeze">Credits:</h1>
 {% endif %}
-<ol>
+<ol class="hug">
     {% for c in credits %}
     <li>{{ c.credit_name }} as {{ c.role }}</li>
     {% endfor %}
