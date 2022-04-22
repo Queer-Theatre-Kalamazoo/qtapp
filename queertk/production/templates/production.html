@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3 class="squeeze">{{ production.description }}</h3>
+<h4 class="squeeze">{{ production.description }}</h4>
 <p class="hug">{{ season.description }}</p>
 
 
@@ -15,7 +15,7 @@
 
 
 {% if performances %}
-<h1 class="squeeze">Performances:</h1>
+<h4 class="squeeze">Performances:</h4>
 {% endif %}
 <ol class="hug">
     {% for p in performances %}
@@ -24,7 +24,7 @@
 </ol>
 
 {% if credits %}
-<h1 class="squeeze">Credits:</h1>
+<h4 class="squeeze">Credits:</h4>
 {% endif %}
 <ol class="hug">
     {% for c in credits %}
