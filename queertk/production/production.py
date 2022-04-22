@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from sqlalchemy import or_
+from flask_login import current_user, login_required
 
 # Create blueprint
 bp_productions = Blueprint("productions", __name__, static_folder = "static", template_folder = "templates", url_prefix = "/prod") # Create Blueprint
@@ -7,6 +8,7 @@ bp_productions = Blueprint("productions", __name__, static_folder = "static", te
 from queertk.models import Production, ProductionNotice, Notice, NoticeType, Season, Credit, Performance
 from database import db
 
+@login_required
 @bp_productions.route("/<int:prod_id>/<string:slug>")
 def display_production(prod_id, slug):
     production = db.session.query(Production).filter_by(production_id = prod_id).one()
@@ -18,4 +20,4 @@ def display_production(prod_id, slug):
     # Somehow this restricts valid pages to those with a valid slug
     slug = production.slug
 
-    return render_template('production.html', production = production, season = season, performances = performances, credits = credits, notices = notices)
+    return render_template('production.html', current_user = current_user, production = production, season = season, performances = performances, credits = credits, notices = notices)
