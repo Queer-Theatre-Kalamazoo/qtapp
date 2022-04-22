@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>{{ production.description }}</h3>
-
-
-<p>{{ season.description }}</p>
+<h3 class="squeeze">{{ production.description }}</h3>
+<p class="hug">{{ season.description }}</p>
 
 
 {% if notices %}
 {% for pn, n, nt in notices %}
-<h4>{{ nt.description }}</h4>
-<p>{{ n.content }}</p>
+<h4 class="squeeze">{{ nt.description }}</h4>
+<p class="hug">{{ n.content }}</p>
 {% endfor %}
 {% endif %}
 

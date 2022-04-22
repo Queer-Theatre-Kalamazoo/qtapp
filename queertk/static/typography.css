@@ -1,0 +1,50 @@
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+li {
+    font-size: clamp(var(--min), var(--val), var(--max));
+}
+
+h1 {
+    --min: 2em;
+    /* minimum value */
+    --val: 5vw;
+    /* preferred value = 5% viewport width */
+    --max: 3em;
+    /* maximum value */
+}
+
+h2 {
+    --min: 1.75em;
+    --val: 4.5vw;
+    --max: 2.8em;
+}
+
+h3 {
+    --min: 1.5em;
+    --val: 4vw;
+    --max: 2.6em;
+}
+
+h4 {
+    --min: 1.25em;
+    --val: 3.5vw;
+    --max: 2.4em;
+}
+
+h5 {
+    --min: 1em;
+    --val: 3vw;
+    --max: 2.20em;
+}
+
+p,
+li {
+    --min: 1em;
+    --val: 1.75vw;
+    --max: 1.25em;
+}
