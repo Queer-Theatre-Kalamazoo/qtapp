@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Production Description:</h1>
-{{ production.description }}
+<h3>{{ production.description }}</h3>
 
-<h1>Season:</h1>
-{{ season.description }}
+
+<p>{{ season.description }}</p>
+
 
 {% if notices %}
-<h1>Notices:</h1>
-{% endif %}
-
 {% for pn, n, nt in notices %}
 <h4>{{ nt.description }}</h4>
 <p>{{ n.content }}</p>
 {% endfor %}
+{% endif %}
+
+
 
 {% if performances %}
 <h1>Performances:</h1>
 {% endif %}
 <ol>
     {% for p in performances %}
-    <li>{{ p.datetime }}</li>
+    <span><li>{{ p.datetime }}</li></span>
     {% endfor %}
 </ol>
 
