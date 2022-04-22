@@ -1,0 +1,48 @@
+{% block auth %}
+{% if current_user.is_authenticated %}
+<span>Hi, {{ current_user.name }}. <a href="{{ url_for('authentication.logout') }}">Logout.</a></span>
+{% endif %}
+{% if not current_user.is_authenticated %}
+<a href="{{ url_for('authentication.login') }}">Login</a>
+{% endif %}
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+        <title>Title</title>
+    </head>
+    <body>
+        <header>
+            {% block header %}
+            Header
+            {% endblock %}
+        </header>
+        <div id="main">
+            <content>
+                {% block content %}
+                Content
+                {% endblock %}
+            </content>
+            <nav>
+                {% block nav %}
+                Nav
+                {% endblock %}
+            </nav>
+            <aside>
+                {% block aside %}
+                Aside
+                {% endblock %}
+            </aside>
+        </div>
+        <footer>
+            {% block footer %}
+            Footer
+            {% endblock %}
+        </footer>
+    </body>
+</html>
