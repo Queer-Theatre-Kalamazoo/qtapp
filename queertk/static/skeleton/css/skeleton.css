@@ -189,12 +189,12 @@ button {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
   position: relative;
-  color: rgb(212, 143, 143);
+  color: rgb(239, 171, 171);
   text-decoration: none;
 }
 
 a:hover {
-  color: rgb(189, 100, 100);
+  color: rgb(207, 114, 114);
 }
 
 a::before {

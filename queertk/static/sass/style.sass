@@ -1,4 +1,4 @@
-$bg-dark: #262626
+$bg-dark: #1f1f1f
 $bg-dark-blur: #1f1e1fde
 $theme-primary: #b71e1e
 $theme-primary-dark: #511b1b
@@ -7,6 +7,8 @@ $theme-secondary-dark: #25246d
 
 $bg-corner-radius: 6px
 $fg-corner-radius: 4px
+
+$page-title-height: 50px
 
 html
     background: url("../background.jpg") no-repeat center center fixed
@@ -41,6 +43,7 @@ aside
 header
     background: $bg-dark
     padding: 10px
+    height: 30px
 
     .header
         display: flex
@@ -54,7 +57,7 @@ header
     justify-content: center
     align-items: center
     background: $theme-primary-dark
-    height: 40px
+    height: $page-title-height
     text-size: 0.65rem
     color: #ffffffb4
 
@@ -85,7 +88,7 @@ header
             background: #d5aa78
 
 .content
-    background: #2a2828
+    background: $bg-dark
     padding-top: 1rem
     overflow: auto
     color: #f3ecf2
@@ -116,7 +119,7 @@ header
     margin: auto
 
 .flex-container
-    height: calc(100vh - 40px)
+    height: calc(100vh - 50px)
     margin: auto
     flex: 1 100%
 
