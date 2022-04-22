@@ -1,5 +1,5 @@
 $bg-dark: #262626
-$bg-dark-blur: #1f1e1fcd
+$bg-dark-blur: #1f1e1fe6
 $theme-primary: #913d94
 $theme-primary-dark: #700c74
 $theme-secondary: #4b4a9c
@@ -46,24 +46,27 @@ header
     .header
         display: flex
         flex-direction: row
+    
+        span
+            color: #fff
 
 .window-title
     display: flex
     justify-content: center
     align-items: center
-    background: $bg-dark-blur
-    backdrop-filter: blur(10px)
+    background: $theme-primary-dark
     height: 40px
-    border-radius: 6px 6px 0 0
     text-size: 0.65rem
     color: #ffffffb4
+    border-radius: 3px 3px 0 0
+    border-bottom: 2px solid $bg-dark-blur
 
 .accordion, .panel
-        color: $bg-dark
-        -webkit-transition: all 0.2s ease-in-out
-        transition: all 0.2s ease-in-out
-        height: auto
-        overflow: hidden
+    color: $bg-dark
+    -webkit-transition: all 0.2s ease-in-out
+    transition: all 0.2s ease-in-out
+    height: auto
+    overflow: hidden
 
     .panel
         background: #eed2b1
@@ -80,7 +83,6 @@ header
         margin: 0
         background: #eed2b1
         transition-duration: 0.4s
-        border-radius: 4px 0 0 0
 
         &:hover
             background: #d5aa78
@@ -90,7 +92,6 @@ header
     padding-top: 1rem
     overflow: auto
     color: #f3ecf2
-    border-radius: 0 0 6px 0
     height: 100%
 
     .wrapper
@@ -102,9 +103,12 @@ header
     flex-direction: column
     align-items: center
     background: $bg-dark-blur
-    backdrop-filter: blur(10px)
-    border-radius: 0 0 0 6px
+    backdrop-filter: blur(15px)
     width: 20rem
+
+    a
+        margin-top: 1em
+        font-size: clamp(1.1em, 2.1vw, 1.3em)
 
 .flex-container_inner
     display: flex
@@ -113,7 +117,7 @@ header
 
 .wrapper
     margin: auto
-    max-width: 90rem
+    width: 95%
 
 .flex-container
     height: calc(100vh - 150px)

@@ -49,6 +49,10 @@ header .header {
           flex-direction: row;
 }
 
+header .header span {
+  color: #fff;
+}
+
 .window-title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -59,16 +63,15 @@ header .header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #1f1e1fcd;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  background: #700c74;
   height: 40px;
-  border-radius: 6px 6px 0 0;
   text-size: 0.65rem;
   color: #ffffffb4;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 2px solid #1f1e1fe6;
 }
 
-.accordion .container, .accordion .panel {
+.accordion, .panel {
   color: #262626;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -76,28 +79,27 @@ header .header {
   overflow: hidden;
 }
 
-.accordion .panel {
+.accordion .panel, .panel .panel {
   background: #eed2b1;
   display: none;
 }
 
-.accordion .panel.active {
+.accordion .panel.active, .panel .panel.active {
   padding: 15px 10px 10px 10px;
   opacity: 1;
   height: auto;
   max-height: 500px;
 }
 
-.accordion .toggle {
+.accordion .toggle, .panel .toggle {
   padding: 8px;
   margin: 0;
   background: #eed2b1;
   -webkit-transition-duration: 0.4s;
           transition-duration: 0.4s;
-  border-radius: 4px 0 0 0;
 }
 
-.accordion .toggle:hover {
+.accordion .toggle:hover, .panel .toggle:hover {
   background: #d5aa78;
 }
 
@@ -106,7 +108,6 @@ header .header {
   padding-top: 1rem;
   overflow: auto;
   color: #f3ecf2;
-  border-radius: 0 0 6px 0;
   height: 100%;
 }
 
@@ -126,11 +127,15 @@ header .header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #1f1e1fcd;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  border-radius: 0 0 0 6px;
+  background: #1f1e1fe6;
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
   width: 20rem;
+}
+
+.sidebar a {
+  margin-top: 1em;
+  font-size: clamp(1.1em, 2.1vw, 1.3em);
 }
 
 .flex-container_inner {
@@ -146,7 +151,7 @@ header .header {
 
 .wrapper {
   margin: auto;
-  max-width: 90rem;
+  width: 95%;
 }
 
 .flex-container {
