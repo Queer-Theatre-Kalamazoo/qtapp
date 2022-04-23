@@ -13,8 +13,10 @@
 {% endfor %}
 {% endif %}
 
+<hr>
+
 {% if credits %}
-<h4 class="squeeze">Credits:</h4>
+<h4>Credits:</h4>
 {% endif %}
 <ol>
     {% for c in credits %}
@@ -28,7 +30,7 @@
 {% block aside %}
 
 {% if performances %}
-<h4 class="squeeze">Performances:</h4>
+<h4 class="hug">Performances:</h4>
 {% endif %}
 <ol>
     {% for p in performances %}
@@ -37,6 +39,12 @@
     </span>
     {% endfor %}
 </ol>
+
+<p>
+    Proof of vaccination is required for all Queer Theatre Kalamazoo events. Masks must be worn over the mouth and nose in
+    any indoor space. Our actors can present this play unmasked due to these efforts. Thank you for helping keep the
+    community safe and performing live again.
+</p>
 
 {% endblock %}
 

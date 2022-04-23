@@ -1,3 +1,5 @@
+@import "variables"
+    
 html
     background: url("../background.jpg") no-repeat center center fixed
     -webkit-background-size: cover
@@ -37,7 +39,7 @@ header
         display: flex
         flex-direction: row
         align-items: center
-    
+
         span
             color: #fff
 
@@ -45,7 +47,7 @@ header
     display: flex
     justify-content: center
     align-items: center
-    background: $theme-primary-dark
+    background: $theme-primary
     height: $page-title-height
     text-size: 0.65rem
     color: #ffffffb4
@@ -60,6 +62,13 @@ header
     .wrapper
         margin: auto
         max-width: 90%
+
+.content-info
+    height: 100%
+    max-height: calc(100vh - 120px)
+    background: #434343
+    border-radius: 4px
+    padding: 20px
 
 .sidebar
     display: flex
@@ -96,23 +105,25 @@ header
         display: none
 
 @keyframes fade-in
-  from
-    opacity: 0
+    from
+        opacity: 0
 
-  to
-    opacity: 1
+    to
+        opacity: 1
 
 @keyframes fade-out
-  from
-    opacity: 1
+    from
+        opacity: 1
 
-  to
-    opacity: 0
+    to
+        opacity: 0
 
 /* Hug the block above you */
-.hug 
+.hug
     margin-top: 0
 
 /* Squeeze the block beneath you */
-.squeeze 
+.squeeze
     margin-bottom: 0
+
+

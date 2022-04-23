@@ -65,7 +65,7 @@ header .header span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #511b1b;
+  background: #b71e1e;
   height: 50px;
   text-size: 0.65rem;
   color: #ffffffb4;
@@ -82,6 +82,14 @@ header .header span {
 .content .wrapper {
   margin: auto;
   max-width: 90%;
+}
+
+.content-info {
+  height: 100%;
+  max-height: calc(100vh - 120px);
+  background: #434343;
+  border-radius: 4px;
+  padding: 20px;
 }
 
 .sidebar {
@@ -178,5 +186,15 @@ header .header span {
   to {
     opacity: 0;
   }
+}
+
+/* Hug the block above you */
+.hug {
+  margin-top: 0;
+}
+
+/* Squeeze the block beneath you */
+.squeeze {
+  margin-bottom: 0;
 }
 /*# sourceMappingURL=style.css.map */

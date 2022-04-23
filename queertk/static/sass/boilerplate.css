@@ -214,22 +214,22 @@ button {
 }
 
 /* Links */
-a {
+a, .link-like {
   position: relative;
   color: #efabab;
   text-decoration: none;
 }
 
-a:hover {
+a:hover, .link-like:hover {
   color: #cf7272;
 }
 
-a:hover::before {
+a:hover::before, .link-like:hover::before {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
 }
 
-a::before {
+a::before, .link-like::before {
   content: "";
   position: absolute;
   display: block;

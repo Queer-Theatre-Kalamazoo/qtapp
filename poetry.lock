@@ -128,17 +128,6 @@ docs = ["sphinx (>=1.3)"]
 tests = ["flask-classy (>=0.6.10)", "check-manifest (>=0.25)", "coverage (>=4.0)", "isort (>=4.2.2)", "pydocstyle (>=1.0.0)", "pytest (>=2.8.0)", "pytest-cache (>=1.0)", "pytest-cov (>=2.1.0)", "pytest-pep8 (>=1.0.6)"]
 
 [[package]]
-name = "flask-modals"
-version = "0.4.1"
-description = "Use forms in Bootstrap modals with Flask."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-Flask = "*"
-
-[[package]]
 name = "flask-sqlalchemy"
 version = "2.5.1"
 description = "Adds SQLAlchemy support to your Flask application."
@@ -354,7 +343,7 @@ email = ["email-validator"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "5365fcb9c48634fca67c8ea3342a583111bc30a31664efd016f37d51a3706777"
+content-hash = "cbb5db5c2721b100a60856a84553ef97f1eb33fabc4c0f41543835f4604779cb"
 
 [metadata.files]
 click = [
@@ -391,10 +380,6 @@ flask-login = [
 flask-menu = [
     {file = "Flask-Menu-0.7.2.tar.gz", hash = "sha256:6aef705e2b12d04a5a4d7eed89901e1e386bc1e6eda69cc1d9b8b594e95a5839"},
     {file = "Flask_Menu-0.7.2-py3-none-any.whl", hash = "sha256:adeb078a2c16ee63b63702b220de3f1be412920ad511a4ecb2c284f45c4026ee"},
-]
-flask-modals = [
-    {file = "Flask-Modals-0.4.1.tar.gz", hash = "sha256:004c6a652873c7103b15a44a472a5f950f62c1d98e669e87647ec7748f5ec8ac"},
-    {file = "Flask_Modals-0.4.1-py3-none-any.whl", hash = "sha256:627479b9c6249a1b4a0cd838325374831fece319ae213e728af2e557e241ea29"},
 ]
 flask-sqlalchemy = [
     {file = "Flask-SQLAlchemy-2.5.1.tar.gz", hash = "sha256:2bda44b43e7cacb15d4e05ff3cc1f8bc97936cc464623424102bfc2c35e95912"},
