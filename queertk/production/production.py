@@ -8,9 +8,11 @@ bp_productions = Blueprint("productions", __name__, static_folder = "static", te
 from queertk.models import Production, ProductionNotice, Notice, NoticeType, Season, Credit, Performance
 from database import db
 
-@login_required
 @bp_productions.route("/<int:prod_id>/<string:slug>")
+@login_required
 def display_production(prod_id, slug):
+
+    # TODO A billion queries to get required details from related model -- fix later
     production = db.session.query(Production).filter_by(production_id = prod_id).one()
     season = db.session.query(Season).filter_by(season_id = production.season_id).one()
     performances = db.session.query(Performance).filter_by(production_id = production.production_id).all()
@@ -20,4 +22,4 @@ def display_production(prod_id, slug):
     # Somehow this restricts valid pages to those with a valid slug
     slug = production.slug
 
-    return render_template('production.html', current_user = current_user, production = production, season = season, performances = performances, credits = credits, notices = notices)
+    return render_template('production.html', title = production.description ,current_user = current_user, production = production, season = season, performances = performances, credits = credits, notices = notices)

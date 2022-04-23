@@ -1,32 +1,50 @@
-<h1>Production Description:</h1>
-{{ production.description }}
+{% extends "base.html" %}
 
-<h1>Season:</h1>
-{{ season.description }}
+{% block content %}
+
+<h2 class="squeeze">{{ production.description }}</h2>
+<p class="hug">{{ season.description }}</p>
+
 
 {% if notices %}
-<h1>Notices:</h1>
-{% endif %}
-
 {% for pn, n, nt in notices %}
-<h4>{{ nt.description }}</h4>
-<p>{{ n.content }}</p>
+<h4 class="squeeze">{{ nt.description }}</h4>
+<p class="hug">{{ n.content }}</p>
 {% endfor %}
-
-{% if performances %}
-<h1>Performances:</h1>
 {% endif %}
-<ol>
-    {% for p in performances %}
-    <li>{{ p.datetime }}</li>
-    {% endfor %}
-</ol>
+
+<hr>
 
 {% if credits %}
-<h1>Credits:</h1>
+<h4>Credits:</h4>
 {% endif %}
 <ol>
     {% for c in credits %}
     <li>{{ c.credit_name }} as {{ c.role }}</li>
     {% endfor %}
 </ol>
+
+{% endblock %}
+
+
+{% block aside %}
+
+{% if performances %}
+<h4 class="hug">Performances:</h4>
+{% endif %}
+<ol>
+    {% for p in performances %}
+    <span>
+        <li>{{ p.datetime }}</li>
+    </span>
+    {% endfor %}
+</ol>
+
+<p>
+    Proof of vaccination is required for all Queer Theatre Kalamazoo events. Masks must be worn over the mouth and nose in
+    any indoor space. Our actors can present this play unmasked due to these efforts. Thank you for helping keep the
+    community safe and performing live again.
+</p>
+
+{% endblock %}
+

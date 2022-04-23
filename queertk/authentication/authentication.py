@@ -87,10 +87,10 @@ def logout():
     return redirect(url_for('home'))
 
 @login_manager.user_loader
-def load_user(user_id):
+def load_user(id):
     # Check if user is logged-in on every page load
-    if user_id is not None:
-        return User.query.get(user_id)
+    if id is not None:
+        return User.query.get(id)
     return None
 
 @login_manager.unauthorized_handler
