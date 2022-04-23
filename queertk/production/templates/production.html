@@ -35,7 +35,7 @@
 <ol>
     {% for p in performances %}
     <span>
-        <li>{{ p.datetime }}</li>
+        <li>{{ p.datetime|format_datetime() }}</li>
     </span>
     {% endfor %}
 </ol>
