@@ -80,6 +80,24 @@ aws = ["boto"]
 azure = ["azure-storage-blob"]
 
 [[package]]
+name = "flask-breadcrumbs"
+version = "0.5.1"
+description = "Flask-Breadcrumbs adds support for generating site breadcrumb navigation."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Flask = ">=1.0.4"
+Flask-Menu = ">=0.2"
+six = ">=1.12.0"
+
+[package.extras]
+all = ["Sphinx (>=1.5.1)", "check-manifest (>=0.25)", "coverage (>=4.0)", "isort (>=4.3.11)", "mock (>=1.0.0)", "pydocstyle (>=1.0.0)", "pytest-cache (>=1.0)", "pytest-cov (>=1.8.0)", "pytest-pep8 (>=1.0.6)", "pytest (>=3.8.0)"]
+docs = ["Sphinx (>=1.5.1)"]
+tests = ["check-manifest (>=0.25)", "coverage (>=4.0)", "isort (>=4.3.11)", "mock (>=1.0.0)", "pydocstyle (>=1.0.0)", "pytest-cache (>=1.0)", "pytest-cov (>=1.8.0)", "pytest-pep8 (>=1.0.6)", "pytest (>=3.8.0)"]
+
+[[package]]
 name = "flask-login"
 version = "0.6.0"
 description = "User authentication and session management for Flask."
@@ -90,6 +108,35 @@ python-versions = ">=3.7"
 [package.dependencies]
 Flask = ">=1.0.4"
 Werkzeug = ">=1.0.1"
+
+[[package]]
+name = "flask-menu"
+version = "0.7.2"
+description = "Flask-Menu is a Flask extension that adds support for generating menus."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Flask = ">=0.10.1"
+six = ">=1.9.0"
+
+[package.extras]
+all = ["sphinx (>=1.3)", "flask-classy (>=0.6.10)", "check-manifest (>=0.25)", "coverage (>=4.0)", "isort (>=4.2.2)", "pydocstyle (>=1.0.0)", "pytest (>=2.8.0)", "pytest-cache (>=1.0)", "pytest-cov (>=2.1.0)", "pytest-pep8 (>=1.0.6)"]
+classy = ["flask-classy (>=0.6.10)"]
+docs = ["sphinx (>=1.3)"]
+tests = ["flask-classy (>=0.6.10)", "check-manifest (>=0.25)", "coverage (>=4.0)", "isort (>=4.2.2)", "pydocstyle (>=1.0.0)", "pytest (>=2.8.0)", "pytest-cache (>=1.0)", "pytest-cov (>=2.1.0)", "pytest-pep8 (>=1.0.6)"]
+
+[[package]]
+name = "flask-modals"
+version = "0.4.1"
+description = "Use forms in Bootstrap modals with Flask."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Flask = "*"
 
 [[package]]
 name = "flask-sqlalchemy"
@@ -224,6 +271,14 @@ python-versions = ">=3.5"
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
 name = "sqlacodegen"
 version = "2.3.0"
 description = "Automatic model code generator for SQLAlchemy"
@@ -299,7 +354,7 @@ email = ["email-validator"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "46f9652fdf8d3f43abd54a69019584f522618768fc393a7d63ba35563252a139"
+content-hash = "5365fcb9c48634fca67c8ea3342a583111bc30a31664efd016f37d51a3706777"
 
 [metadata.files]
 click = [
@@ -325,9 +380,21 @@ flask = [
 flask-admin = [
     {file = "Flask-Admin-1.6.0.tar.gz", hash = "sha256:424ffc79b7b0dfff051555686ea12e86e48dffacac14beaa319fb4502ac40988"},
 ]
+flask-breadcrumbs = [
+    {file = "Flask-Breadcrumbs-0.5.1.tar.gz", hash = "sha256:f95872a3baf46473febd0f5c0adea192e7c2576af60a84a2144068eca1559b45"},
+    {file = "Flask_Breadcrumbs-0.5.1-py2.py3-none-any.whl", hash = "sha256:cb6fc89d7f76ff429fa4bb1fbc0bfe186f3f7ff8b4f5325c0a7b75946e2de98f"},
+]
 flask-login = [
     {file = "Flask-Login-0.6.0.tar.gz", hash = "sha256:aa84fcfb4c3cf09ca58c08e816b7bce73f1349ba1cf13d00d8dffc5872d5fcf6"},
     {file = "Flask_Login-0.6.0-py3-none-any.whl", hash = "sha256:5cb01ce4dc253967b6ac722a11e46de83b6272ef7a19cc7b5725ae636916d04d"},
+]
+flask-menu = [
+    {file = "Flask-Menu-0.7.2.tar.gz", hash = "sha256:6aef705e2b12d04a5a4d7eed89901e1e386bc1e6eda69cc1d9b8b594e95a5839"},
+    {file = "Flask_Menu-0.7.2-py3-none-any.whl", hash = "sha256:adeb078a2c16ee63b63702b220de3f1be412920ad511a4ecb2c284f45c4026ee"},
+]
+flask-modals = [
+    {file = "Flask-Modals-0.4.1.tar.gz", hash = "sha256:004c6a652873c7103b15a44a472a5f950f62c1d98e669e87647ec7748f5ec8ac"},
+    {file = "Flask_Modals-0.4.1-py3-none-any.whl", hash = "sha256:627479b9c6249a1b4a0cd838325374831fece319ae213e728af2e557e241ea29"},
 ]
 flask-sqlalchemy = [
     {file = "Flask-SQLAlchemy-2.5.1.tar.gz", hash = "sha256:2bda44b43e7cacb15d4e05ff3cc1f8bc97936cc464623424102bfc2c35e95912"},
@@ -511,6 +578,10 @@ protobuf = [
 python-dotenv = [
     {file = "python-dotenv-0.20.0.tar.gz", hash = "sha256:b7e3b04a59693c42c36f9ab1cc2acc46fa5df8c78e178fc33a8d4cd05c8d498f"},
     {file = "python_dotenv-0.20.0-py3-none-any.whl", hash = "sha256:d92a187be61fe482e4fd675b6d52200e7be63a12b724abbf931a40ce4fa92938"},
+]
+six = [
+    {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
+    {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
 sqlacodegen = [
     {file = "sqlacodegen-2.3.0-py2.py3-none-any.whl", hash = "sha256:6122465c0842b2f50c04efcf0ea5f882663a50cd205391d006f2475981269ab5"},

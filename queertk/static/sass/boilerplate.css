@@ -224,7 +224,12 @@ a:hover {
   color: #cf7272;
 }
 
-a ::before {
+a:hover::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+a::before {
   content: "";
   position: absolute;
   display: block;
@@ -241,200 +246,217 @@ a ::before {
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
-a:hover::before {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-}
-
-html {
-  background: url("../background.jpg") no-repeat center center fixed;
-  background-size: cover;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-aside {
-  margin: 0;
-  padding: 20px;
-}
-
-.badge {
-  padding: 3px 6px;
-  margin: 0 4px;
+/* Forms */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px;
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
   border-radius: 4px;
-  background: #b71e1e;
-  color: #fff;
-  font-size: 0.8rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.badge img {
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600;
+}
+
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+}
+
+label > .label-body {
   display: inline-block;
-  vertical-align: middle;
+  margin-left: .5rem;
+  font-weight: normal;
 }
 
-header {
-  background: #1f1f1f;
-  padding: 10px;
-  height: 30px;
+/* Lists */
+ul {
+  list-style: circle inside;
 }
 
-header .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+ol {
+  list-style: decimal inside;
 }
 
-header .header span {
-  color: #fff;
-}
-
-.page-title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #511b1b;
-  height: 50px;
-  text-size: 0.65rem;
-  color: #ffffffb4;
-}
-
-.content {
-  background: #1f1f1f;
-  padding-top: 1rem;
-  overflow: auto;
-  color: #f3ecf2;
-  height: 100%;
-}
-
-.content .wrapper {
-  margin: auto;
-  max-width: 90%;
-}
-
-.sidebar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #1f1e1fde;
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
-  width: 20rem;
-  max-height: calc(100vh - 100px);
-}
-
-.sidebar a {
-  margin-top: 1em;
-  font-size: clamp(1.1em, 2.1vw, 1.3em);
-}
-
-.flex-container_inner {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
-}
-
-.wrapper {
-  margin: auto;
-}
-
-.flex-container {
-  height: calc(100vh - 100px);
-  margin: auto;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 100%;
-          flex: 1 100%;
-}
-
-@media screen and (min-width: 640px) {
-  .flex-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .sidebar {
-    display: none;
-  }
-}
-
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-/* Hug the block above you */
-.hug {
+ol, ul {
+  padding-left: 0;
   margin-top: 0;
 }
 
-/* Squeeze the block beneath you */
-.squeeze {
-  margin-bottom: 0;
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+  font-size: 90%;
 }
-/*# sourceMappingURL=base.css.map */
+
+li {
+  margin-bottom: 1rem;
+}
+
+/* Code */
+code {
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  white-space: nowrap;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+}
+
+pre > code {
+  display: block;
+  padding: 1rem 1.5rem;
+  white-space: pre;
+}
+
+/* Tables */
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+
+/* Spacing */
+button,
+.button {
+  margin-bottom: 1rem;
+}
+
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem;
+}
+
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 2.5rem;
+}
+
+/* Utilities */
+.u-full-width {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.u-max-full-width {
+  max-width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.u-pull-right {
+  float: right;
+}
+
+.u-pull-left {
+  float: left;
+}
+
+/* Misc */
+hr {
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  border-width: 0;
+  border-top: 1px solid #E1E1E1;
+}
+
+/* Clearing */
+/* Self Clearing Goodness */
+.container:after,
+.row:after,
+.u-cf {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Media Queries */
+/* */
+/* Note: The best way to structure the use of media queries is to create the queries */
+/* near the relevant code. For example, if you wanted to change the styles for buttons */
+/* on small devices, paste the mobile query code up in the buttons section and style it */
+/* there. */
+/* Larger than mobile */
+/* Larger than phablet (also point when grid becomes active) */
+/* Larger than tablet */
+/* Larger than desktop */
+/* Larger than Desktop HD */
+/*# sourceMappingURL=boilerplate.css.map */

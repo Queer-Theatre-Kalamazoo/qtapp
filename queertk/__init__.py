@@ -23,6 +23,6 @@ app.register_blueprint(bp_authentication)
 db_conn_string = app.config["SQLALCHEMY_DATABASE_URI"] # Pull URI from config
 engine = create_engine(db_conn_string) # Instantiate SQLAlchemy create_engine
 
+
 import queertk.views
 import queertk.models
-
