@@ -32,13 +32,13 @@
 {% if performances %}
 <h4 class="hug">Performances:</h4>
 {% endif %}
-<ol>
+<ul>
     {% for p in performances %}
     <span>
         <li>{{ p.datetime|format_datetime() }}</li>
     </span>
     {% endfor %}
-</ol>
+</ul>
 
 <p>
     Proof of vaccination is required for all Queer Theatre Kalamazoo events. Masks must be worn over the mouth and nose in
