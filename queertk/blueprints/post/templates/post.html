@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="squeeze">{{ post.title }}</h2>
+<h4 class="hug">{{ post.subtitle }}</h4>
+<p>By <a href="/artist/{{ author.artist_id }}">{{ author.artist_name }}</a></p>
+<hr>
+{{ post.content | safe }}
+{% endblock %}

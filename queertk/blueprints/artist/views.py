@@ -1,10 +1,15 @@
-from flask import Blueprint, render_template, url_for
+from flask import render_template
+from .artist import bp_artist
 
-# Create blueprint
-bp_artist = Blueprint("artists", __name__, static_folder = "static", template_folder = "templates", url_prefix = "/artist") # Create Blueprint
+# Import remote models
+from queertk.blueprints.common.models import Credit
+from queertk.blueprints.production.models import Production
 
-from database import db
-from queertk.models import Artist, Credit, Production
+# Import local models
+from .models import Artist
+
+# Import database object
+from queertk.database import db
 
 @bp_artist.route('/<int:id>')
 @bp_artist.route('/<int:id>/<string:name>')

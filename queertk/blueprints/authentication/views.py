@@ -1,18 +1,9 @@
-from flask import Blueprint, render_template, request, redirect, flash, session, url_for
-from flask_login import LoginManager, login_required, logout_user, current_user, login_user
+from .authentication import bp_authentication, login_manager
 from .forms import RegisterForm, LoginForm
-from .models import db, User
-
-# Create blueprint
-bp_authentication = Blueprint("authentication", __name__, static_folder = "static", template_folder = "templates", url_prefix = "/auth") # Create Blueprint
-
-# Create LoginManager
-login_manager = LoginManager()
-
-from queertk import app
-
-# Instatiate Flask-Admin app
-login_manager.init_app(app)
+from flask import render_template, request, redirect, flash, session, url_for
+from flask_login import login_required, logout_user, current_user, login_user
+from .models import User
+from queertk.database import db
 
 @bp_authentication.route('/register', methods=['GET', 'POST'])
 def register():
