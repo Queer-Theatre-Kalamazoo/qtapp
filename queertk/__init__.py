@@ -11,6 +11,7 @@ else:
     app.config.from_object("queertk.config.DevelopmentConfig")
 
 # Import blueprints so they can be registered
+from queertk.blueprints.common.common import bp_common
 from queertk.admin.admin import bp_admin
 from queertk.authentication.authentication import bp_authentication
 from queertk.production.production import bp_productions
@@ -18,9 +19,10 @@ from queertk.artist.artist import bp_artist
 from queertk.post.post import bp_post
 
 # Register blueprints
+app.register_blueprint(bp_common)
 app.register_blueprint(bp_admin, url_prefix = '/admin')
-app.register_blueprint(bp_productions, url_prefix = '/prod')
 app.register_blueprint(bp_authentication, url_prefix = '/auth')
+app.register_blueprint(bp_productions, url_prefix = '/prod')
 app.register_blueprint(bp_artist, url_prefix = '/artist')
 app.register_blueprint(bp_post, url_prefix = '/post')
 
@@ -29,8 +31,6 @@ db_conn_string = app.config["SQLALCHEMY_DATABASE_URI"] # Pull URI from config
 engine = create_engine(db_conn_string) # Instantiate SQLAlchemy create_engine
 
 import queertk.views
-import queertk.post.views
-import queertk.models
 
 @app.template_filter()
 def format_datetime(value):

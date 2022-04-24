@@ -1,8 +1,14 @@
 from flask import render_template
-from .post import bp_post
-from database import db
+
+# Import remote models
 from queertk.artist.models import Artist
 from queertk.post.models import Post
+
+# Import local models
+from .post import bp_post
+
+# Import database object
+from database import db
 
 @bp_post.route('/<int:post_id>')
 def display_post(post_id):

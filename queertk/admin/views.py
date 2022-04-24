@@ -6,7 +6,11 @@ from queertk.admin.models import *
 # Import all models that need admin view
 from queertk.post.models import Post
 from queertk.artist.models import Artist
-from queertk.models import *
+from queertk.production.models import Production, ProductionNotice, Performance
+from queertk.blueprints.common.models import *
+
+# Import database object
+from database import db
 
 # Add views
 admin.add_view(ArtistModelView(Artist, db.session, category = "People"))
