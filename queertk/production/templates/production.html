@@ -28,7 +28,7 @@
 
 {% block sidebar_image %}
 {% if poster %}
-<img src="{{ poster }}" id="poster" alt="" srcset="">
+<img src="{{ url_for('productions.static', filename=poster) }}" id="poster" alt="" srcset="">
 {% endif %}
 {% endblock %}
 

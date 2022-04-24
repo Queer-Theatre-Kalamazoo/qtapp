@@ -118,6 +118,7 @@ class Production(Base):
     slug = Column(String(100), nullable=False)
     season_id = Column(Integer, ForeignKey('seasons.season_id'), nullable=False, index=True)
     play_id = Column(Integer, ForeignKey('plays.play_id'), nullable=False, index=True)
+    poster = Column(String(100))
     credits = db.relationship('Credit', backref = 'Production')
     notices = db.relationship('ProductionNotice', backref = 'Production')
     performances = db.relationship('Performance', backref = 'Production')

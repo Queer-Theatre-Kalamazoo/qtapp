@@ -29,11 +29,14 @@ def display_production(prod_id, slug):
     # Somehow this restricts valid pages to those with a valid slug
     slug = production.slug
 
-    for c in credits:
-        print(c)
+    # If production has a poster, set variable to be passed - if not, set to None to avoid passing a nonexistant variable
+    if production.poster:
+        poster_filename = 'images/posters/' + production.poster
+    else:
+        poster_filename = None
 
     return render_template('production.html', title = production.description, 
-                                                poster = poster, 
+                                                poster = poster_filename, 
                                                 sidebar = True,
                                                 current_user = current_user, 
                                                 production = production, 
