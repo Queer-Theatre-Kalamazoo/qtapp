@@ -1,7 +1,7 @@
 from flask import render_template
 from .post import bp_post
 from database import db
-from queertk.models import Artist
+from queertk.artist.models import Artist
 from queertk.post.models import Post
 
 @bp_post.route('/<int:post_id>')

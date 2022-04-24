@@ -1,8 +1,11 @@
-from queertk.admin.admin import admin
+from .admin import admin
+
+# Import custom ModelViews
+from queertk.admin.models import *
 
 # Import all models that need admin view
-from queertk.admin.models import *
-from queertk.post.models import *
+from queertk.post.models import Post
+from queertk.artist.models import Artist
 from queertk.models import *
 
 # Add views

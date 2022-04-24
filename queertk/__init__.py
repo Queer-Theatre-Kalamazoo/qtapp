@@ -10,6 +10,7 @@ if app.config["ENV"] == "production":
 else:
     app.config.from_object("queertk.config.DevelopmentConfig")
 
+# Import blueprints so they can be registered
 from queertk.admin.admin import bp_admin
 from queertk.authentication.authentication import bp_authentication
 from queertk.production.production import bp_productions
@@ -30,8 +31,6 @@ engine = create_engine(db_conn_string) # Instantiate SQLAlchemy create_engine
 import queertk.views
 import queertk.post.views
 import queertk.models
-
-from datetime import datetime
 
 @app.template_filter()
 def format_datetime(value):

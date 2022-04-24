@@ -5,7 +5,8 @@ from flask_login import current_user, login_required
 # Create blueprint
 bp_productions = Blueprint("productions", __name__, static_folder = "static", template_folder = "templates", url_prefix = "/prod") # Create Blueprint
 
-from queertk.models import Production, ProductionNotice, Notice, NoticeType, Season, Credit, Performance, Artist
+from queertk.models import Production, ProductionNotice, Notice, NoticeType, Season, Credit, Performance
+from queertk.artist.models import Artist
 from database import db
 
 @bp_productions.route("/<int:prod_id>/<string:slug>")
@@ -15,7 +16,6 @@ def display_production(prod_id, slug):
     production = db.session.query(Production).filter_by(production_id = prod_id).one()
     season = db.session.query(Season).filter_by(season_id = production.season_id).one()
     performances = db.session.query(Performance).filter_by(production_id = production.production_id).all()
-    # credits = db.session.query(Credit).filter_by(production_id = production.production_id).all()
     credits = db.session.query(Credit.role, Credit.credit_name, Artist.artist_id).\
         select_from(Credit).\
             join(Artist, Artist.artist_id == Credit.artist_id).\
