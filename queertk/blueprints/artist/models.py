@@ -1,5 +1,5 @@
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text
-from database import db
+from queertk.database import db
 from queertk.models import Base
 
 metadata = Base.metadata

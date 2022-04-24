@@ -3,13 +3,13 @@ from .artist import bp_artist
 
 # Import remote models
 from queertk.blueprints.common.models import Credit
-from queertk.production.models import Production
+from queertk.blueprints.production.models import Production
 
 # Import local models
 from .models import Artist
 
 # Import database object
-from database import db
+from queertk.database import db
 
 @bp_artist.route('/<int:id>')
 @bp_artist.route('/<int:id>/<string:name>')

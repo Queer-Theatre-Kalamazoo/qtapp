@@ -1,14 +1,14 @@
 from flask import render_template
 
 # Import remote models
-from queertk.artist.models import Artist
-from queertk.post.models import Post
+from queertk.blueprints.artist.models import Artist
+from queertk.blueprints.post.models import Post
 
 # Import local models
 from .post import bp_post
 
 # Import database object
-from database import db
+from queertk.database import db
 
 @bp_post.route('/<int:post_id>')
 def display_post(post_id):

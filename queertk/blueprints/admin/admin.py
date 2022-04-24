@@ -5,7 +5,7 @@ bp_admin = Blueprint("bp_admin", __name__, static_folder = "static", template_fo
 
 from flask_admin import Admin
 from queertk import app
-from database import db
+from queertk.database import db
 
 # Initialize database and Admin
 admin = Admin(app)

@@ -3,14 +3,14 @@ from flask_login import current_user
 from .production import bp_productions
 
 # Import remote models
-from queertk.artist.models import Artist
+from queertk.blueprints.artist.models import Artist
 from queertk.blueprints.common.models import Credit, Season, Notice, NoticeType
 
 # Import local models
 from .models import Production, Performance, ProductionNotice
 
 # Import database object
-from database import db
+from queertk.database import db
 
 @bp_productions.route("/<int:prod_id>/<string:slug>")
 def display_production(prod_id, slug):

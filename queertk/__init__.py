@@ -12,11 +12,11 @@ else:
 
 # Import blueprints so they can be registered
 from queertk.blueprints.common.common import bp_common
-from queertk.admin.admin import bp_admin
-from queertk.authentication.authentication import bp_authentication
-from queertk.production.production import bp_productions
-from queertk.artist.artist import bp_artist
-from queertk.post.post import bp_post
+from queertk.blueprints.admin.admin import bp_admin
+from queertk.blueprints.authentication.authentication import bp_authentication
+from queertk.blueprints.production.production import bp_productions
+from queertk.blueprints.artist.artist import bp_artist
+from queertk.blueprints.post.post import bp_post
 
 # Register blueprints
 app.register_blueprint(bp_common)

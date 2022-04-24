@@ -1,8 +1,9 @@
+# Fixed circular import error
+import queertk.blueprints.common.models as common
+
 from sqlalchemy import Column, Integer, ForeignKey, DateTime, String
-from database import db
+from queertk.database import db
 from queertk.models import Base
-import queertk.blueprints.common.models
-from queertk.blueprints.common.models import Notice, Season
 
 metadata = Base.metadata
 
@@ -27,7 +28,7 @@ class ProductionNotice(Base):
     performance_id = Column(Integer, ForeignKey('performances.performance_id'), index=True)
 
     def __repr__(self):
-        return db.session.query(Production).filter_by(production_id = self.production_id).one().description + " - " + db.session.query(Notice).filter_by(notice_id = self.notice_id).one().description
+        return db.session.query(Production).filter_by(production_id = self.production_id).one().description + " - " + db.session.query(common.Notice).filter_by(notice_id = self.notice_id).one().description
 
 class Production(Base):
     __tablename__ = 'productions'
@@ -43,4 +44,4 @@ class Production(Base):
     performances = db.relationship('Performance', backref = 'Production')
 
     def __repr__(self):
-        return str(db.session.query(Season).filter_by(season_id = self.season_id).one().description) + " - " + self.description
+        return str(db.session.query(common.Season).filter_by(season_id = self.season_id).one().description) + " - " + self.description

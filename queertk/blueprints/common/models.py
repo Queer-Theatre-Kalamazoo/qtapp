@@ -1,11 +1,13 @@
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
-from queertk.models import Base
+# Fixed circular import, ignore warnings
+import queertk.blueprints.production.models as prod
 
-# Import remote models
-import queertk.production.models
+# Import utilities
+from queertk.models import Base
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 
 # Import database object
-from database import db
+from queertk.database import db
+
 
 metadata = Base.metadata
 
@@ -20,7 +22,7 @@ class Credit(Base):
     credit_name = Column(String(100), nullable=False)
 
     def __repr__(self):
-        return self.credit_name + " in " + db.session.query(Production).filter_by(production_id = self.production_id).one().description + " as " + self.role
+        return self.credit_name + " in " + db.session.query(prod.Production).filter_by(production_id = self.production_id).one().description + " as " + self.role
 
 class NoticeType(Base):
     __tablename__ = 'notice_types'

@@ -1,9 +1,9 @@
 from flask import render_template
 from queertk import app
-from database import db
+from queertk.database import db
 from queertk.blueprints.common.models import Season
-from queertk.production.models import Production
-from queertk.post.models import Post
+from queertk.blueprints.production.models import Production
+from queertk.blueprints.post.models import Post
 
 @app.route('/')
 def home():

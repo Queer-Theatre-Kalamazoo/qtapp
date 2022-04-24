@@ -3,7 +3,7 @@ from .forms import RegisterForm, LoginForm
 from flask import render_template, request, redirect, flash, session, url_for
 from flask_login import login_required, logout_user, current_user, login_user
 from .models import User
-from database import db
+from queertk.database import db
 
 @bp_authentication.route('/register', methods=['GET', 'POST'])
 def register():
