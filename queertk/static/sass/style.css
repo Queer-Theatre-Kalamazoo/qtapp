@@ -214,7 +214,8 @@ header .header span {
   border-radius: 50px;
 }
 
-#poster {
+#poster,
+#headshot {
   background-size: contain;
   background-position: center center;
   height: 100%;
