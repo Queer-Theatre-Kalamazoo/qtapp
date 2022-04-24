@@ -1,7 +1,6 @@
 from MySQLdb import Date
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
-from flask_admin.form import DateTimePickerWidget
 from database import db
 
 Base = declarative_base()
@@ -15,6 +14,9 @@ class Artist(Base):
     legal_name = Column(String(100))
     short_name = Column(String(100))
     birthday = Column(DateTime)
+    biography = Column(Text)
+    headshot = Column(String(100))
+    slug = Column(String(100))
     credits = db.relationship('Credit', backref = 'Artist')
 
     def __repr__(self):
@@ -32,7 +34,7 @@ class Credit(Base):
     credit_name = Column(String(100), nullable=False)
 
     def __repr__(self):
-        return self.credit_name + " in " + str(self.production_id) + " as " + self.role
+        return self.credit_name + " in " + db.session.query(Production).filter_by(production_id = self.production_id).one().description + " as " + self.role
 
 
 class NoticeType(Base):
@@ -116,6 +118,7 @@ class Production(Base):
     slug = Column(String(100), nullable=False)
     season_id = Column(Integer, ForeignKey('seasons.season_id'), nullable=False, index=True)
     play_id = Column(Integer, ForeignKey('plays.play_id'), nullable=False, index=True)
+    poster = Column(String(100))
     credits = db.relationship('Credit', backref = 'Production')
     notices = db.relationship('ProductionNotice', backref = 'Production')
     performances = db.relationship('Performance', backref = 'Production')

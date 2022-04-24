@@ -22,9 +22,22 @@ class CustomView(BaseView):
         return self.render('customview.html')
 
 class ArtistModelView(ModelView):
+    # Options: https://readthedocs.org/projects/flask-admin/downloads/pdf/latest/
+    # Replace the default ModelView (used below to render admin model pages)
+
+    # Hide columns from list view
+    column_exclude_list = ['biography']
+
+    # Which columns can you search by
     column_searchable_list = ['artist_name', 'legal_name', 'short_name']
-    column_editable_list = ['artist_name']
+
+    # Which columns can you edit inline from list view
+    column_editable_list = ['artist_name', 'birthday', 'slug']
+
+    # Which column is list view sorted by by default
     column_default_sort = 'artist_name'
+
+    # Table can be exported
     can_export = True
     can_view_details = True
 
@@ -40,7 +53,7 @@ class ArtistModelView(ModelView):
 
     # Determine which fields are visible to create and edit.
     form_rules = [
-        rules.FieldSet(('artist_name', 'legal_name', 'short_name', 'birthday'), 'Artist')
+        rules.FieldSet(('artist_name', 'legal_name', 'short_name', 'birthday', 'biography', 'headshot', 'slug'), 'Artist')
     ]
 
     def get_save_return_url(self, model, is_created):

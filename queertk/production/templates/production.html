@@ -20,25 +20,30 @@
 {% endif %}
 <ol>
     {% for c in credits %}
-    <li>{{ c.credit_name }} as {{ c.role }}</li>
+    <li><a href="/artist/{{ c.artist_id }}">{{ c.credit_name }}</a>, {{ c.role }}</li>
     {% endfor %}
 </ol>
 
 {% endblock %}
 
+{% block sidebar_image %}
+{% if poster %}
+<img src="{{ url_for('productions.static', filename=poster) }}" id="poster" alt="" srcset="">
+{% endif %}
+{% endblock %}
 
 {% block aside %}
 
 {% if performances %}
 <h4 class="hug">Performances:</h4>
 {% endif %}
-<ol>
+<ul>
     {% for p in performances %}
     <span>
-        <li>{{ p.datetime }}</li>
+        <li>{{ p.datetime|format_datetime() }}</li>
     </span>
     {% endfor %}
-</ol>
+</ul>
 
 <p>
     Proof of vaccination is required for all Queer Theatre Kalamazoo events. Masks must be worn over the mouth and nose in

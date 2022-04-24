@@ -14,6 +14,13 @@ aside {
   padding: 20px;
 }
 
+aside a {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .badge {
   padding: 3px 6px;
   margin: 0 4px;
@@ -196,5 +203,24 @@ header .header span {
 /* Squeeze the block beneath you */
 .squeeze {
   margin-bottom: 0;
+}
+
+#avatar {
+  background-image: url("../images/avatar.jpg");
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 50px;
+}
+
+#poster,
+#headshot {
+  background-size: contain;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 /*# sourceMappingURL=style.css.map */
