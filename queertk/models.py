@@ -1,7 +1,6 @@
 from MySQLdb import Date
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
-from flask_admin.form import DateTimePickerWidget
 from database import db
 
 Base = declarative_base()
@@ -16,6 +15,7 @@ class Artist(Base):
     short_name = Column(String(100))
     birthday = Column(DateTime)
     biography = Column(Text)
+    headshot = Column(String(100))
     slug = Column(String(100))
     credits = db.relationship('Credit', backref = 'Artist')
 

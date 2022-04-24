@@ -53,7 +53,7 @@ class ArtistModelView(ModelView):
 
     # Determine which fields are visible to create and edit.
     form_rules = [
-        rules.FieldSet(('artist_name', 'legal_name', 'short_name', 'birthday', 'biography', 'slug'), 'Artist')
+        rules.FieldSet(('artist_name', 'legal_name', 'short_name', 'birthday', 'biography', 'headshot', 'slug'), 'Artist')
     ]
 
     def get_save_return_url(self, model, is_created):

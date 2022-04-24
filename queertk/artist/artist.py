@@ -17,11 +17,15 @@ def display_artist(id, **name):
                 filter(Credit.artist_id == artist.artist_id).\
                     all()
 
-    headshot = url_for('artists.static', filename='images/headshots/connar-klock.jpg')
+    # If artist has a headshot, set variable to be passed - if not, set to None to avoid passing a nonexistant variable
+    if artist.headshot:
+        headshot_filename = 'images/headshots/' + artist.headshot
+    else:
+        headshot_filename = None
     
     return render_template('artist.html', 
                             sidebar = True, 
                             artist = artist,
                             title = artist.artist_name,
                             credits = credits,
-                            headshot = headshot)
+                            headshot = headshot_filename)
