@@ -18,6 +18,7 @@ class Artist(Base):
     headshot = Column(String(100))
     slug = Column(String(100))
     credits = db.relationship('Credit', backref = 'Artist')
+    posts = db.relationship('Post', backref = 'Author')
 
     def __repr__(self):
         return self.artist_name

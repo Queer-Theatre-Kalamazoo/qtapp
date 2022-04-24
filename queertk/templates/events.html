@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Season 9</h3>
+<ul>
+{% for p in productions %}
+    <li><a href="/prod/{{p.production_id}}/{{ p.slug }}">{{ p.prod_desc }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

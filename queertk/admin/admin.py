@@ -7,6 +7,7 @@ from queertk import app
 from database import db
 from flask_admin import Admin
 from queertk.models import *
+from queertk.post.models import *
 
 # Initialize database and Admin
 admin = Admin(app)
@@ -65,7 +66,7 @@ class PlayModelView(ModelView):
 
 class PerformanceModelView(ModelView):
     column_filters = ['production_id']
-
+    
 class ProductionModelView(ModelView):
     # Question mark next to field name, hover to see description
     column_descriptions = dict(
@@ -83,4 +84,7 @@ admin.add_view(ModelView(ProductionNotice, db.session, category = "Production"))
 admin.add_view(ProductionModelView(Production, db.session, category = "Production"))
 admin.add_view(ModelView(Season, db.session, category = "Reference"))
 admin.add_view(ModelView(Venue, db.session, category = "Reference"))
+admin.add_view(ModelView(Post, db.session, category = "News"))
+
+# Add a blank page (view) to the admin menu
 admin.add_view(CustomView(name='Custom', endpoint='custom'))
