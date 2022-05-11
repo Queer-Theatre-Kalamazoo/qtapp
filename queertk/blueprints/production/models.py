@@ -1,9 +1,9 @@
 # Fixed circular import error
-import queertk.blueprints.common.models as common
+import blueprints.common.models as common
 
 from sqlalchemy import Column, Integer, ForeignKey, DateTime, String
-from queertk.database import db
-from queertk.models import Base
+from database import db
+from models import Base
 
 metadata = Base.metadata
 

@@ -1,12 +1,12 @@
 # Fixed circular import, ignore warnings
-import queertk.blueprints.production.models as prod
+import blueprints.production.models as prod
 
 # Import utilities
-from queertk.models import Base
+from models import Base
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 
 # Import database object
-from queertk.database import db
+from database import db
 
 
 metadata = Base.metadata
