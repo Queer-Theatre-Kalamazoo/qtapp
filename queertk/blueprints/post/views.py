@@ -8,10 +8,10 @@ from queertk.blueprints.post.models import Post
 from .post import bp_post
 
 # Import database object
-from queertk.database import db
+from queertk.database import Session
 
 @bp_post.route('/<int:post_id>')
 def display_post(post_id):
-    post = db.session.query(Post).filter_by(post_id = post_id).one()
-    author = db.session.query(Artist).filter_by(artist_id = post.author_id).one()
+    post = Session.begin().query(Post).filter_by(post_id = post_id).one()
+    author = Session.begin().query(Artist).filter_by(artist_id = post.author_id).one()
     return render_template('post.html', post = post, author = author)

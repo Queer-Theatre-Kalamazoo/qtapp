@@ -33,14 +33,6 @@
             <!-- Header -->
             <header>
                 <div class="header wrapper">
-                    <div id="avatar" style="margin-right: 10px;"></div>
-                    {% block auth %}
-                        {% if current_user.is_authenticated %}
-                            <span>Hi, {{ current_user.name }}. <a href="{{ url_for('authentication.logout') }}">Logout.</a></span>
-                        {% else %}
-                            <span>You're not logged in. <a href="{{ url_for('authentication.login') }}">Login?</a></span>
-                        {% endif %}
-                    {% endblock %}
                 </div>
             </header>
             <!-- Page Title Bar -->

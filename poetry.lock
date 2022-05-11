@@ -343,18 +343,6 @@ docs = ["sphinx (>=1.3)"]
 tests = ["flask-classy (>=0.6.10)", "check-manifest (>=0.25)", "coverage (>=4.0)", "isort (>=4.2.2)", "pydocstyle (>=1.0.0)", "pytest (>=2.8.0)", "pytest-cache (>=1.0)", "pytest-cov (>=2.1.0)", "pytest-pep8 (>=1.0.6)"]
 
 [[package]]
-name = "flask-sqlalchemy"
-version = "2.5.1"
-description = "Adds SQLAlchemy support to your Flask application."
-category = "main"
-optional = false
-python-versions = ">= 2.7, != 3.0.*, != 3.1.*, != 3.2.*, != 3.3.*"
-
-[package.dependencies]
-Flask = ">=0.10"
-SQLAlchemy = ">=0.8.0"
-
-[[package]]
 name = "flask-wtf"
 version = "1.0.1"
 description = "Form rendering, validation, and CSRF protection for Flask with WTForms."
@@ -1273,10 +1261,22 @@ MarkupSafe = "*"
 [package.extras]
 email = ["email-validator"]
 
+[[package]]
+name = "wtforms-sqlalchemy"
+version = "0.3"
+description = "SQLAlchemy tools for WTForms"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+SQLAlchemy = ">=0.7.10"
+WTForms = ">=1.0.5"
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "71ab3a653adbf88f92cffdc6a8592d284ede0a542c43ceb234ff73db4f15878b"
+content-hash = "47fcba3d32be4743f4e2d66826bb15b88e148cbb94755d91174a9efd83a0869a"
 
 [metadata.files]
 anyio = [
@@ -1472,10 +1472,6 @@ flask-login = [
 flask-menu = [
     {file = "Flask-Menu-0.7.2.tar.gz", hash = "sha256:6aef705e2b12d04a5a4d7eed89901e1e386bc1e6eda69cc1d9b8b594e95a5839"},
     {file = "Flask_Menu-0.7.2-py3-none-any.whl", hash = "sha256:adeb078a2c16ee63b63702b220de3f1be412920ad511a4ecb2c284f45c4026ee"},
-]
-flask-sqlalchemy = [
-    {file = "Flask-SQLAlchemy-2.5.1.tar.gz", hash = "sha256:2bda44b43e7cacb15d4e05ff3cc1f8bc97936cc464623424102bfc2c35e95912"},
-    {file = "Flask_SQLAlchemy-2.5.1-py2.py3-none-any.whl", hash = "sha256:f12c3d4cc5cc7fdcc148b9527ea05671718c3ea45d50c7e732cceb33f574b390"},
 ]
 flask-wtf = [
     {file = "Flask-WTF-1.0.1.tar.gz", hash = "sha256:34fe5c6fee0f69b50e30f81a3b7ea16aa1492a771fe9ad0974d164610c09a6c9"},
@@ -2065,4 +2061,8 @@ werkzeug = [
 wtforms = [
     {file = "WTForms-3.0.1-py3-none-any.whl", hash = "sha256:837f2f0e0ca79481b92884962b914eba4e72b7a2daaf1f939c890ed0124b834b"},
     {file = "WTForms-3.0.1.tar.gz", hash = "sha256:6b351bbb12dd58af57ffef05bc78425d08d1914e0fd68ee14143b7ade023c5bc"},
+]
+wtforms-sqlalchemy = [
+    {file = "WTForms-SQLAlchemy-0.3.tar.gz", hash = "sha256:7ca42824ad7c453a036f502b42d9c17d4ad8398ff9248a62ed538d1ce0bc41c3"},
+    {file = "WTForms_SQLAlchemy-0.3-py3-none-any.whl", hash = "sha256:90195d7592bf256d82498c42c79d416832e4a4e6fbca4f1e745a018f66d26c47"},
 ]

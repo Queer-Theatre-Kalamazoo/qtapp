@@ -10,20 +10,21 @@ from queertk.blueprints.production.models import Production, ProductionNotice, P
 from queertk.blueprints.common.models import *
 
 # Import database object
-from queertk.database import db
+from queertk.database import Session
 
 # Add views
-admin.add_view(ArtistModelView(Artist, db.session, category = "People"))
-admin.add_view(ModelView(Credit, db.session, category = "People"))
-admin.add_view(ModelView(NoticeType, db.session, category = "Reference"))
-admin.add_view(ModelView(Notice, db.session, category = "Production"))
-admin.add_view(PerformanceModelView(Performance, db.session, category = "Production"))
-admin.add_view(PlayModelView(Play, db.session, category = "Reference"))
-admin.add_view(ModelView(ProductionNotice, db.session, category = "Production"))
-admin.add_view(ProductionModelView(Production, db.session, category = "Production"))
-admin.add_view(ModelView(Season, db.session, category = "Reference"))
-admin.add_view(ModelView(Venue, db.session, category = "Reference"))
-admin.add_view(ModelView(Post, db.session, category = "News"))
+with Session.begin() as session:
+    admin.add_view(ArtistModelView(Artist, session, category = "People"))
+    admin.add_view(ModelView(Credit, session, category = "People"))
+    admin.add_view(ModelView(NoticeType, session, category = "Reference"))
+    admin.add_view(ModelView(Notice, session, category = "Production"))
+    admin.add_view(PerformanceModelView(Performance, session, category = "Production"))
+    admin.add_view(PlayModelView(Play, session, category = "Reference"))
+    admin.add_view(ModelView(ProductionNotice, session, category = "Production"))
+    admin.add_view(ProductionModelView(Production, session, category = "Production"))
+    admin.add_view(ModelView(Season, session, category = "Reference"))
+    admin.add_view(ModelView(Venue, session, category = "Reference"))
+    admin.add_view(ModelView(Post, session, category = "News"))
 
-# Add a blank page (view) to the admin menu
-admin.add_view(CustomView(name='Custom', endpoint='custom'))
+    # Add a blank page (view) to the admin menu
+    admin.add_view(CustomView(name='Custom', endpoint='custom'))

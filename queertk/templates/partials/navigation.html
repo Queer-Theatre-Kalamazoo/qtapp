@@ -5,7 +5,5 @@
 <a href="#">Contact</a>
 <a style="flex: 1 1 auto;"></a>
 <a href="#">My Account</a>
-{% if current_user.is_authenticated %}
 <a href="{{ url_for('bp_qtapp.dashboard') }}">Admin Portal</a>
-{% endif %}
 <a data-a11y-dialog-show="my-dialog">About This Site</a>

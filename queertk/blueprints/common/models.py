@@ -1,12 +1,12 @@
 # Fixed circular import, ignore warnings
-import blueprints.production.models as prod
+import queertk.blueprints.production.models as prod
 
 # Import utilities
-from models import Base
+from queertk.models import Base
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 
-# Import database object
-from database import db
+from sqlalchemy.orm import relationship
+from queertk.database import Session
 
 
 metadata = Base.metadata
@@ -24,14 +24,15 @@ class Credit(Base):
     credit_name = Column(String(100), nullable=False)
 
     def __repr__(self):
-        return self.credit_name + " in " + db.session.query(prod.Production).filter_by(production_id = self.production_id).one().description + " as " + self.role
+        with Session.begin() as session:
+            return self.credit_name + " in " + session.query(prod.Production).filter_by(production_id = self.production_id).one().description + " as " + self.role
 
 class NoticeType(Base):
     __tablename__ = 'notice_types'
 
     notice_type_id = Column(Integer, primary_key=True)
     description = Column(String(100), nullable=False)
-    notices = db.relationship('Notice', backref = "Type")
+    notices = relationship('Notice', backref = "Type")
 
     def __repr__(self):
         return self.description
@@ -43,7 +44,7 @@ class Notice(Base):
     type_id = Column(Integer, ForeignKey('notice_types.notice_type_id'), nullable=False, index=True)
     description = Column(String(200))
     content = Column(String(500), nullable=False)
-    notices = db.relationship('ProductionNotice', backref = 'Notice')
+    notices = relationship('ProductionNotice', backref = 'Notice')
 
     def __repr__(self):
         return self.description
@@ -54,7 +55,7 @@ class Play(Base):
     play_id = Column(Integer, primary_key=True)
     title = Column(String(255), nullable=False)
     author = Column(String(255), nullable=False)
-    productions = db.relationship('Production', backref = 'Play')
+    productions = relationship('Production', backref = 'Play')
 
     def __repr__(self):
         return self.title + " by " + self.author
@@ -67,7 +68,7 @@ class Season(Base):
     slug = Column(String(100), nullable=False)
     start_date = Column(DateTime)
     end_date = Column(DateTime)
-    productions = db.relationship('Production', backref = 'Season')
+    productions = relationship('Production', backref = 'Season')
 
     def __repr__(self):
         return self.description
@@ -79,7 +80,7 @@ class Venue(Base):
     building = Column(String(255), nullable=False)
     room = Column(String(255))
     address = Column(String(255), nullable=False)
-    performances = db.relationship('Performance', backref = 'Venue')
+    performances = relationship('Performance', backref = 'Venue')
 
     def __repr__(self):
         if self.room:
