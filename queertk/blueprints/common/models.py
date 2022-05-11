@@ -18,6 +18,8 @@ class Credit(Base):
     artist_id = Column(Integer, ForeignKey('artists.artist_id'), nullable=False, index=True)
     performance_id = Column(Integer, ForeignKey('performances.performance_id'), index=True)
     production_id = Column(Integer, ForeignKey('productions.production_id'), nullable=False, index=True)
+    order_no = Column(Integer)
+    category = Column(String(20))
     role = Column(String(100), nullable=False)
     credit_name = Column(String(100), nullable=False)
 

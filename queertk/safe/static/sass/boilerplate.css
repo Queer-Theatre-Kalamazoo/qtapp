@@ -206,8 +206,7 @@ p,
 a,
 span,
 li,
-button,
-input {
+button {
   --min: 1.1em;
   --val: 1.2vw;
   --max: 1em;

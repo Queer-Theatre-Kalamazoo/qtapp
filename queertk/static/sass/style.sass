@@ -1,17 +1,17 @@
-@import "variables"
-    
-html
-    background: url("../background.jpg") no-repeat center center fixed
-    -webkit-background-size: cover
-    -moz-background-size: cover
-    -o-background-size: cover
-    background-size: cover
+@import "base/variables"
 
-body
-    // overflow: hidden
-    height: 100%
-    margin: 0
-    padding: 0
+// html
+//     background: url("../background.jpg") no-repeat center center fixed
+//     -webkit-background-size: cover
+//     -moz-background-size: cover
+//     -o-background-size: cover
+//     background-size: cover
+
+// body
+//     // overflow: hidden
+//     height: 100%
+//     margin: 0
+//     padding: 0
 
 aside
     margin: 0
@@ -35,8 +35,8 @@ aside
 
 header
     background: $bg-dark
-    padding: 10px
-    height: 30px
+    padding: 15px
+    // height: 30px
 
     .header
         display: flex
@@ -55,47 +55,22 @@ header
     text-size: 0.65rem
     color: #ffffffb4
 
-.content
-    background: $bg-dark
-    padding-top: 1rem
-    overflow: auto
-    color: #f3ecf2
-    height: 100%
 
-    .wrapper
-        margin: auto
-        max-width: 90%
 
-.content-info
-    height: 100%
-    max-height: calc(100vh - 120px)
-    background: #434343
-    border-radius: 4px
-    padding: 20px
 
-.sidebar
-    display: flex
-    flex-direction: column
-    align-items: center
-    background: $bg-dark-blur
-    backdrop-filter: blur(15px)
-    width: 20rem
-    max-height: calc(100vh - 100px)
 
-    a
-        margin-top: 1em
-        font-size: clamp(1.1em, 2.1vw, 1.3em)
+// .flex
+//     display: flex
+//     width: 100%
+// 
+//     .column
+//         flex-direction: column
 
-.flex-container_inner
-    display: flex
-    flex-direction: column
-    width: 100%
-
-.wrapper
-    margin: auto
+// .wrapper
+//     margin: auto
 
 .flex-container
-    height: calc(100vh - 100px)
+    height: calc(100vh - 110px)
     margin: auto
     flex: 1 100%
 
@@ -148,3 +123,4 @@ header
     border-radius: 4px
     margin-bottom: 10px
     // padding: 20px
+

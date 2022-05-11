@@ -14,6 +14,7 @@ else:
 from queertk.blueprints.common.common import bp_common
 from queertk.blueprints.admin.admin import bp_admin
 from queertk.blueprints.authentication.authentication import bp_authentication
+from queertk.blueprints.qtapp.qtapp import bp_qtapp
 from queertk.blueprints.production.production import bp_productions
 from queertk.blueprints.artist.artist import bp_artist
 from queertk.blueprints.post.post import bp_post
@@ -22,6 +23,7 @@ from queertk.blueprints.post.post import bp_post
 app.register_blueprint(bp_common)
 app.register_blueprint(bp_admin, url_prefix = '/admin')
 app.register_blueprint(bp_authentication, url_prefix = '/auth')
+app.register_blueprint(bp_qtapp, url_prefix = '/app')
 app.register_blueprint(bp_productions, url_prefix = '/prod')
 app.register_blueprint(bp_artist, url_prefix = '/artist')
 app.register_blueprint(bp_post, url_prefix = '/post')

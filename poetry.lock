@@ -340,10 +340,22 @@ MarkupSafe = "*"
 [package.extras]
 email = ["email-validator"]
 
+[[package]]
+name = "wtforms-sqlalchemy"
+version = "0.3"
+description = "SQLAlchemy tools for WTForms"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+SQLAlchemy = ">=0.7.10"
+WTForms = ">=1.0.5"
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "cbb5db5c2721b100a60856a84553ef97f1eb33fabc4c0f41543835f4604779cb"
+content-hash = "5589e799d43a6be9c025b47e08bfe8a288f947a88226a88264db18e169142042"
 
 [metadata.files]
 click = [
@@ -617,4 +629,8 @@ werkzeug = [
 wtforms = [
     {file = "WTForms-3.0.1-py3-none-any.whl", hash = "sha256:837f2f0e0ca79481b92884962b914eba4e72b7a2daaf1f939c890ed0124b834b"},
     {file = "WTForms-3.0.1.tar.gz", hash = "sha256:6b351bbb12dd58af57ffef05bc78425d08d1914e0fd68ee14143b7ade023c5bc"},
+]
+wtforms-sqlalchemy = [
+    {file = "WTForms-SQLAlchemy-0.3.tar.gz", hash = "sha256:7ca42824ad7c453a036f502b42d9c17d4ad8398ff9248a62ed538d1ce0bc41c3"},
+    {file = "WTForms_SQLAlchemy-0.3-py3-none-any.whl", hash = "sha256:90195d7592bf256d82498c42c79d416832e4a4e6fbca4f1e745a018f66d26c47"},
 ]
