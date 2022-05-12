@@ -1,7 +1,7 @@
 # Fixed circular import error
 import queertk.blueprints.common.models as common
 
-from sqlalchemy import Column, Integer, ForeignKey, DateTime, String
+from sqlalchemy import Column, Integer, ForeignKey, DateTime, String, select
 from sqlalchemy.orm import relationship
 from queertk.database import Session
 from queertk.models import Base
@@ -30,7 +30,7 @@ class ProductionNotice(Base):
 
     def __repr__(self):
         with Session.begin() as session:
-            return session.query(Production).filter_by(production_id = self.production_id).one().description + " - " + session.query(common.Notice).filter_by(notice_id = self.notice_id).one().description
+            return session.execute(select(Production).where(Production.production_id == self.production_id)).scalars().one().description + " - " + session.query(common.Notice).filter_by(notice_id = self.notice_id).one().description
 
 class Production(Base):
     __tablename__ = 'productions'
@@ -47,4 +47,4 @@ class Production(Base):
 
     def __repr__(self):
         with Session.begin() as session:
-            return str(session.query(common.Season).filter_by(season_id = self.season_id).one().description) + " - " + self.description
+            return str(session.execute(select(common.Season).where(common.Season.season_id == self.season_id)).scalars().one().description) + " - " + self.description

@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Jupyer notebooks
+.ipynb
+
 # Distribution / packaging
 .Python
 build/
@@ -128,3 +131,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 queertk/config.py
+queertk/playground.ipynb
