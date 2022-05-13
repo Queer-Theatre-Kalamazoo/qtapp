@@ -1,4 +1,4 @@
-from .admin import admin
+from . import admin
 
 # Import custom ModelViews
 from application.blueprints.admin.models import *

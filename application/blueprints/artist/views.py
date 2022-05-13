@@ -1,5 +1,5 @@
 from flask import render_template
-from .artist import bp_artist
+from . import bp_artist
 from sqlalchemy import select
 from sqlalchemy.orm import aliased
 

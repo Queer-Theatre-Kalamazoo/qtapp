@@ -4,7 +4,7 @@ from flask import render_template
 from application.blueprints.common.schema import Artist, Post
 
 # Import local models
-from .post import bp_post
+from . import bp_post
 
 # Import database object
 from application.database import Session

@@ -17,12 +17,12 @@ def init_app():
 
 
     with app.app_context():
-        from application.blueprints.common.common import bp_common
-        from application.blueprints.admin.admin import bp_admin
-        from application.blueprints.qtapp.qtapp import bp_qtapp
-        from application.blueprints.production.production import bp_productions
-        from application.blueprints.artist.artist import bp_artist
-        from application.blueprints.post.post import bp_post
+        from application.blueprints.common import bp_common
+        from application.blueprints.admin import bp_admin
+        from application.blueprints.qtapp import bp_qtapp
+        from application.blueprints.production import bp_productions
+        from application.blueprints.artist import bp_artist
+        from application.blueprints.post import bp_post
 
         app.register_blueprint(bp_common)
         app.register_blueprint(bp_admin, url_prefix = '/admin')

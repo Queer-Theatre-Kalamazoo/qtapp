@@ -1,4 +1,4 @@
-from .qtapp import bp_qtapp
+from . import bp_qtapp
 from flask import render_template
 
 # Import forms

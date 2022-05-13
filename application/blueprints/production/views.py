@@ -1,6 +1,6 @@
 from flask import render_template, url_for
 from flask_login import current_user
-from .production import bp_productions
+from . import bp_productions
 
 # Import remote models
 from application.blueprints.common.schema import Artist, Credit, Season, Notice, NoticeType, Production, ProductionNotice, Performance
