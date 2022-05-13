@@ -130,5 +130,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-queertk/config.py
-queertk/playground.ipynb
+application/config.py
+application/playground.ipynb

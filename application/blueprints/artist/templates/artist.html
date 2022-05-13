@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ artist.artist_name }}</h2>
+    {{ artist.biography | safe }}
+{% endblock %}
+
+{% block sidebar_image %}
+    {% if headshot %}
+        <img src="{{ url_for('artists.static', filename=headshot) }}" id="headshot" alt="" srcset="">
+    {% endif %}
+{% endblock %}
+
+{% block aside %}
+
+    {% if credits %}
+        <h3 class="squeeze">Artist Credits</h3>
+        <p class="hug"><i>at Queer Theatre Kalamazoo</i></p>
+        {% for c in credits %}
+        <a href="/prod/{{ c.production_id }}/{{ c.slug }}">{{ c.description }}</a>, {{ c.role }}<br />
+        {% endfor %}
+    {% endif %}
+
+{%endblock%}
