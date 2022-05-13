@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Jupyer notebooks
-.ipynb
+*.ipynb
 
 # Distribution / packaging
 .Python
