@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length
 from wtforms_sqlalchemy.fields import QuerySelectField
 
 # Import models
-from application.blueprints.artist.models import Artist
+from application.blueprints.common.schema import Artist
 
 from application.database import Session
 from sqlalchemy import select

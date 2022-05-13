@@ -3,11 +3,7 @@ from flask_login import current_user
 from .production import bp_productions
 
 # Import remote models
-from application.blueprints.artist.models import Artist
-from application.blueprints.common.models import Credit, Season, Notice, NoticeType
-
-# Import local models
-from .models import Production, Performance, ProductionNotice
+from application.blueprints.common.schema import Artist, Credit, Season, Notice, NoticeType, Production, ProductionNotice, Performance
 
 # Import database object
 from application.database import Session

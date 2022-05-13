@@ -1,8 +1,7 @@
 from flask import render_template
 
 # Import remote models
-from application.blueprints.artist.models import Artist
-from application.blueprints.post.models import Post
+from application.blueprints.common.schema import Artist, Post
 
 # Import local models
 from .post import bp_post

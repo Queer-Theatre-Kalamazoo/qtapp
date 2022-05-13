@@ -4,10 +4,7 @@ from .admin import admin
 from application.blueprints.admin.models import *
 
 # Import all models that need admin view
-from application.blueprints.post.models import Post
-from application.blueprints.artist.models import Artist
-from application.blueprints.production.models import Production, ProductionNotice, Performance
-from application.blueprints.common.models import *
+from application.blueprints.common.schema import Artist, Credit, Production, ProductionNotice, Performance, Notice, NoticeType, Play, Post, Venue, Season
 
 # Import database object
 from application.database import Session

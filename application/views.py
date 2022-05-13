@@ -2,9 +2,7 @@ from flask import render_template
 from flask_breadcrumbs import register_breadcrumb
 from flask import current_app
 from application.database import Session
-from application.blueprints.common.models import Season
-from application.blueprints.production.models import Production
-from application.blueprints.post.models import Post
+from application.blueprints.common.schema import Season, Production, Post
 from sqlalchemy import select
 
 @current_app.route('/')

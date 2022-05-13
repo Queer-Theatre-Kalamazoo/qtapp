@@ -4,11 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import aliased
 
 # Import remote models
-from application.blueprints.common.models import Credit
-from application.blueprints.production.models import Production
-
-# Import local models
-from .models import Artist
+from application.blueprints.common.schema import Artist, Credit, Production
 
 # Import database object
 from application.database import Session
