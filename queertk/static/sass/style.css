@@ -72,7 +72,7 @@ header .header span {
 }
 
 .flex-container {
-  height: calc(100vh - 110px);
+  height: calc(100vh - 106px);
   margin: auto;
   -webkit-box-flex: 1;
       -ms-flex: 1 100%;

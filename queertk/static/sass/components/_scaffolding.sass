@@ -230,18 +230,18 @@ dd
     padding: $content-padding
 
 #content
-  height: 100%
   width: 100%
 
   .info
     // height: 100%
-    max-height: calc(100vh - 120px)
     background: #43434380
     border-radius: 4px
     padding: 20px
 
   &.background
     background: $bg-dark
+    flex: 14
+    overflow: auto
 
   .flex
     display: flex
@@ -254,6 +254,4 @@ dd
   .sidebar
     min-width: 35%
     max-width: 35%
-    position: sticky
-    top: 0px
     margin: 0 2rem
