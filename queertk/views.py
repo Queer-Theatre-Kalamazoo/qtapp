@@ -15,11 +15,10 @@ def events():
     with Session.begin() as session:
         productions = session.execute(select(Production.description.label('prod_desc'), Production.slug, Production.production_id, Season.description.label(
             "season_desc")).where(Season.season_id == 1).join(Season, Season.season_id == Production.season_id)).all()
-
-    return render_template('events.html', title = 'Events', productions = productions)
+        return render_template('events.html', title = 'Events', productions = productions)
 
 @app.route('/news')
 def news():
     with Session.begin() as session:
-        posts = Session.begin().query(Post).all()
-    return render_template('news.html', title = 'News', posts = posts)
+        posts = session.execute(select(Post)).scalars().all()
+        return render_template('news.html', title = 'News', posts = posts)

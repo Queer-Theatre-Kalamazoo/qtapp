@@ -9,9 +9,11 @@ from .post import bp_post
 
 # Import database object
 from queertk.database import Session
+from sqlalchemy import select
 
 @bp_post.route('/<int:post_id>')
 def display_post(post_id):
-    post = Session.begin().query(Post).filter_by(post_id = post_id).one()
-    author = Session.begin().query(Artist).filter_by(artist_id = post.author_id).one()
-    return render_template('post.html', post = post, author = author)
+    with Session.begin() as session:
+        post = session.execute(select(Post).where(Post.post_id == post_id)).scalars().one()
+        author = session.execute(select(Artist).where(Artist.artist_id == post.author_id)).scalars().one()
+        return render_template('post.html', post = post, author = author)

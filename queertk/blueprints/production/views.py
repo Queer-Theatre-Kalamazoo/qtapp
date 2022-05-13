@@ -11,39 +11,47 @@ from .models import Production, Performance, ProductionNotice
 
 # Import database object
 from queertk.database import Session
+from sqlalchemy import select
 
 @bp_productions.route("/<int:prod_id>/<string:slug>")
 def display_production(prod_id, slug):
+    with Session.begin() as session:
 
-    # TODO A billion queries to get required details from related model -- fix later
-    production = Session.begin().query(Production).filter_by(production_id = prod_id).one()
-    season = Session.begin().query(Season).filter_by(season_id = production.season_id).one()
-    performances = Session.begin().query(Performance).filter_by(production_id = production.production_id).all()
-    credits = Session.begin().query(Credit.role, Credit.credit_name, Artist.artist_id).\
-        select_from(Credit).\
-            join(Artist, Artist.artist_id == Credit.artist_id).\
-                filter(Credit.production_id == production.production_id).\
-                    all()
-    notices = Session.begin().query(ProductionNotice, Notice, NoticeType).select_from(ProductionNotice).join(Notice).join(NoticeType).filter(ProductionNotice.production_id == production.production_id).all()
-    
-    # TODO Eventually we'll need to make this dynamic 
-    poster = url_for('productions.static', filename='images/posters/poster-small.png')
+        # TODO A billion queries to get required details from related model -- fix later
+        production = session.execute(select(Production).where(Production.production_id == prod_id)).scalars().one()
+        season = session.execute(select(Season).where(Season.season_id == production.season_id)).scalars().one()
+        
+        performances = session.execute(select(Performance).where(Performance.production_id == production.production_id)).scalars().all()
 
-    # Somehow this restricts valid pages to those with a valid slug
-    slug = production.slug
+        credits = session.execute(select(Credit.role, Credit.credit_name, Artist.artist_id).\
+            select_from(Credit).\
+            where(Credit.production_id == production.production_id)
+            .join(Artist)).all()
 
-    # If production has a poster, set variable to be passed - if not, set to None to avoid passing a nonexistant variable
-    if production.poster:
-        poster_filename = 'images/posters/' + production.poster
-    else:
-        poster_filename = None
+        notices = session.execute(select(ProductionNotice, Notice, NoticeType).\
+            select_from(ProductionNotice).\
+            where(ProductionNotice.production_id == production.production_id).\
+                join(Notice).\
+                join(NoticeType)).all()
+        
+        # TODO Eventually we'll need to make this dynamic 
+        poster = url_for('productions.static', filename='images/posters/poster-small.png')
 
-    return render_template('production.html', title = production.description, 
-                                                poster = poster_filename, 
-                                                sidebar = True,
-                                                current_user = current_user, 
-                                                production = production, 
-                                                season = season, 
-                                                performances = performances, 
-                                                credits = credits, 
-                                                notices = notices)
+        # Somehow this restricts valid pages to those with a valid slug
+        slug = production.slug
+
+        # If production has a poster, set variable to be passed - if not, set to None to avoid passing a nonexistant variable
+        if production.poster:
+            poster_filename = 'images/posters/' + production.poster
+        else:
+            poster_filename = None
+
+        return render_template('production.html', title = production.description, 
+                                                    poster = poster_filename, 
+                                                    sidebar = True,
+                                                    current_user = current_user, 
+                                                    production = production, 
+                                                    season = season, 
+                                                    performances = performances, 
+                                                    credits = credits, 
+                                                    notices = notices)
