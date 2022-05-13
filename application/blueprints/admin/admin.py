@@ -1,12 +1,12 @@
-from flask import Blueprint, render_template
+from flask import Blueprint
 
 # Create Blueprint
 bp_admin = Blueprint("bp_admin", __name__, static_folder = "static", template_folder = "templates")
 
 from flask_admin import Admin
-from application import app
+from flask import Flask
 
-# Initialize database and Admin
+app = Flask(__name__)
 admin = Admin(app)
 
 from . import views
