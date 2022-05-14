@@ -1,6 +1,7 @@
 from flask import Flask
 from sqlalchemy import create_engine
 from flask_breadcrumbs import Breadcrumbs
+from flask_admin import Admin
 
 def init_app():
     # Initialize the core application
@@ -14,18 +15,19 @@ def init_app():
 
     # Flask-Breadcrumbs instantiation
     Breadcrumbs(app)
+    # admin = Admin()
 
 
     with app.app_context():
         from application.blueprints.common import bp_common
-        from application.blueprints.admin import bp_admin
+        # from application.blueprints.admin import bp_admin
         from application.blueprints.management import bp_management
         from application.blueprints.production import bp_productions
         from application.blueprints.artist import bp_artist
         from application.blueprints.post import bp_post
 
         app.register_blueprint(bp_common)
-        app.register_blueprint(bp_admin, url_prefix = '/admin')
+        # app.register_blueprint(bp_admin, url_prefix = '/admin')
         app.register_blueprint(bp_management, url_prefix = '/app')
         app.register_blueprint(bp_productions, url_prefix = '/prod')
         app.register_blueprint(bp_artist, url_prefix = '/artist')

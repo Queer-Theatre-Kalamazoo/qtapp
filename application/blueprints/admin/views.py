@@ -1,10 +1,10 @@
-from . import admin
+from application import admin
 
 # Import custom ModelViews
 from application.blueprints.admin.models import *
 
 # Import all models that need admin view
-from application.blueprints.common.schema import Artist, Credit, Production, ProductionNotice, Performance, Notice, NoticeType, Play, Post, Venue, Season
+from application.blueprints.common.schema import *
 
 # Import database object
 from application.database import Session
@@ -13,6 +13,8 @@ from application.database import Session
 with Session.begin() as session:
     admin.add_view(ArtistModelView(Artist, session, category = "People"))
     admin.add_view(ModelView(Credit, session, category = "People"))
+    admin.add_view(ModelView(Person, session, category = "People"))
+    admin.add_view(ModelView(Relationship, session, category = "People"))
     admin.add_view(ModelView(NoticeType, session, category = "Reference"))
     admin.add_view(ModelView(Notice, session, category = "Production"))
     admin.add_view(PerformanceModelView(Performance, session, category = "Production"))

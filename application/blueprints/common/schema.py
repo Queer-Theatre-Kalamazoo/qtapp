@@ -3,13 +3,14 @@ import application.blueprints.common.schema as schema
 
 # Import utilities
 from application.models import Base
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text, select
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text, Boolean, Date, select
 
 from sqlalchemy.orm import relationship
 from application.database import Session
 
 
 metadata = Base.metadata
+
 
 class Artist(Base):
     __tablename__ = 'artists'
@@ -27,6 +28,7 @@ class Artist(Base):
 
     def __repr__(self):
         return self.artist_name
+
 
 class Credit(Base):
     __tablename__ = "credits"
@@ -84,6 +86,26 @@ class Notice(Base):
 
     def __repr__(self):
         return self.description
+
+
+class Person(Base):
+    __tablename__ = "people"
+
+    person_id = Column(Integer, primary_key=True)
+    artist_id = Column(Integer, ForeignKey('artists.artist_id'))
+    name = Column(String(100), nullable=False)
+
+
+class Relationship(Base):
+    __tablename__ = "relationships"
+
+    relationship_id = Column(Integer, primary_key=True)
+    person_id = Column(Integer, ForeignKey('Person.person_id'), nullable=False)
+    type = Column(String(20), nullable=False)
+    title = Column(String(50))
+    show_online = Column(Boolean, nullable=False, default=False)
+    start_date = Column(Date)
+    end_date = Column(Date)
 
 
 class Play(Base):
@@ -204,6 +226,7 @@ class Production(Base):
                 + " - "
                 + self.description
             )
+
 
 class Season(Base):
     __tablename__ = "seasons"

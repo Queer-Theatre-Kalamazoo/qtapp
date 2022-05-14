@@ -1,35 +1,40 @@
-from flask import render_template, url_for
+from flask import render_template
 from flask_login import current_user
 from . import bp_productions
 
 # Import remote models
-from application.blueprints.common.schema import Artist, Credit, Season, Notice, NoticeType, Production, ProductionNotice, Performance
+from application.blueprints.common.schema import (
+    Artist,
+    Credit,
+    Season,
+    Notice,
+    NoticeType,
+    Production,
+    ProductionNotice,
+    Performance,
+)
 
 # Import database object
 from application.database import Session
 from sqlalchemy import select
-from flask_breadcrumbs import register_breadcrumb
 
 
 @bp_productions.route("/<int:prod_id>/<string:slug>")
-@register_breadcrumb(bp_productions, '.', 'Events')
 def display_production(prod_id, slug):
     with Session.begin() as session:
 
-        # TODO A billion queries to get required details from related model -- fix later
+        # TODO A billion queries to get required details from related model
         production = (
-            session.execute(
-                select(Production).where(Production.production_id == prod_id)
-            )
-            .scalars()
-            .one()
-        )
-        season = (
-            session.execute(
-                select(Season).where(Season.season_id == production.season_id)
-            )
-            .scalars()
-            .one()
+            session.execute(select(
+                                Production.production_id,
+                                Production.description,
+                                Production.slug,
+                                Production.poster,
+                                Season.description.label('season_description')
+                                )
+                            .where(Production.production_id == prod_id).
+                            join(Season, Season.season_id == Production.season_id)
+                            ).one()
         )
 
         performances = (
@@ -57,11 +62,6 @@ def display_production(prod_id, slug):
             .join(NoticeType)
         ).all()
 
-        # TODO Eventually we'll need to make this dynamic
-        poster = url_for(
-            "productions.static", filename="images/posters/poster-small.png"
-        )
-
         # Somehow this restricts valid pages to those with a valid slug
         slug = production.slug
 
@@ -78,7 +78,6 @@ def display_production(prod_id, slug):
             sidebar=True,
             current_user=current_user,
             production=production,
-            season=season,
             performances=performances,
             credits=credits,
             notices=notices,
