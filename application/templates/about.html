@@ -2,4 +2,19 @@
 
 {% block content %}
 <h3>About Queer Theatre Kalamazoo</h3>
+
+<h5>Current Staff:</h5>
+<ul>
+    {% for s in staff %}
+    <li>{{ s.name }}, {{ s.title }}</li>
+    {% endfor %}
+</ul>
+
+<h5>Current Board:</h5>
+<ul>
+    {% for b in board %}
+    <li>{{ b.name }}, {{ b.title }}</li>
+    {% endfor %}
+</ul>
+
 {% endblock %}

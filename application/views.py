@@ -2,8 +2,8 @@ from flask import render_template
 from flask_breadcrumbs import register_breadcrumb
 from flask import current_app
 from application.database import Session
-from application.blueprints.common.schema import Season, Production, Post
-from sqlalchemy import select
+from application.blueprints.common.schema import Season, Production, Post, Person, Relationship
+from sqlalchemy import select, and_
 
 
 @current_app.route('/')
@@ -25,11 +25,17 @@ def events():
 @register_breadcrumb(current_app, '.', 'News')
 def news():
     with Session.begin() as session:
-        posts = session.execute(select(Post)).scalars().all()
+        posts = session.execute(select(Post).where(Post.type == "News")).scalars().all()
         return render_template('news.html', title = 'News', posts = posts)
 
 
 @current_app.route('/about')
 @register_breadcrumb(current_app, '.', 'About Us')
 def about():
-    return render_template('about.html', title="About Us")
+    with Session.begin() as session:
+        with Session.begin() as session:
+            staff = session.execute(
+                select(Person.name, Relationship.title).select_from(Person).where(and_(Relationship.type == "Staff", Relationship.show_online == True)).join(Relationship, Relationship.person_id == Person.person_id)).all()
+            board = session.execute(
+                select(Person.name, Relationship.title).select_from(Person).where(and_(Relationship.type == "Board", Relationship.show_online == True)).join(Relationship, Relationship.person_id == Person.person_id)).all()
+        return render_template('about.html', title="About Us", staff=staff, board=board)

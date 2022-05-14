@@ -8,7 +8,7 @@ from . import bp_post
 
 # Import database object
 from application.database import Session
-from sqlalchemy import select
+from sqlalchemy import select, and_
 
 
 @bp_post.route("/<int:post_id>")

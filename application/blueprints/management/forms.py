@@ -16,7 +16,8 @@ def artist_select_query():
         return session.query(Artist).order_by(Artist.artist_name)
 
 
-class ManagePostForm(FlaskForm):
+class UpdatePostForm(FlaskForm):
+    type = StringField('Type', validators=[DataRequired(), Length(1, 50, "No more than 50 characters.")])
     author = QuerySelectField(
         "Author", validators=[DataRequired()], query_factory=artist_select_query
     )

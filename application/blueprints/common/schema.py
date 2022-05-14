@@ -127,6 +127,7 @@ class Post(Base):
     author_id = Column(
         Integer, ForeignKey("artists.artist_id"), nullable=False, index=True
     )
+    type = Column(String(50))
     title = Column(String(100), nullable=False)
     subtitle = Column(String(50))
     content = Column(Text)
