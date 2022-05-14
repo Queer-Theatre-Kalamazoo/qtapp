@@ -326,6 +326,17 @@ docs = ["Sphinx (>=1.5.1)"]
 tests = ["check-manifest (>=0.25)", "coverage (>=4.0)", "isort (>=4.3.11)", "mock (>=1.0.0)", "pydocstyle (>=1.0.0)", "pytest-cache (>=1.0)", "pytest-cov (>=1.8.0)", "pytest-pep8 (>=1.0.6)", "pytest (>=3.8.0)"]
 
 [[package]]
+name = "flask-ckeditor"
+version = "0.4.6"
+description = "CKEditor integration for Flask."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Flask = "*"
+
+[[package]]
 name = "flask-login"
 version = "0.6.0"
 description = "User authentication and session management for Flask."
@@ -1329,7 +1340,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "15e3388bc2845d426f1a918180774fa09b21cce59f29b0ad7491569e8190cde4"
+content-hash = "c5558ea7576d0ef923933004f2b305106e2c397c3cc1ba228ab0bed2d51d6188"
 
 [metadata.files]
 anyio = [
@@ -1521,6 +1532,10 @@ flask-admin = [
 flask-breadcrumbs = [
     {file = "Flask-Breadcrumbs-0.5.1.tar.gz", hash = "sha256:f95872a3baf46473febd0f5c0adea192e7c2576af60a84a2144068eca1559b45"},
     {file = "Flask_Breadcrumbs-0.5.1-py2.py3-none-any.whl", hash = "sha256:cb6fc89d7f76ff429fa4bb1fbc0bfe186f3f7ff8b4f5325c0a7b75946e2de98f"},
+]
+flask-ckeditor = [
+    {file = "Flask-CKEditor-0.4.6.tar.gz", hash = "sha256:4b6aa0e831616b86c8c393cb1e5dcae8f62c66c16ef4316071dc7ccf77d4c9a1"},
+    {file = "Flask_CKEditor-0.4.6-py2.py3-none-any.whl", hash = "sha256:aa95bf2fab8d4379fcbe5786310bb4fbae467016ed0149c407101e0e4c278fa8"},
 ]
 flask-login = [
     {file = "Flask-Login-0.6.0.tar.gz", hash = "sha256:aa84fcfb4c3cf09ca58c08e816b7bce73f1349ba1cf13d00d8dffc5872d5fcf6"},

@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 
+{% block head %}
+{{ ckeditor.load() }}
+{{ ckeditor.config('content') }}
+{% endblock %}
+
 {% block content %}
 <h1>Manage Posts</h1>
 
-<form action="{{ url_for('bp_management.update_post') }}" method="POST">
+<form action="" method="POST">
     {{ form.csrf_token }}
     {{ form.type.label }}
     {{ form.type }}

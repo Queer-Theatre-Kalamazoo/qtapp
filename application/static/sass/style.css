@@ -176,7 +176,7 @@ header .header span {
 
 .circle:hover {
   transition: ease-out 0.2s;
-  border: 4px solid #cf1a1a;
+  border: 4px solid #ff6d6d91;
   -webkit-transition: ease-out 0.2s;
 }
 

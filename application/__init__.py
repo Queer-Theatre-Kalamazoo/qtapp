@@ -1,7 +1,7 @@
 from flask import Flask
 from sqlalchemy import create_engine
 from flask_breadcrumbs import Breadcrumbs
-from flask_admin import Admin
+from flask_ckeditor import CKEditor
 
 def init_app():
     # Initialize the core application
@@ -15,7 +15,7 @@ def init_app():
 
     # Flask-Breadcrumbs instantiation
     Breadcrumbs(app)
-    # admin = Admin()
+    ckeditor = CKEditor(app)
 
 
     with app.app_context():

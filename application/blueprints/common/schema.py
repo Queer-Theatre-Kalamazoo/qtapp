@@ -123,7 +123,7 @@ class Play(Base):
 class Post(Base):
     __tablename__ = "posts"
 
-    post_id = Column(Integer, primary_key=True)
+    post_id = Column(Integer, primary_key=True, autoincrement=True)
     author_id = Column(
         Integer, ForeignKey("artists.artist_id"), nullable=False, index=True
     )

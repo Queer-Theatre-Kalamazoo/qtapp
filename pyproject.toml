@@ -20,9 +20,11 @@ jupyterlab = "^3.4.0"
 WTForms-SQLAlchemy = "^0.3"
 flake8 = "^4.0.1"
 toml = "^0.10.2"
+Flask-CKEditor = "^0.4.6"
 
 [tool.poetry.dev-dependencies]
 yapf = "^0.32.0"
+flake8 = "^4.0.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

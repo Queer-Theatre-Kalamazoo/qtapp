@@ -806,8 +806,7 @@ caption {
 }
 
 .navigation a {
-  margin: auto 0;
-  height: 2.5rem;
+  margin: 1.25em 0 0 0;
   font-size: clamp(1.1em, 2.1vw, 1.3em);
   -ms-flex-line-pack: center;
       align-content: center;
@@ -1092,7 +1091,7 @@ header .header span {
 
 .circle:hover {
   transition: ease-out 0.2s;
-  border: 4px solid #cf1a1a;
+  border: 4px solid #ff6d6d91;
   -webkit-transition: ease-out 0.2s;
 }
 

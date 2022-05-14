@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired, Length
 from wtforms_sqlalchemy.fields import QuerySelectField
+from flask_ckeditor import CKEditorField
 
 # Import models
 from application.blueprints.common.schema import Artist
@@ -16,7 +17,7 @@ def artist_select_query():
         return session.query(Artist).order_by(Artist.artist_name)
 
 
-class UpdatePostForm(FlaskForm):
+class PostForm(FlaskForm):
     type = StringField('Type', validators=[DataRequired(), Length(1, 50, "No more than 50 characters.")])
     author = QuerySelectField(
         "Author", validators=[DataRequired()], query_factory=artist_select_query
@@ -28,4 +29,4 @@ class UpdatePostForm(FlaskForm):
     subtitle = StringField(
         "Subtitle", validators=[Length(1, 50, "No more than 50 characters.")]
     )
-    content = TextAreaField("Content")
+    content = CKEditorField("Content")

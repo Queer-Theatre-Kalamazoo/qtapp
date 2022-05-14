@@ -22,4 +22,4 @@ def display_post(post_id):
             .scalars()
             .one()
         )
-        return render_template("post.html", post=post, author=author)
+        return render_template("post.html", post=post, author=author, title=post.title)

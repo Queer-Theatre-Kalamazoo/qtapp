@@ -11,11 +11,11 @@ from application.database import Session
 
 
 @bp_artist.route('/<int:id>')
-@bp_artist.route('/<int:id>/<string:name>')
-def display_artist(id, **name):
+@bp_artist.route('/<int:artist_id>/<string:slug>')
+def display_artist(artist_id, **slug):
 
     with Session.begin() as session:
-        artist = session.execute(select(Artist).where(Artist.artist_id == id)).scalars().one()
+        artist = session.execute(select(Artist).where(Artist.artist_id == artist_id)).scalars().one()
         credits_query = select(Credit.role, Production.description, Production.production_id, Production.slug, Artist.artist_id).\
             where(Credit.artist_id == artist.artist_id).\
             join(Production, Production.production_id == Credit.production_id).\
