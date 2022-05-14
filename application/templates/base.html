@@ -33,7 +33,10 @@
             <!-- Header -->
             <header>
                 <div class="header wrapper">
-                    <span>Something would ideally be here, like a logo.</span>
+                    <a href="{{ url_for('home') }}" class="circle">
+                        <img height="40" width="40" src="{{ url_for('static', filename='images/logo-circle.png') }}" alt="Cloud Chen">
+                    </a>
+                    <span style="font-size: 1.5rem;">Queer Theatre Kalamazoo</span>
                 </div>
             </header>
             <!-- Page Title Bar 
@@ -50,7 +53,7 @@
             <!-- Page Breadcrumbs and Title -->
             <div class="page-title">
                 {%- for breadcrumb in breadcrumbs -%}
-                    <a href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>
+                    <a class="fancy-link" href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>
                     {{ '>' if not loop.last }}
                 {%- endfor -%}
             </div>
@@ -104,12 +107,12 @@
                         made free to the public.
                         <br />
                         <br />
-                        Made by <a href="https://github.com/qthazel">Hazel Lynn</a>
+                        Made by <a class="fancy-link" href="https://github.com/qthazel">Hazel Lynn</a>
                         <br />
                         <br />
-                        Contribute to <a href="https://github.com/Queer-Theatre-Kalamazoo/qtapp">QTApp on GitHub.</a>
+                        Contribute to <a class="fancy-link" href="https://github.com/Queer-Theatre-Kalamazoo/qtapp">QTApp on GitHub.</a>
                         <br />
-                        Check out the <a href="https://qtdocs.readthedocs.io/en/latest/">QTDocs.</a>
+                        Check out the <a class="fancy-link" href="https://qtdocs.readthedocs.io/en/latest/">QTDocs.</a>
                     </p>
                 </div>
             </div>

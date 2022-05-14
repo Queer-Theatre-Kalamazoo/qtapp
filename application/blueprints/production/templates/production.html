@@ -20,7 +20,7 @@
 {% endif %}
 <ol>
     {% for c in credits %}
-    <li><a href="/artist/{{ c.artist_id }}">{{ c.credit_name }}</a>, {{ c.role }}</li>
+    <li><a class="fancy-link" href="/artist/{{ c.artist_id }}">{{ c.credit_name }}</a>, {{ c.role }}</li>
     {% endfor %}
 </ol>
 
