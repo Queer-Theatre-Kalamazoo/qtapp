@@ -8,6 +8,8 @@ from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text, Bool
 from sqlalchemy.orm import relationship
 from application.database import Session
 
+from flask import url_for
+
 
 metadata = Base.metadata
 
@@ -23,8 +25,11 @@ class Artist(Base):
     biography = Column(Text)
     headshot = Column(String(100))
     slug = Column(String(100))
-    credits = relationship('Credit', backref = 'Artist')
-    posts = relationship('Post', backref = 'Author')
+    credits = relationship('Credit', backref='Artist')
+    posts = relationship('Post', backref='Author')
+    
+    def get_url(self):
+        return url_for('bp_person.display_artist', artist_id=self.artist_id)
 
     def __repr__(self):
         return self.artist_name
@@ -94,6 +99,9 @@ class Person(Base):
     person_id = Column(Integer, primary_key=True)
     artist_id = Column(Integer, ForeignKey('artists.artist_id'))
     name = Column(String(100), nullable=False)
+
+    def get_url(self):
+        return url_for('bp_person.display_person', person_id=self.person_id)
 
 
 class Relationship(Base):
@@ -210,6 +218,9 @@ class Production(Base):
     credits = relationship("Credit", backref="Production")
     notices = relationship("ProductionNotice", backref="Production")
     performances = relationship("Performance", backref="Production")
+
+    def get_url(self):
+        return url_for('bp_production.display_production', prod_id=self.production_id, slug=self.slug)
 
     def __repr__(self):
         with Session.begin() as session:

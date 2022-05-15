@@ -34,24 +34,15 @@
                     <a data-enable-remember="true" id="sidebar-toggle"></a>
                 </div>
             </header>
-            <!-- Page Title Bar 
-            <div class="page-title">
-                <p style="padding: 0; margin: 0;">
-                    {% if title %}
-                        {{ title }}
-                    {% else %}
-                        Page
-                    {% endif %}
-                </p>
-            </div>
-            -->
+
             <!-- Page Breadcrumbs and Title -->
             <div class="page-title">
-                {%- for breadcrumb in breadcrumbs -%}
+                {% for breadcrumb in breadcrumbs %}
                     <a class="fancy-link" href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>
-                    {{ '>' if not loop.last }}
-                {%- endfor -%}
+                    {{ '&nbsp;/&nbsp;'|safe if not loop.last }}
+                {% endfor %}
             </div>
+
             <!-- Container -->
             <div class="flex-container">
                 <!-- Sidebar GoTo Menu -->

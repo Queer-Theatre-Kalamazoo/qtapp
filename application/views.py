@@ -14,7 +14,7 @@ def home():
 
 
 @current_app.route('/events')
-@register_breadcrumb(current_app, '.', 'Events')
+@register_breadcrumb(current_app, '.events', 'Events')
 def events():
     with Session.begin() as session:
         query_productions = select(
@@ -46,7 +46,7 @@ def events():
 
 
 @current_app.route('/news')
-@register_breadcrumb(current_app, '.', 'News')
+@register_breadcrumb(current_app, '.news', 'News')
 def news():
     with Session.begin() as session:
         # So I guess you use just .all() if there's a join, or .scalars().all() otherwise?
@@ -55,7 +55,7 @@ def news():
 
 
 @current_app.route('/about')
-@register_breadcrumb(current_app, '.', 'About Us')
+@register_breadcrumb(current_app, '.about', 'About Us')
 def about():
     with Session.begin() as session:
         with Session.begin() as session:
