@@ -19,7 +19,7 @@ aside a {
   padding: 3px 6px;
   margin: 0 4px;
   border-radius: 4px;
-  background: #b3321c;
+  background: #a31800;
   color: #fff;
   font-size: 0.8rem;
   -webkit-user-select: none;
@@ -64,7 +64,7 @@ header .header span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #b71e1e;
+  background: #a31800;
   height: 50px;
   text-size: 0.65rem;
   color: #ffffffb4;
@@ -157,7 +157,7 @@ header .header span {
   margin-bottom: 10px;
 }
 
-.circle {
+.logo-circle {
   line-height: 0;
   display: inline-block;
   border: 4px solid rgba(200, 200, 200, 0.4);
@@ -170,17 +170,17 @@ header .header span {
   margin: 10px 20px;
 }
 
-.circle img {
+.logo-circle img {
   border-radius: 50%;
 }
 
-.circle:hover {
+.logo-circle:hover {
   transition: ease-out 0.2s;
   border: 4px solid #ff6d6d91;
   -webkit-transition: ease-out 0.2s;
 }
 
-a .circle {
+a .logo-circle {
   color: transparent;
 }
 /*# sourceMappingURL=style.css.map */

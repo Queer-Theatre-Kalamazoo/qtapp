@@ -117,34 +117,14 @@
     }
 
     div.cast-crew-container {
-        max-width: 1200px;
         margin: 30px auto;
         padding: 0 20px;
-        width: 100%;
         display: grid;
         /* Define Auto Row size */
         grid-auto-rows: 100px;
         /*Define our columns */
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         grid-gap: 1em;
-    }
-
-    div.cast-crew-item {
-        /* border: 1px solid white; */
-        display: flex;
-        flex-direction: column;
-        padding: 0.5em;
-        margin-bottom: 20px;
-        background-color: #181818;
-        border-radius: 2px;
-    }
-
-    div.cast-crew-content {
-        width: 100%;
-    }
-
-    div.cast-crew-name {
-        font-size: 1.25rem;
     }
 
     div.block {
@@ -175,6 +155,27 @@
 
     p.person-role>span {
         font-style: italic;
+    }
+    .circle {
+        line-height: 0;
+        display: inline-block;
+        border: 4px solid rgba(200,200,200,0.4);
+        border-radius: 50%;
+        transition: linear 0.25s;
+        height: 40px;
+        width: 40px;
+        margin: 10px 20px;
+    }
+    .circle img {
+        border-radius: 50%;
+    }
+    .circle:hover {
+        transition: ease-out 0.2s;
+        border: 4px solid #ff6d6d91;
+        -webkit-transition: ease-out 0.2s;
+    }
+    a .circle {
+        color: transparent;
     }
 </style>
 {% endblock %}

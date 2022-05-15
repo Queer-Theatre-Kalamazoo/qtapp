@@ -302,7 +302,6 @@ div.scrollbar {
   -webkit-box-flex: 14;
       -ms-flex: 14;
           flex: 14;
-  overflow: auto;
 }
 
 #content .flex {
@@ -570,9 +569,9 @@ div.scrollbar {
 .button, a.button, button, [type=submit], [type=reset], [type=button] {
   -webkit-appearance: none;
   display: inline-block;
-  border: 1px solid #b3321c;
+  border: 1px solid #a31800;
   border-radius: 4px;
-  background: #b3321c;
+  background: #a31800;
   color: #ffffff;
   font-weight: 600;
   font-family: "Jost", -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -588,15 +587,15 @@ div.scrollbar {
 }
 
 .button:hover, a.button:hover, button:hover, [type=submit]:hover, [type=reset]:hover, [type=button]:hover {
-  border: 1px solid #872615;
-  background: #872615;
+  border: 1px solid #701000;
+  background: #701000;
   color: #ffffff;
   text-decoration: none;
 }
 
 .button:focus, .button:active, a.button:focus, a.button:active, button:focus, button:active, [type=submit]:focus, [type=submit]:active, [type=reset]:focus, [type=reset]:active, [type=button]:focus, [type=button]:active {
-  border: 1px solid #872615;
-  background: #872615;
+  border: 1px solid #701000;
+  background: #701000;
   color: #ffffff;
   text-decoration: none;
 }
@@ -676,9 +675,9 @@ a.full-button {
 }
 
 [type=color]:focus, [type=color]:active, [type=date]:focus, [type=date]:active, [type=datetime]:focus, [type=datetime]:active, [type=datetime-local]:focus, [type=datetime-local]:active, [type=email]:focus, [type=email]:active, [type=month]:focus, [type=month]:active, [type=number]:focus, [type=number]:active, [type=password]:focus, [type=password]:active, [type=search]:focus, [type=search]:active, [type=tel]:focus, [type=tel]:active, [type=text]:focus, [type=text]:active, [type=url]:focus, [type=url]:active, [type=week]:focus, [type=week]:active, [type=time]:focus, [type=time]:active, select:focus, select:active, textarea:focus, textarea:active {
-  border: 1px solid #b3321c;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #eb8d7d;
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #eb8d7d;
+  border: 1px solid #a31800;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #ff5a3d;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #ff5a3d;
 }
 
 textarea {
@@ -878,7 +877,7 @@ caption {
   max-width: 90%;
   width: 750px;
   border-radius: 4px;
-  border-top: 2rem solid #b3321c;
+  border-top: 2rem solid #a31800;
 }
 
 .dialog-content.center {
@@ -967,7 +966,7 @@ aside a {
   padding: 3px 6px;
   margin: 0 4px;
   border-radius: 4px;
-  background: #b3321c;
+  background: #a31800;
   color: #fff;
   font-size: 0.8rem;
   -webkit-user-select: none;
@@ -1012,7 +1011,7 @@ header .header span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #b71e1e;
+  background: #a31800;
   height: 50px;
   text-size: 0.65rem;
   color: #ffffffb4;
@@ -1096,7 +1095,7 @@ header .header span {
   margin-bottom: 10px;
 }
 
-.circle {
+.logo-circle {
   line-height: 0;
   display: inline-block;
   border: 4px solid rgba(200, 200, 200, 0.4);
@@ -1109,17 +1108,17 @@ header .header span {
   margin: 10px 20px;
 }
 
-.circle img {
+.logo-circle img {
   border-radius: 50%;
 }
 
-.circle:hover {
+.logo-circle:hover {
   transition: ease-out 0.2s;
   border: 4px solid #ff6d6d91;
   -webkit-transition: ease-out 0.2s;
 }
 
-a .circle {
+a .logo-circle {
   color: transparent;
 }
 /*# sourceMappingURL=main.css.map */

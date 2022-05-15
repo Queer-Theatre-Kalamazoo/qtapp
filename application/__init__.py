@@ -37,6 +37,14 @@ def init_app():
         def format_datetime(value):
             return value.strftime("%a %b %d, %Y at %I:%M:%S %p")
 
+        @app.template_filter()
+        def format_date_short(value):
+            return value.strftime("%b %d")
+
+        @app.template_filter()
+        def format_date_year(value):
+            return value.strftime("%Y")
+
         import application.views
 
         return app

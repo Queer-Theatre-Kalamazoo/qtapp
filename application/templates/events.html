@@ -2,9 +2,110 @@
 
 {% block content %}
 <h3>Season 9</h3>
-<ul>
-{% for p in productions %}
-    <li><a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=p.production_id, slug=p.slug) }}">{{ p.prod_desc }}</a></li>
-{% endfor %}
-</ul>
+
+<div class="production-listing">
+    {% for production in productions %}
+
+    <div class="block">
+        <a class="circle" href="{{ url_for('bp_production.display_production', prod_id=production.production_id, slug=production.slug) }}">
+        <img height="150" {% if production.poster
+            %}src="{{ url_for('bp_production.static', filename=('images/posters/' + production.poster)) }}"
+            {%else%}src="{{ url_for('bp_production.static', filename=('images/posters/' + 'placeholder.jpg')) }}"
+            {% endif %} />
+        </a>
+        <div class="block-wrapper">
+            <h5 class="production-name"><a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=production.production_id, slug=production.slug) }}">
+                    {{ production.prod_desc }}</a></h5>
+            <p class="director">
+                {% for dir in directors %}
+                    {% if dir.production_id == production.production_id %}
+                    Directed by <span><a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=dir.artist_id) }}">{{ dir.credit_name }}</a></span>
+                    {% endif %}
+                {% endfor %}
+            </p>
+            <hr align="left" class="performance-divider" />
+            <p>
+                {% for perf in performances %}
+                    {% if perf.production_id == production.production_id %}
+                    From {{ perf.open_date | format_date_short() }} to {{ perf.close_date | format_date_short() }}, {{ perf.close_date | format_date_year() }}
+                    {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+{% block styles %}
+<style>
+    div.production-listing {
+        margin: 30px auto;
+        padding: 0 20px;
+        display: grid;
+        /* Define Auto Row size */
+        grid-auto-rows: 175px;
+        /*Define our columns */
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+        grid-gap: 1em;
+    }
+
+    div.block {
+        display: flex;
+        align-items: center;
+        
+        padding: 5px;
+        background-color: #181818;
+        border-radius: 2px;
+    }
+
+    div.block a.circle {
+        margin: 0 20px 0 20px;
+    }
+    div.block p {
+        margin-bottom: 0;
+    }
+
+    div.block-wrapper {
+        text-align: left;
+    }
+
+    h5.production-name {
+        font-size: 1.2rem;
+        margin: 0 0 0.25rem 0;
+    }
+
+    p.director {
+        margin: 0;
+    }
+
+    p.director>span {
+        font-style: italic;
+    }
+
+    .circle {
+        line-height: 0;
+        display: inline-block;
+        border: 4px solid rgba(200,200,200,0.4);
+        border-radius: 4px;
+        transition: linear 0.25s;
+        height: 150px;
+        margin: 10px 20px;
+    }
+    .circle:hover {
+        transition: ease-out 0.2s;
+        border: 4px solid #ff6d6d91;
+        -webkit-transition: ease-out 0.2s;
+    }
+    a .circle {
+        color: transparent;
+    }
+    hr.performance-divider {
+        opacity: 0.25;
+        max-width: 75%;
+    }
+</style>
 {% endblock %}
