@@ -3,18 +3,6 @@
  *
  * The majority of the configuration for the toolkit.
  */
-aside {
-  margin: 0;
-  padding: 20px;
-}
-
-aside a {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
 .badge {
   padding: 3px 6px;
   margin: 0 4px;
@@ -34,7 +22,7 @@ aside a {
 }
 
 header {
-  background: #1f1f1f;
+  background: #111111;
 }
 
 header .header {

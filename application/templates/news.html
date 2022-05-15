@@ -13,7 +13,7 @@
     {% if post.content | length >= 150 %}
     <span>...</span>
     {% endif %}
-    <p>By <a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a> on {{ post.create_date | format_datetime() }}</p>
+    <p>By <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a> on {{ post.create_date | format_datetime() }}</p>
 </div>
 {% if not loop.last %}
 <hr class="post-divider" />

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Primitive UI | MIT License
  *
@@ -28,11 +29,6 @@ body {
   background: white;
   font-size: 1rem;
   margin: 0;
-}
-
-body.background {
-  background: url("../background.jpg") no-repeat center center fixed;
-  background-size: cover;
 }
 
 p,
@@ -298,7 +294,7 @@ div.scrollbar {
 }
 
 #content.background {
-  background: #1f1f1f;
+  background: #111111;
   -webkit-box-flex: 14;
       -ms-flex: 14;
           flex: 14;
@@ -807,12 +803,17 @@ caption {
  * Navigation
  */
 .navigation {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  background: #080808;
+  width: 20rem;
+}
+
+.navigation .sidebar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -820,18 +821,59 @@ caption {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #1f1e1fde;
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
-  width: 20rem;
   overflow: hidden;
+  margin: 0;
+  padding: 20px;
 }
 
-.navigation a {
+.navigation .sidebar a {
   margin: 1.25em 0 0 0;
   font-size: clamp(1.1em, 2.1vw, 1.3em);
   -ms-flex-line-pack: center;
       align-content: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#sidebar-toggle {
+  background-color: orange;
+  border-radius: 50%;
+  display: block;
+  height: 2.2rem;
+  left: 1rem;
+  position: absolute;
+  text-decoration: none;
+  top: 18px;
+  width: 2.2rem;
+}
+
+#sidebar-toggle::after {
+  content: "🡐";
+  color: white;
+  display: block;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: -.2rem 0 0 0;
+  text-align: center;
+}
+
+.no-sidebar #sidebar-toggle::after {
+  content: "🡒";
+  margin-left: .2rem;
+}
+
+#sidebar-toggle:hover {
+  background-color: goldenrod;
+}
+
+aside.no-sidebar {
+  display: none;
+}
+
+aside.no-sidebar #content {
+  width: 100%;
 }
 
 /**
@@ -950,18 +992,6 @@ caption {
  *
  * The majority of the configuration for the toolkit.
  */
-aside {
-  margin: 0;
-  padding: 20px;
-}
-
-aside a {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
 .badge {
   padding: 3px 6px;
   margin: 0 4px;
@@ -981,7 +1011,7 @@ aside a {
 }
 
 header {
-  background: #1f1f1f;
+  background: #111111;
 }
 
 header .header {

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <h2 class="">{{ production.description }}</h2>
 <p class="production-director">Directed by {{ director.credit_name }}</p>
 
@@ -15,17 +14,7 @@
 {% endif %}
 
 <hr>
-<!--
-{% if credits %}
-<h4>Credits:</h4>
-{% endif %}
-<ol>
-    {% for c in credits %}
-    <li><a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=c.artist_id, slug=c.slug) }}">{{ c.credit_name }}</a>, {{ c.role }}</li>
-    {% endfor %} 
-</ol>
--->
-<!-- Accessible modals per WAI Aria https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html-->
+<!--Accessible modals per WAI Aria https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html-->
 <div class="dialog-container" id="cast-crew-dialog" aria-hidden="true" aria-labelledby="cast-crew-title"
     aria-describedby="cast-crew-description">
     <div class="dialog-overlay" data-a11y-dialog-hide></div>
@@ -89,7 +78,6 @@
 {% endblock %}
 
 {% block aside %}
-
 {% if performances %}
 <h4 class="hug">Performances:</h4>
 {% endif %}
@@ -107,7 +95,6 @@
     any indoor space. Our actors can present this play unmasked due to these efforts. Thank you for helping keep the
     community safe and performing live again.
 </p>
-
 {% endblock %}
 
 {% block styles %}
@@ -156,24 +143,28 @@
     p.person-role>span {
         font-style: italic;
     }
+
     .circle {
         line-height: 0;
         display: inline-block;
-        border: 4px solid rgba(200,200,200,0.4);
+        border: 4px solid rgba(200, 200, 200, 0.4);
         border-radius: 50%;
         transition: linear 0.25s;
         height: 40px;
         width: 40px;
         margin: 10px 20px;
     }
+
     .circle img {
         border-radius: 50%;
     }
+
     .circle:hover {
         transition: ease-out 0.2s;
         border: 4px solid #ff6d6d91;
         -webkit-transition: ease-out 0.2s;
     }
+
     a .circle {
         color: transparent;
     }
