@@ -7,7 +7,7 @@
 
 {% block sidebar_image %}
     {% if headshot %}
-        <img src="{{ url_for('artists.static', filename=headshot) }}" id="headshot" alt="" srcset="">
+        <img src="{{ url_for('bp_artist.static', filename=headshot) }}" id="headshot" alt="" srcset="">
     {% endif %}
 {% endblock %}
 

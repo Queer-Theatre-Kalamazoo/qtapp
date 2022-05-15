@@ -249,9 +249,11 @@ dd {
 }
 
 .wrapper {
-  margin-left: auto;
   margin-right: auto;
-  max-width: 90%;
+  margin-left: auto;
+  max-width: 1120px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .content-section {
@@ -547,12 +549,12 @@ dd {
 .button, a.button, button, [type=submit], [type=reset], [type=button] {
   -webkit-appearance: none;
   display: inline-block;
-  border: 1px solid #0366ee;
+  border: 1px solid #b3321c;
   border-radius: 4px;
-  background: #0366ee;
+  background: #b3321c;
   color: #ffffff;
   font-weight: 600;
-  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Jost", -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   text-transform: none;
   padding: 0.75rem 1.25rem;
@@ -565,15 +567,15 @@ dd {
 }
 
 .button:hover, a.button:hover, button:hover, [type=submit]:hover, [type=reset]:hover, [type=button]:hover {
-  border: 1px solid #0250bc;
-  background: #0250bc;
+  border: 1px solid #872615;
+  background: #872615;
   color: #ffffff;
   text-decoration: none;
 }
 
 .button:focus, .button:active, a.button:focus, a.button:active, button:focus, button:active, [type=submit]:focus, [type=submit]:active, [type=reset]:focus, [type=reset]:active, [type=button]:focus, [type=button]:active {
-  border: 1px solid #0250bc;
-  background: #0250bc;
+  border: 1px solid #872615;
+  background: #872615;
   color: #ffffff;
   text-decoration: none;
 }
@@ -586,8 +588,8 @@ dd {
 .accent-button,
 a.accent-button {
   color: #ffffff;
-  border: 1px solid #29de7d;
-  background: #29de7d;
+  border: 1px solid #543a9b;
+  background: #543a9b;
 }
 
 .accent-button:hover, .accent-button:focus, .accent-button:active,
@@ -595,22 +597,22 @@ a.accent-button:hover,
 a.accent-button:focus,
 a.accent-button:active {
   color: #ffffff;
-  border: 1px solid #1cb864;
-  background: #1cb864;
+  border: 1px solid #402c76;
+  background: #402c76;
 }
 
 .muted-button,
 a.muted-button {
   background: transparent;
   border: 1px solid #cdcdcd;
-  color: #4e4e4e;
+  color: #ffffff;
 }
 
 .muted-button:hover, .muted-button:focus, .muted-button:active,
 a.muted-button:hover,
 a.muted-button:focus,
 a.muted-button:active {
-  color: #4e4e4e;
+  color: #dfdfdf;
   border: 1px solid #818181;
   background: transparent;
 }
@@ -653,9 +655,9 @@ a.full-button {
 }
 
 [type=color]:focus, [type=color]:active, [type=date]:focus, [type=date]:active, [type=datetime]:focus, [type=datetime]:active, [type=datetime-local]:focus, [type=datetime-local]:active, [type=email]:focus, [type=email]:active, [type=month]:focus, [type=month]:active, [type=number]:focus, [type=number]:active, [type=password]:focus, [type=password]:active, [type=search]:focus, [type=search]:active, [type=tel]:focus, [type=tel]:active, [type=text]:focus, [type=text]:active, [type=url]:focus, [type=url]:active, [type=week]:focus, [type=week]:active, [type=time]:focus, [type=time]:active, select:focus, select:active, textarea:focus, textarea:active {
-  border: 1px solid #0366ee;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #8cbcfe;
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #8cbcfe;
+  border: 1px solid #b3321c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #eb8d7d;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 6px #eb8d7d;
 }
 
 textarea {
@@ -943,7 +945,7 @@ aside a {
   padding: 3px 6px;
   margin: 0 4px;
   border-radius: 4px;
-  background: #b71e1e;
+  background: #b3321c;
   color: #fff;
   font-size: 0.8rem;
   -webkit-user-select: none;

@@ -16,7 +16,7 @@ from application.blueprints.common.schema import (
 
 # Import database object
 from application.database import Session
-from sqlalchemy import select
+from sqlalchemy import select, and_
 
 @bp_production.route("/<int:prod_id>")
 @bp_production.route("/<int:prod_id>/<string:slug>")
@@ -47,12 +47,23 @@ def display_production(prod_id, **slug):
             .all()
         )
 
-        credits = session.execute(
-            select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug)
+        cast = session.execute(
+            select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
             .select_from(Credit)
-            .where(Credit.production_id == production.production_id)
+            .where(and_(Credit.production_id == production.production_id, Credit.category == "Cast"))
             .join(Artist)
         ).all()
+
+        crew = session.execute(
+            select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug)
+            .select_from(Credit)
+            .where(and_(Credit.production_id == production.production_id, Credit.category == "Crew"))
+            .join(Artist)
+        ).all()
+
+        director = session.execute(
+            select(Credit.credit_name).where(and_(Credit.production_id == production.production_id, Credit.role == "Director"))
+        ).one()
 
         notices = session.execute(
             select(ProductionNotice, Notice, NoticeType)
@@ -76,6 +87,8 @@ def display_production(prod_id, **slug):
             current_user=current_user,
             production=production,
             performances=performances,
-            credits=credits,
+            cast=cast,
+            crew=crew,
+            director=director,
             notices=notices,
         )

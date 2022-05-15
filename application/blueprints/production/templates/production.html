@@ -2,9 +2,10 @@
 
 {% block content %}
 
-<h2 class="squeeze">{{ production.description }}</h2>
-<p class="hug">{{ production.season_description }}</p>
+<h2 class="">{{ production.description }}</h2>
+<p class="production-director">Directed by {{ director.credit_name }}</p>
 
+<a class="button muted-button" data-a11y-dialog-show="cast-crew-dialog">Full Cast and Crew</a>
 
 {% if notices %}
 {% for pn, n, nt in notices %}
@@ -14,7 +15,7 @@
 {% endif %}
 
 <hr>
-
+<!--
 {% if credits %}
 <h4>Credits:</h4>
 {% endif %}
@@ -23,6 +24,63 @@
     <li><a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=c.artist_id, slug=c.slug) }}">{{ c.credit_name }}</a>, {{ c.role }}</li>
     {% endfor %} 
 </ol>
+-->
+<!-- Accessible modals per WAI Aria https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html-->
+<div class="dialog-container"
+        id="cast-crew-dialog"
+        aria-hidden="true"
+        aria-labelledby="cast-crew-title"
+        aria-describedby="cast-crew-description">
+    <div class="dialog-overlay" data-a11y-dialog-hide></div>
+    <div class="dialog-content center" role="document">
+        <button data-a11y-dialog-hide
+                class="dialog-close"
+                aria-label="Close this dialog window">&times;</button>
+        <h1 id="cast-crew-title"></h1>
+        <p id="cast-crew-description">
+            <h3>Cast</h3>
+            <div class="cast-crew-container">   
+            {% for person in cast %}
+                <div class="cast-crew-item">
+                    <a href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}" class="circle">
+                        <img height="40" width="40" {% if person.headshot %}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + person.headshot)) }}"{%else%}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"{% endif %}>
+                    </a>
+                    <p><a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{ person.credit_name }}</a> as <i>{{ person.role }}</i></P>
+                </div>
+            {% endfor %}
+            </div>
+            <h3>Crew</h3>
+            <div class="cast-crew-container">   
+            {% for person in crew %}
+                <div class="cast-crew-item">
+                    <a href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}" class="circle">
+                        <img height="40" width="40" {% if person.headshot %}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + person.headshot)) }}"{%else%}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"{% endif %}>
+                    </a>
+                    <p><a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{ person.credit_name }}</a>, <i>{{ person.role }}</i></P>
+                </div>
+            {% endfor %}
+            </div>
+        </p>
+    </div>
+</div>
+
+<style>
+p.production-director {
+    font-size: 1.3rem;
+}
+
+div.cast-crew-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+div.cast-crew-item {
+  flex: 0 32%;
+  height: 100px;
+  margin-bottom: 6%;
+}
+</style>
 
 {% endblock %}
 
