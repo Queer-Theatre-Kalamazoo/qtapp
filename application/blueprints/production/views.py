@@ -1,6 +1,6 @@
 from flask import render_template
 from flask_login import current_user
-from . import bp_productions
+from . import bp_production
 
 # Import remote models
 from application.blueprints.common.schema import (
@@ -18,9 +18,9 @@ from application.blueprints.common.schema import (
 from application.database import Session
 from sqlalchemy import select
 
-
-@bp_productions.route("/<int:prod_id>/<string:slug>")
-def display_production(prod_id, slug):
+@bp_production.route("/<int:prod_id>")
+@bp_production.route("/<int:prod_id>/<string:slug>")
+def display_production(prod_id, **slug):
     with Session.begin() as session:
 
         # TODO A billion queries to get required details from related model
@@ -61,9 +61,6 @@ def display_production(prod_id, slug):
             .join(Notice)
             .join(NoticeType)
         ).all()
-
-        # Somehow this restricts valid pages to those with a valid slug
-        slug = production.slug
 
         # If production has a poster, set variable to be passed - if not, set to None to avoid passing a nonexistant variable
         if production.poster:

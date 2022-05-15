@@ -17,8 +17,8 @@
         <h3 class="squeeze">Artist Credits</h3>
         <p class="hug"><i>at Queer Theatre Kalamazoo</i></p>
         {% for c in credits %}
-        <a class="fancy-link" href="/prod/{{ c.production_id }}/{{ c.slug }}">{{ c.description }}</a>, {{ c.role }}<br />
-        {% endfor %}
+        <a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=c.production_id, slug=c.slug) }}">{{ c.description }}</a>, {{ c.role }}<br />
+        {% endfor %} 
     {% endif %}
 
 {%endblock%}
