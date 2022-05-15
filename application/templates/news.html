@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>News</h1>
+
+{% for post in posts %}
+<div class="post-preview">
+    <h2 class="post-title">
+        <a class="fancy-link" href="{{ url_for('bp_post.display_post', post_id = post.post_id) }}">{{ post.title }}</a>
+    </h2>
+    <h3 class="post-subtitle">{{ post.subtitle }}</h3>    
+    <span class="">{{ post.content | safe | truncate(150) }}</span>
+    {% if post.content | length >= 150 %}
+    <span>...</span>
+    {% endif %}
+    <p>By <a class="fancy-link" href="{{ url_for('artists.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a> on {{ post.create_date | format_datetime() }}</p>
+</div>
+{% if not loop.last %}
+<hr class="post-divider" />
+{% endif %}
+{% endfor %}
+
+
+<style>
+div.post-preview {
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 1rem;
+}
+
+h2.post-title {
+    font-size: 1.5rem;
+    margin: 5px 0 0.5rem 0;
+}
+
+h3.post-subtitle {
+    font-size: 1.25rem;
+    margin: 5px 0 0.75rem 0;
+}
+
+hr.post-divider {
+    margin: 0.75rem auto;
+    opacity: 0.5;
+    width: 75%;
+}
+</style>
+
+{% endblock %}

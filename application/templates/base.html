@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% if favicon %}
+            <link rel="shortcut icon" href="{{ favicon }}">
+        {% else %}
+            <link rel="shortcut icon"
+                  href="{{ url_for('static', filename='favicon.ico') }}">
+        {% endif %}
+        <!-- <link rel="stylesheet"
+       href="{{ url_for('static', filename='sass/variables.css') }}"> -->
+        <link rel="stylesheet"
+              href="{{ url_for('static', filename='sass/main.css') }}">
+        <!-- <link rel="stylesheet"
+       href="{{ url_for('static', filename='sass/style.css') }}"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+              rel="stylesheet">
+        {% if title %}
+            <title>{{ title }}</title>
+        {% else %}
+            <title>Untitled</title>
+        {% endif %}
+        {% block head %}
+        {% endblock %}
+        <script defer src="https://cdn.jsdelivr.net/npm/a11y-dialog@7/dist/a11y-dialog.min.js"></script>
+    </head>
+    <body class="background">
+        <!-- Main Content -->
+        <main>
+            <!-- Header -->
+            <header>
+                <div class="header wrapper">
+                    <a href="{{ url_for('home') }}" class="circle">
+                        <img height="40" width="40" src="{{ url_for('static', filename='images/logo-circle.png') }}" alt="Cloud Chen">
+                    </a>
+                    <span style="font-size: 1.5rem;">Queer Theatre Kalamazoo</span>
+                </div>
+            </header>
+            <!-- Page Title Bar 
+            <div class="page-title">
+                <p style="padding: 0; margin: 0;">
+                    {% if title %}
+                        {{ title }}
+                    {% else %}
+                        Page
+                    {% endif %}
+                </p>
+            </div>
+            -->
+            <!-- Page Breadcrumbs and Title -->
+            <div class="page-title">
+                {%- for breadcrumb in breadcrumbs -%}
+                    <a class="fancy-link" href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>
+                    {{ '>' if not loop.last }}
+                {%- endfor -%}
+            </div>
+            <!-- Container -->
+            <div class="flex-container">
+                <!-- Sidebar GoTo Menu -->
+                <aside class="navigation">
+                    {% block navigation %}
+                        {% include "partials/navigation.html" %}
+                    {% endblock %}
+                </aside>
+                <!-- Container -->
+                <div id="content" class="content-section background">
+                    <div class="wrapper">
+                        <div class="flex">
+                                <div class="grow">
+                                    {% block content %}{% endblock %}
+                                </div>
+                                {% if sidebar %}
+                                    <div class="sidebar info">
+                                        {% block sidebar_image %}{% endblock %}
+                                        <div>
+                                            {% block aside %}{% endblock %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Accessible modals per WAI Aria https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html-->
+            <div class="dialog-container"
+                 id="my-dialog"
+                 aria-hidden="true"
+                 aria-labelledby="my-dialog-title"
+                 aria-describedby="my-dialog-description">
+                <div class="dialog-overlay" data-a11y-dialog-hide></div>
+                <div class="dialog-content center" role="document">
+                    <button data-a11y-dialog-hide
+                            class="dialog-close"
+                            aria-label="Close this dialog window">&times;</button>
+                    <h1 id="my-dialog-title"></h1>
+                    <p id="my-dialog-description">
+                        <h4>QTApp</h4>
+                        Built with Python Flask,
+                        <br />
+                        MySQL, Visual Studio Code,
+                        <br />
+                        and countless other tools
+                        <br />
+                        made free to the public.
+                        <br />
+                        <br />
+                        Made by <a class="fancy-link" href="https://github.com/qthazel">Hazel Lynn</a>
+                        <br />
+                        <br />
+                        Contribute to <a class="fancy-link" href="https://github.com/Queer-Theatre-Kalamazoo/qtapp">QTApp on GitHub.</a>
+                        <br />
+                        Check out the <a class="fancy-link" href="https://qtdocs.readthedocs.io/en/latest/">QTDocs.</a>
+                    </p>
+                </div>
+            </div>
+        </main>
+        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+        <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+        <script type="module" src="{{ url_for('static', filename='js/base.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <!-- jquery 3.6.0 -->
+    </body>
+</html>

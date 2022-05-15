@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="squeeze">{{ post.title }}</h2>
+<h4 class="hug">{{ post.subtitle }}</h4>
+<p>By <a class="fancy-link" href="/artist/{{ author.artist_id }}">{{ author.artist_name }}</a></p>
+<hr>
+<span class="post-content">{{ post.content | safe }}</span>
+{% endblock %}

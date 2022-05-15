@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ ckeditor.load() }}
+{{ ckeditor.config('content') }}
+{% endblock %}
+
+{% block content %}
+<h1>Manage Posts</h1>
+
+<form action="" method="POST">
+    {{ form.csrf_token }}
+    {{ form.type.label }}
+    {{ form.type }}
+    {{ form.author.label }}
+    {{ form.author }}
+    {{ form.title.label }}
+    {{ form.title }}
+    {{ form.subtitle.label }}
+    {{ form.subtitle }}
+    {{ form.content.label }}
+    {{ form.content }}
+    <input class="button-primary margin-top" type="submit" value="Submit">
+</form>
+{% endblock %}
