@@ -68,20 +68,20 @@
                     {% endblock %}
                 </aside>
                 <!-- Container -->
-                <div id="content" class="content-section background">
+                <div id="content" class="content-section background scrollbar">
                     <div class="wrapper">
                         <div class="flex">
-                                <div class="grow">
-                                    {% block content %}{% endblock %}
+                            <div class="grow">
+                            {% block content %}{% endblock %}
+                            </div>
+                            {% if sidebar %}
+                            <div class="sidebar info">
+                            {% block sidebar_image %}{% endblock %}
+                                <div>
+                                {% block aside %}{% endblock %}
                                 </div>
-                                {% if sidebar %}
-                                    <div class="sidebar info">
-                                        {% block sidebar_image %}{% endblock %}
-                                        <div>
-                                            {% block aside %}{% endblock %}
-                                        </div>
-                                    </div>
-                                {% endif %}
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -119,6 +119,8 @@
                 </div>
             </div>
         </main>
+        {% block styles %}
+        {% endblock %}
         <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
         <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
         <script type="module" src="{{ url_for('static', filename='js/base.js') }}"></script>

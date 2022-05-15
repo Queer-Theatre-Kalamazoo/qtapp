@@ -5,7 +5,7 @@
 <h2 class="">{{ production.description }}</h2>
 <p class="production-director">Directed by {{ director.credit_name }}</p>
 
-<a class="button muted-button" data-a11y-dialog-show="cast-crew-dialog">Full Cast and Crew</a>
+<a class="button" data-a11y-dialog-show="cast-crew-dialog">Full Cast and Crew</a>
 
 {% if notices %}
 {% for pn, n, nt in notices %}
@@ -26,62 +26,60 @@
 </ol>
 -->
 <!-- Accessible modals per WAI Aria https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html-->
-<div class="dialog-container"
-        id="cast-crew-dialog"
-        aria-hidden="true"
-        aria-labelledby="cast-crew-title"
-        aria-describedby="cast-crew-description">
+<div class="dialog-container" id="cast-crew-dialog" aria-hidden="true" aria-labelledby="cast-crew-title"
+    aria-describedby="cast-crew-description">
     <div class="dialog-overlay" data-a11y-dialog-hide></div>
     <div class="dialog-content center" role="document">
-        <button data-a11y-dialog-hide
-                class="dialog-close"
-                aria-label="Close this dialog window">&times;</button>
+        <button data-a11y-dialog-hide class="dialog-close" aria-label="Close this dialog window">&times;</button>
         <h1 id="cast-crew-title"></h1>
         <p id="cast-crew-description">
-            <h3>Cast</h3>
-            <div class="cast-crew-container">   
+        <h3>Cast</h3>
+        <div class="cast-crew-container">
             {% for person in cast %}
-                <div class="cast-crew-item">
-                    <a href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}" class="circle">
-                        <img height="40" width="40" {% if person.headshot %}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + person.headshot)) }}"{%else%}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"{% endif %}>
-                    </a>
-                    <p><a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{ person.credit_name }}</a> as <i>{{ person.role }}</i></P>
+
+            <div class="block">
+                <!-- Grab artist headshot or placeholder if none -->
+                <a class="circle"
+                    href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
+                    <img height="40" width="40" {% if person.headshot
+                        %}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + person.headshot)) }}"
+                        {%else%}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
+                        {% endif %} />
+                </a>
+                <div class="block-wrapper">
+                    <h5 class="person-name"><a class="fancy-link"
+                            href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
+                            person.credit_name }}</a></h5>
+                    <p class="person-role">as <span>{{ person.role }}</span></p>
                 </div>
-            {% endfor %}
             </div>
-            <h3>Crew</h3>
-            <div class="cast-crew-container">   
+
+            {% endfor %}
+        </div>
+        <h3>Crew</h3>
+        <div class="cast-crew-container">
             {% for person in crew %}
-                <div class="cast-crew-item">
-                    <a href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}" class="circle">
-                        <img height="40" width="40" {% if person.headshot %}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + person.headshot)) }}"{%else%}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"{% endif %}>
-                    </a>
-                    <p><a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{ person.credit_name }}</a>, <i>{{ person.role }}</i></P>
+            <div class="block">
+                <!-- Grab artist headshot or placeholder if none -->
+                <a class="circle"
+                    href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
+                    <img height="40" width="40" {% if person.headshot
+                        %}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + person.headshot)) }}"
+                        {%else%}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
+                        {% endif %} />
+                </a>
+                <div class="block-wrapper">
+                    <h5 class="person-name"><a class="fancy-link"
+                            href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
+                            person.credit_name }}</a></h5>
+                    <p class="person-role"><span>{{ person.role }}</span></p>
                 </div>
-            {% endfor %}
             </div>
+            {% endfor %}
+        </div>
         </p>
     </div>
 </div>
-
-<style>
-p.production-director {
-    font-size: 1.3rem;
-}
-
-div.cast-crew-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-div.cast-crew-item {
-  flex: 0 32%;
-  height: 100px;
-  margin-bottom: 6%;
-}
-</style>
-
 {% endblock %}
 
 {% block sidebar_image %}
@@ -104,10 +102,79 @@ div.cast-crew-item {
 </ul>
 
 <p>
-    Proof of vaccination is required for all Queer Theatre Kalamazoo events. Masks must be worn over the mouth and nose in
+    Proof of vaccination is required for all Queer Theatre Kalamazoo events. Masks must be worn over the mouth and nose
+    in
     any indoor space. Our actors can present this play unmasked due to these efforts. Thank you for helping keep the
     community safe and performing live again.
 </p>
 
 {% endblock %}
 
+{% block styles %}
+<style>
+    p.production-director {
+        font-size: 1.3rem;
+    }
+
+    div.cast-crew-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 20px;
+        width: 100%;
+        display: grid;
+        /* Define Auto Row size */
+        grid-auto-rows: 100px;
+        /*Define our columns */
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 1em;
+    }
+
+    div.cast-crew-item {
+        /* border: 1px solid white; */
+        display: flex;
+        flex-direction: column;
+        padding: 0.5em;
+        margin-bottom: 20px;
+        background-color: #181818;
+        border-radius: 2px;
+    }
+
+    div.cast-crew-content {
+        width: 100%;
+    }
+
+    div.cast-crew-name {
+        font-size: 1.25rem;
+    }
+
+    div.block {
+        display: flex;
+        align-items: center;
+        vertical-align: middle;
+        padding: 5px;
+        background-color: #181818;
+        border-radius: 2px;
+    }
+
+    div.block a.circle {
+        margin: 0 20px 0 20px;
+    }
+
+    div.block-wrapper {
+        text-align: left;
+    }
+
+    h5.person-name {
+        font-size: 1.2rem;
+        margin: 0 0 0.25rem 0;
+    }
+
+    p.person-role {
+        margin: 0;
+    }
+
+    p.person-role>span {
+        font-style: italic;
+    }
+</style>
+{% endblock %}

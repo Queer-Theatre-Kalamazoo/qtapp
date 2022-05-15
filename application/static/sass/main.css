@@ -252,12 +252,33 @@ dd {
   margin-right: auto;
   margin-left: auto;
   max-width: 1120px;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
-.content-section {
+div.content-section {
   padding: 30px 0;
+}
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 0 10px;
+          box-shadow: inset 0 0 0 10px;
+}
+
+div.scrollbar {
+  overflow: auto;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
 }
 
 @media (min-width: 600px) {
@@ -845,7 +866,7 @@ caption {
 }
 
 .dialog-content {
-  background-color: rgba(37, 37, 37, 0.446);
+  background-color: rgba(29, 29, 29, 0.555);
   -webkit-backdrop-filter: blur(15px);
           backdrop-filter: blur(15px);
   margin: auto;
@@ -855,8 +876,9 @@ caption {
           animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
   padding: 1em;
   max-width: 90%;
-  width: 600px;
-  border-radius: 2px;
+  width: 750px;
+  border-radius: 4px;
+  border-top: 2rem solid #b3321c;
 }
 
 .dialog-content.center {
@@ -997,7 +1019,7 @@ header .header span {
 }
 
 .flex-container {
-  height: calc(100vh - 106px);
+  height: calc(100vh - 118px);
   margin: auto;
   -webkit-box-flex: 1;
       -ms-flex: 1 100%;

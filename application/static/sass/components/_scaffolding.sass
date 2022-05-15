@@ -220,17 +220,36 @@ dd
 // Wrapper, horizontally centered
 .wrapper
   margin-right: auto
-  margin-left:  auto
+  margin-left: auto
 
   max-width: 1120px
 
-  padding-right: 10px
-  padding-left:  10px
-
+  padding-right: 2rem
+  padding-left: 2rem
 
 // Content
-.content-section
+div.content-section
   padding: $content-padding-mobile
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb
+  width: 26px
+  border-radius: 13px
+  background-clip: padding-box
+  border: 10px solid transparent
+
+*::-webkit-scrollbar-thumb
+  box-shadow: inset 0 0 0 10px
+
+div.scrollbar:hover
+  // color: rgba(0, 0, 0, 0.3)
+
+div.scrollbar
+  overflow: auto
+  // color: rgba(0, 0, 0, 0)
+  //-webkit-text-fill-color: white
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2)
+  transition: color .3s ease
 
 @include small-breakpoint
   .content-section
