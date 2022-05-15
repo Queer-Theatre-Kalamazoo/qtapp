@@ -1,20 +1,127 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>About Queer Theatre Kalamazoo</h3>
 
 <h5>Current Staff:</h5>
-<ul>
-    {% for s in staff %}
-    <li>{{ s.name }}, {{ s.title }}</li>
+<div class="staff-board-container">
+    {% for person in staff %}
+    <div class="block">
+        <!-- Grab artist headshot or placeholder if none -->
+        <a class="circle" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">
+            <img height="40" width="40"
+                {% if person.artist_id %}
+                    src="{{ url_for('bp_person.static', filename=('images/headshots/' + get_headshot(person.artist_id))) }}"
+                {%else%}
+                    src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
+                {% endif %} />
+        </a>
+        <div class="block-wrapper">
+            <h5 class="person-name">
+                <a class="fancy-link" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
+            </h5>
+            <p class="person-role"><span>{{ person.title }}</span></p>
+        </div>
+    </div>
     {% endfor %}
-</ul>
+</div>
 
 <h5>Current Board:</h5>
-<ul>
-    {% for b in board %}
-    <li>{{ b.name }}, {{ b.title }}</li>
+<div class="staff-board-container">
+    {% for person in board %}
+    <div class="block">
+        <!-- Grab artist headshot or placeholder if none -->
+        <a class="circle" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">
+            <img height="40" width="40"
+                {% if person.artist_id %}
+                    src="{{ url_for('bp_person.static', filename=('images/headshots/' + get_headshot(person.artist_id))) }}"
+                {%else%}
+                    src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
+                {% endif %} />
+        </a>
+        <div class="block-wrapper">
+            <h5 class="person-name">
+                <a class="fancy-link" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
+            </h5>
+            <p class="person-role"><span>{{ person.title }}</span></p>
+        </div>
+    </div>
     {% endfor %}
-</ul>
+</div>
 
+
+
+
+
+
+
+{% endblock %}
+
+{% block styles %}
+<style>
+    p.production-director {
+        font-size: 1.3rem;
+    }
+
+    div.staff-board-container {
+        margin: 30px auto;
+        padding: 0 20px;
+        display: grid;
+        /* Define Auto Row size */
+        grid-auto-rows: 100px;
+        /*Define our columns */
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 1em;
+    }
+
+    div.block {
+        display: flex;
+        align-items: center;
+        vertical-align: middle;
+        padding: 5px;
+        background-color: #181818;
+        border-radius: 2px;
+    }
+
+    div.block a.circle {
+        margin: 0 20px 0 20px;
+    }
+
+    div.block-wrapper {
+        text-align: left;
+    }
+
+    h5.person-name {
+        font-size: 1.2rem;
+        margin: 0 0 0.25rem 0;
+    }
+
+    p.person-role {
+        margin: 0;
+    }
+
+    p.person-role>span {
+        font-style: italic;
+    }
+    .circle {
+        line-height: 0;
+        display: inline-block;
+        border: 4px solid rgba(200,200,200,0.4);
+        border-radius: 50%;
+        transition: linear 0.25s;
+        height: 40px;
+        width: 40px;
+        margin: 10px 20px;
+    }
+    .circle img {
+        border-radius: 50%;
+    }
+    .circle:hover {
+        transition: ease-out 0.2s;
+        border: 4px solid #ff6d6d91;
+        -webkit-transition: ease-out 0.2s;
+    }
+    a .circle {
+        color: transparent;
+    }
+</style>
 {% endblock %}

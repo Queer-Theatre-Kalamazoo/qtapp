@@ -1,17 +1,17 @@
 from flask import render_template
-from . import bp_artist
+from . import bp_person
 from sqlalchemy import select
 from sqlalchemy.orm import aliased
 
 # Import remote models
-from application.blueprints.common.schema import Artist, Credit, Production
+from application.blueprints.common.schema import Artist, Credit, Production, Person
 
 # Import database object
 from application.database import Session
 
 
-@bp_artist.route('/<int:artist_id>')
-@bp_artist.route('/<int:artist_id>/<string:slug>')
+@bp_person.route('/a/<int:artist_id>')
+@bp_person.route('/a/<int:artist_id>/<string:slug>')
 def display_artist(artist_id, **slug):
 
     with Session.begin() as session:
@@ -35,3 +35,7 @@ def display_artist(artist_id, **slug):
                                title=artist.artist_name,
                                credits=credits,
                                headshot=headshot_filename)
+
+@bp_person.route('/<int:person_id>')
+def display_person(person_id):
+    return render_template('person.html')

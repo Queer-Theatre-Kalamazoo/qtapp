@@ -23,14 +23,14 @@ def init_app():
         # from application.blueprints.admin import bp_admin
         from application.blueprints.management import bp_management
         from application.blueprints.production import bp_production
-        from application.blueprints.artist import bp_artist
+        from application.blueprints.person import bp_person
         from application.blueprints.post import bp_post
 
         app.register_blueprint(bp_common)
         # app.register_blueprint(bp_admin, url_prefix = '/admin')
         app.register_blueprint(bp_management, url_prefix = '/app')
         app.register_blueprint(bp_production, url_prefix = '/production')
-        app.register_blueprint(bp_artist, url_prefix = '/artist')
+        app.register_blueprint(bp_person, url_prefix = '/person')
         app.register_blueprint(bp_post, url_prefix = '/post')
 
         @app.template_filter()

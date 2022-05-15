@@ -21,7 +21,7 @@
 {% endif %}
 <ol>
     {% for c in credits %}
-    <li><a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=c.artist_id, slug=c.slug) }}">{{ c.credit_name }}</a>, {{ c.role }}</li>
+    <li><a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=c.artist_id, slug=c.slug) }}">{{ c.credit_name }}</a>, {{ c.role }}</li>
     {% endfor %} 
 </ol>
 -->
@@ -40,15 +40,15 @@
             <div class="block">
                 <!-- Grab artist headshot or placeholder if none -->
                 <a class="circle"
-                    href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
+                    href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
                     <img height="40" width="40" {% if person.headshot
-                        %}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + person.headshot)) }}"
-                        {%else%}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
+                        %}src="{{ url_for('bp_person.static', filename=('images/headshots/' + person.headshot)) }}"
+                        {%else%}src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
                         {% endif %} />
                 </a>
                 <div class="block-wrapper">
                     <h5 class="person-name"><a class="fancy-link"
-                            href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
+                            href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
                             person.credit_name }}</a></h5>
                     <p class="person-role">as <span>{{ person.role }}</span></p>
                 </div>
@@ -62,15 +62,15 @@
             <div class="block">
                 <!-- Grab artist headshot or placeholder if none -->
                 <a class="circle"
-                    href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
+                    href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
                     <img height="40" width="40" {% if person.headshot
-                        %}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + person.headshot)) }}"
-                        {%else%}src="{{ url_for('bp_artist.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
+                        %}src="{{ url_for('bp_person.static', filename=('images/headshots/' + person.headshot)) }}"
+                        {%else%}src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
                         {% endif %} />
                 </a>
                 <div class="block-wrapper">
                     <h5 class="person-name"><a class="fancy-link"
-                            href="{{ url_for('bp_artist.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
+                            href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
                             person.credit_name }}</a></h5>
                     <p class="person-role"><span>{{ person.role }}</span></p>
                 </div>

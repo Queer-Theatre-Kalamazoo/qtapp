@@ -60,7 +60,13 @@ def about():
     with Session.begin() as session:
         with Session.begin() as session:
             staff = session.execute(
-                select(Person.name, Relationship.title).select_from(Person).where(and_(Relationship.type == "Staff", Relationship.show_online == True)).join(Relationship, Relationship.person_id == Person.person_id)).all()
+                select(Person.name, Person.person_id, Person.artist_id, Relationship.title).select_from(Person).where(and_(Relationship.type == "Staff", Relationship.show_online == True)).join(Relationship, Relationship.person_id == Person.person_id)).all()
             board = session.execute(
-                select(Person.name, Relationship.title).select_from(Person).where(and_(Relationship.type == "Board", Relationship.show_online == True)).join(Relationship, Relationship.person_id == Person.person_id)).all()
-        return render_template('about.html', title="About Us", staff=staff, board=board)
+                select(Person.name, Person.person_id, Person.artist_id, Relationship.title).select_from(Person).where(and_(Relationship.type == "Board", Relationship.show_online == True)).join(Relationship, Relationship.person_id == Person.person_id)).all()
+            
+            def get_artist_headshot(artist_id):
+                artist = session.execute(
+                                    select(Artist.headshot).where(Artist.artist_id == artist_id)
+                                    ).one()
+                return artist.headshot
+        return render_template('about.html', title="About Us", staff=staff, board=board, get_headshot=get_artist_headshot)

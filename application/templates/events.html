@@ -19,7 +19,7 @@
             <p class="director">
                 {% for dir in directors %}
                     {% if dir.production_id == production.production_id %}
-                    Directed by <span><a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=dir.artist_id) }}">{{ dir.credit_name }}</a></span>
+                    Directed by <span><a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=dir.artist_id) }}">{{ dir.credit_name }}</a></span>
                     {% endif %}
                 {% endfor %}
             </p>
