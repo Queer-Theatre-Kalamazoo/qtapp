@@ -48,7 +48,7 @@ def display_production(prod_id, **slug):
         )
 
         credits = session.execute(
-            select(Credit.role, Credit.credit_name, Artist.artist_id)
+            select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug)
             .select_from(Credit)
             .where(Credit.production_id == production.production_id)
             .join(Artist)

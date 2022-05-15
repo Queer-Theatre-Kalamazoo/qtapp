@@ -20,15 +20,15 @@
 {% endif %}
 <ol>
     {% for c in credits %}
-    <li><a class="fancy-link" href="/artist/{{ c.artist_id }}">{{ c.credit_name }}</a>, {{ c.role }}</li>
-    {% endfor %}
+    <li><a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=c.artist_id, slug=c.slug) }}">{{ c.credit_name }}</a>, {{ c.role }}</li>
+    {% endfor %} 
 </ol>
 
 {% endblock %}
 
 {% block sidebar_image %}
 {% if poster %}
-<img src="{{ url_for('productions.static', filename=poster) }}" id="poster" alt="" srcset="">
+<img src="{{ url_for('bp_production.static', filename=poster) }}" id="poster" alt="" srcset="">
 {% endif %}
 {% endblock %}
 

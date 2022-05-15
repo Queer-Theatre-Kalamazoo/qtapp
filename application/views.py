@@ -26,7 +26,7 @@ def events():
 def news():
     with Session.begin() as session:
         # So I guess you use just .all() if there's a join, or .scalars().all() otherwise?
-        posts = session.execute(select(Post.title, Post.subtitle, Post.content, Post.post_id, Post.create_date, Artist.artist_name.label('name'), Artist.slug.label('artist_slug'), Artist.artist_id).where(Post.type == "News").join(Artist, Post.author_id == Artist.artist_id)).all()
+        posts = session.execute(select(Post.title, Post.subtitle, Post.content, Post.post_id, Post.create_date, Artist.artist_name.label('name'), Artist.slug.label('artist_slug'), Artist.artist_id).where(Post.type == "News").join(Artist, Post.author_id == Artist.artist_id).order_by(Post.create_date.desc())).all()
         return render_template('news.html', title='News', posts=posts)
 
 

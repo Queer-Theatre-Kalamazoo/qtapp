@@ -13,7 +13,7 @@
     {% if post.content | length >= 150 %}
     <span>...</span>
     {% endif %}
-    <p>By <a class="fancy-link" href="{{ url_for('artists.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a> on {{ post.create_date | format_datetime() }}</p>
+    <p>By <a class="fancy-link" href="{{ url_for('bp_artist.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a> on {{ post.create_date | format_datetime() }}</p>
 </div>
 {% if not loop.last %}
 <hr class="post-divider" />
@@ -24,8 +24,9 @@
 <style>
 div.post-preview {
     border-radius: 4px;
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.20);
     padding: 1rem;
+    background-color: rgba(214, 214, 214, 0.1);
 }
 
 h2.post-title {
@@ -39,8 +40,8 @@ h3.post-subtitle {
 }
 
 hr.post-divider {
-    margin: 0.75rem auto;
-    opacity: 0.5;
+    margin: 1rem auto;
+    opacity: 0.2;
     width: 75%;
 }
 </style>
