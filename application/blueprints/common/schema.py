@@ -18,7 +18,7 @@ class Artist(Base):
     __tablename__ = 'artists'
 
     artist_id = Column(Integer, primary_key=True)
-    artist_name = Column(String(100), nullable=False)
+    name = Column(String(100), nullable=False)
     legal_name = Column(String(100))
     short_name = Column(String(100))
     birthday = Column(DateTime)
@@ -32,7 +32,7 @@ class Artist(Base):
         return url_for('bp_person.display_artist', artist_id=self.artist_id)
 
     def __repr__(self):
-        return self.artist_name
+        return self.name
 
 
 class Credit(Base):
@@ -208,7 +208,8 @@ class Production(Base):
     __tablename__ = "productions"
 
     production_id = Column(Integer, primary_key=True)
-    description = Column(String(255), nullable=False)
+    title = Column(String(255), nullable=False)
+    description = Column(String(5120))
     slug = Column(String(100), nullable=False)
     season_id = Column(
         Integer, ForeignKey("seasons.season_id"), nullable=False, index=True

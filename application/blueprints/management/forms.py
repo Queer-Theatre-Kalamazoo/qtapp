@@ -14,7 +14,7 @@ from sqlalchemy import select
 # artist_query = Artist.query
 def artist_select_query():
     with Session.begin() as session:
-        return session.query(Artist).order_by(Artist.artist_name)
+        return session.query(Artist).order_by(Artist.name)
 
 
 class PostForm(FlaskForm):

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{ artist.artist_name }}</h2>
+    <h2>{{ artist.name }}</h2>
     {{ artist.biography | safe }}
 {% endblock %}
 
@@ -17,7 +17,7 @@
         <h3 class="squeeze">Artist Credits</h3>
         <p class="hug"><i>at Queer Theatre Kalamazoo</i></p>
         {% for c in credits %}
-        <a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=c.production_id, slug=c.slug) }}">{{ c.description }}</a>, {{ c.role }}<br />
+        <a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=c.production_id, slug=c.slug) }}">{{ c.title }}</a>, {{ c.role }}<br />
         {% endfor %} 
     {% endif %}
 

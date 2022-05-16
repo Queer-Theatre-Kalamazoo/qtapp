@@ -11,9 +11,9 @@ from flask_breadcrumbs import register_breadcrumb, default_breadcrumb_root
 def bc_view_artist(*args, **kwargs):
     with Session.begin() as session:
         artist_id = request.view_args['artist_id']
-        artist_query = select(Artist.artist_id, Artist.artist_name).where(Artist.artist_id == artist_id)
+        artist_query = select(Artist.artist_id, Artist.name).where(Artist.artist_id == artist_id)
         artist = session.execute(artist_query).one()
-        return [{'text': artist.artist_name, 'url': Artist.get_url(artist)}]
+        return [{'text': artist.name, 'url': Artist.get_url(artist)}]
 
 
 @bp_person.route('/a/<int:artist_id>')
@@ -22,7 +22,7 @@ def bc_view_artist(*args, **kwargs):
 def display_artist(artist_id, **slug):
     with Session.begin() as session:
         artist = session.execute(select(Artist).where(Artist.artist_id == artist_id)).scalars().one()
-        credits_query = select(Credit.role, Production.description, Production.production_id, Production.slug, Artist.artist_id).\
+        credits_query = select(Credit.role, Production.title, Production.production_id, Production.slug, Artist.artist_id).\
             where(Credit.artist_id == artist.artist_id).\
             join(Production, Production.production_id == Credit.production_id).\
             join(Artist, Artist.artist_id == artist.artist_id)
@@ -37,7 +37,7 @@ def display_artist(artist_id, **slug):
         return render_template('artist.html',
                                sidebar=True,
                                artist=artist,
-                               title=artist.artist_name,
+                               title=artist.name,
                                credits=credits,
                                headshot=headshot_filename)
 

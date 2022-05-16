@@ -118,7 +118,8 @@ h5 {
 
 a.fancy-link,
 .link-like,
-.post-content a {
+.post-content a,
+.prod-content-wrapper a {
   position: relative;
   color: #efabab;
   text-decoration: none;
@@ -126,20 +127,23 @@ a.fancy-link,
 
 a.fancy-link:hover,
 .link-like:hover,
-.post-content a:hover {
+.post-content a:hover,
+.prod-content-wrapper a:hover {
   color: #cf7272;
 }
 
 a.fancy-link:hover::before,
 .link-like:hover::before,
-.post-content a:hover::before {
+.post-content a:hover::before,
+.prod-content-wrapper a:hover::before {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
 }
 
 a.fancy-link::before,
 .link-like::before,
-.post-content a::before {
+.post-content a::before,
+.prod-content-wrapper a::before {
   content: "";
   position: absolute;
   display: block;
@@ -320,7 +324,7 @@ div.scrollbar {
 #content .sidebar {
   min-width: 35%;
   max-width: 35%;
-  margin: 0 2rem;
+  margin-left: 2rem;
 }
 
 /**

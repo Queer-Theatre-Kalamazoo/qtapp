@@ -1,19 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2 class="">{{ production.description }}</h2>
+<h2 class="">{{ production.title }}</h2>
 <p class="production-director">Directed by {{ director.credit_name }}</p>
 
-<a class="button" data-a11y-dialog-show="cast-crew-dialog">Full Cast and Crew</a>
+<div class="production-body-content">
+    
+    {% if notices %}
+    <div class="accordion-body">
+        <div class="accordion">
+            {% for pt, notice, notice_type in notices %}
+            <div class="prod-content-container">
+                <div class="label">{{ notice_type.description }}</div>
+                <div class="prod-content">{{ notice.content | safe }}</div>
+            </div>
+            <!-- # {{ '<hr \>'|safe if not loop.last }} -->
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <h4>Description</h4>
+    <span class="prod-content-wrapper">{{ production.description | safe }}</span>
+    <a class="button" data-a11y-dialog-show="cast-crew-dialog">Full Cast and Crew</a>
+</div>
 
-{% if notices %}
-{% for pn, n, nt in notices %}
-<h4 class="squeeze">{{ nt.description }}</h4>
-<p class="hug">{{ n.content }}</p>
-{% endfor %}
-{% endif %}
 
-<hr>
 <!--Accessible modals per WAI Aria https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html-->
 <div class="dialog-container" id="cast-crew-dialog" aria-hidden="true" aria-labelledby="cast-crew-title"
     aria-describedby="cast-crew-description">
@@ -144,6 +156,9 @@
         font-style: italic;
     }
 
+
+
+
     .circle {
         line-height: 0;
         display: inline-block;
@@ -167,6 +182,57 @@
 
     a .circle {
         color: transparent;
+    }
+
+
+
+    .accordion {
+        /* width: 800px;
+        margin: 90px auto; 
+        color: black;
+        background-color: white;
+        padding: 45px 45px;*/
+    }
+    
+    .accordion .prod-content-container {
+        position: relative;
+        margin-bottom: 10px;
+        background: #181818;
+        border-radius: 4px;
+        padding: 0.25rem 1.5rem;
+    }
+    
+    .accordion .label {
+        position: relative;
+        padding: 10px 0;
+        cursor: pointer;
+        font-weight: 700;
+    }
+    
+    .accordion .label::before {
+        content: '+';
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        transform: translateY(-50%);
+    }
+    
+    .accordion .prod-content {
+        position: relative;
+        height: 0;
+        text-align: left;
+        /* width: 780px; */
+        overflow: hidden;
+    }
+    
+    .accordion .prod-content-container.active .prod-content {
+        height: auto;
+        margin-bottom: 10px;
+    }
+    
+    .accordion .prod-content-container.active .label::before {
+        content: '-';
+        font-size: 30px;
     }
 </style>
 {% endblock %}

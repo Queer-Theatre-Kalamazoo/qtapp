@@ -25,3 +25,12 @@ $(document).ready(function () {
       $("aside.navigation").toggleClass("no-sidebar");
   });
 });
+
+
+const accordion = document.getElementsByClassName('prod-content-container');
+var i = 0;
+for (i=0; i<accordion.length; i++) {
+  accordion[i].addEventListener('click', function () {
+    this.classList.toggle('active')
+  })
+}
