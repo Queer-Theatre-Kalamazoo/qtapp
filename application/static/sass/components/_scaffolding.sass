@@ -37,65 +37,76 @@ ul li ul
 ol li ol
   margin-bottom: 0
 
-// Headings
-h1,
-h2,
-h3,
-h4,
-h5
-  margin: $margins 0
-  font-weight: $heading-font-weight
-  font-family: $heading-font-family
-  line-height: $heading-line-height
-  color: $heading-font-color
 
-  &:not(:first-child)
-    margin: 1.5rem 0
 
-// Increased margin on additional headings
-h1:not(:first-child),
-h2:not(:first-child),
-h3:not(:first-child)
-  margin-top: 2rem
-
-// Heading individual styles
 h1
-  font-size: $h1-mobile
+    font-size: unquote("clamp(1.5rem, 2vw + 1rem, 2.25rem)")
 
-h2
-  font-size: $h2-mobile
+p
+  font-size: unquote("clamp(1rem, 2vw + 1rem, 1.429rem))")
 
-h3
-  font-size: $h3-mobile
 
-h4
-  font-size: $h4-mobile
 
-h5
-  font-size: $h5-mobile
 
-@include small-breakpoint
-  // Increased margin on additional headings
-  h1:not(:first-child),
-  h2:not(:first-child),
-  h3:not(:first-child)
-    margin-top: 2.5rem
-
-  // Heading desktop individual styles
-  h1
-    font-size: $h1
-
-  h2
-    font-size: $h2
-
-  h3
-    font-size: $h3
-
-  h4
-    font-size: $h4
-
-  h5
-    font-size: $h5
+// Headings
+// h1,
+// h2,
+// h3,
+// h4,
+// h5
+//   margin: $margins 0
+//   font-weight: $heading-font-weight
+//   font-family: $heading-font-family
+//   line-height: $heading-line-height
+//   color: $heading-font-color
+// 
+//   &:not(:first-child)
+//     margin: 1.5rem 0
+// 
+// // Increased margin on additional headings
+// h1:not(:first-child),
+// h2:not(:first-child),
+// h3:not(:first-child)
+//   margin-top: 2rem
+// 
+// // Heading individual styles
+// h1
+//   font-size: $h1-mobile
+// 
+// h2
+//   font-size: $h2-mobile
+// 
+// h3
+//   font-size: $h3-mobile
+// 
+// h4
+//   font-size: $h4-mobile
+// 
+// h5
+//   font-size: $h5-mobile
+// 
+// @include small-breakpoint
+//   // Increased margin on additional headings
+//   h1:not(:first-child),
+//   h2:not(:first-child),
+//   h3:not(:first-child)
+//     margin-top: 2.5rem
+// 
+//   // Heading desktop individual styles
+//   h1
+//     font-size: $h1
+// 
+//   h2
+//     font-size: $h2
+// 
+//   h3
+//     font-size: $h3
+// 
+//   h4
+//     font-size: $h4
+// 
+//   h5
+//     font-size: $h5
 
 // Link styling
 a.fancy-link,
@@ -276,9 +287,10 @@ div.scrollbar
     align-content: flex-start
 
   .grow
-    flex: 1
+    flex: 1 100%;
 
   .sidebar
-    min-width: 35%
+    /* min-width: 35% */
     max-width: 35%
     margin-left: 2rem;
+    flex: 0 1 auto;

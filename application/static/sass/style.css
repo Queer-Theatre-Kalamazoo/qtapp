@@ -55,7 +55,10 @@ header .header span {
   background: #a31800;
   height: 50px;
   text-size: 0.65rem;
-  color: #ffffffb4;
+}
+
+.page-title a {
+  color: #ffffffec;
 }
 
 .flex-container {
@@ -75,7 +78,7 @@ header .header span {
 }
 
 @media screen and (max-width: 640px) {
-  .sidebar {
+  aside.navigation {
     display: none;
   }
 }

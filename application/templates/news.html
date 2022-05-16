@@ -21,27 +21,9 @@
 
     {% endfor %}
 </div>
+{% endblock %}
 
-
-
-{% for post in posts %}
-<div class="post-preview">
-    <h2 class="post-title">
-        <a class="fancy-link" href="{{ url_for('bp_post.display_post', category=post.category, post_id=post.post_id) }}">{{ post.title }}</a>
-    </h2>
-    <h3 class="post-subtitle">{{ post.subtitle }}</h3>    
-    <p>{{ post.snippet }}</p>
-    {% if post.content | length >= 150 %}
-    <span>...</span>
-    {% endif %}
-    <p>By <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a> on {{ post.create_date | format_datetime() }}</p>
-</div>
-{% if not loop.last %}
-<hr class="post-divider" />
-{% endif %}
-{% endfor %}
-
-
+{% block styles %}
 <style>
 div.post-preview {
     border-radius: 4px;
