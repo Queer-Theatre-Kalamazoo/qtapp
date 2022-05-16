@@ -135,9 +135,10 @@ class Post(Base):
     author_id = Column(
         Integer, ForeignKey("artists.artist_id"), nullable=False, index=True
     )
-    type = Column(String(50))
+    category = Column(String(50))
     title = Column(String(100), nullable=False)
     subtitle = Column(String(50))
+    snippet = Column(String(512))
     content = Column(Text)
     create_date = Column(DateTime)
     last_updated = Column(DateTime)

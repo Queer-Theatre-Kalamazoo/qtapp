@@ -31,19 +31,27 @@ def init_app():
         app.register_blueprint(bp_management, url_prefix = '/app')
         app.register_blueprint(bp_production, url_prefix = '/production')
         app.register_blueprint(bp_person, url_prefix = '/person')
-        app.register_blueprint(bp_post, url_prefix = '/post')
+        app.register_blueprint(bp_post)
 
+        # Sat Dec 11, 2021 at 07:30:00 PM
         @app.template_filter()
         def format_datetime(value):
             return value.strftime("%a %b %d, %Y at %I:%M:%S %p")
 
+        # Dec 11
         @app.template_filter()
         def format_date_short(value):
             return value.strftime("%b %d")
 
+        # 2022
         @app.template_filter()
         def format_date_year(value):
             return value.strftime("%Y")
+
+        # Month N, 2022
+        @app.template_filter()
+        def format_post_date(value):
+            return value.strftime("%b %d, %Y at %-I:%M %p")
 
         import application.views
 

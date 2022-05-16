@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2 class="">{{ production.title }}</h2>
-<p class="production-director">Directed by {{ director.credit_name }}</p>
+<p class="production-director">Directed by <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=director.artist_id) }}">{{ director.credit_name }}</a></p>
 
 <div class="production-body-content">
     
@@ -185,6 +185,8 @@
     }
 
 
+
+    
 
     .accordion {
         /* width: 800px;

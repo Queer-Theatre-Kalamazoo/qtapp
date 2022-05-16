@@ -73,7 +73,7 @@ def display_production(prod_id, **slug):
         ).all()
 
         director = session.execute(
-            select(Credit.credit_name).where(and_(Credit.production_id == production.production_id, Credit.role == "Director"))
+            select(Credit.credit_name, Credit.artist_id).where(and_(Credit.production_id == production.production_id, Credit.role == "Director"))
         ).one()
 
         notices = session.execute(

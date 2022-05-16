@@ -5,8 +5,7 @@ bp_post = Blueprint(
     "bp_post",
     __name__,
     static_folder="static",
-    template_folder="templates",
-    url_prefix="/post",
+    template_folder="templates"
 )
 
 from . import views
