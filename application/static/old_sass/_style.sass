@@ -1,0 +1,60 @@
+@import "base/variables"
+
+header
+    background: $bg-dark
+
+    .header
+        display: flex
+        flex-direction: row
+        align-items: center
+
+.navbar
+    background: $primary-color    
+
+    .wrapper
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 3rem
+        column-gap: 1rem
+
+    span
+        opacity: 35%
+
+    a
+        color: #ffffffec
+        text-size: 0.65rem
+
+#poster,
+#headshot
+    // background-image: url('../images/poster.png')
+    background-size: contain
+    background-position: center center
+    height: 100%
+    width: 100%
+    // max-height: calc(100vh - 120px)
+    border-radius: 4px
+    margin-bottom: 10px
+    // padding: 20px
+
+.logo-circle
+    line-height: 0 // remove line-height */
+    display: inline-block // circle wraps image */
+    // margin: 5px
+    border: 4px solid rgba(200,200,200,0.4)
+    border-radius: 50% /* relative value */
+    /*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+    transition: linear 0.25s
+    height: 2.5rem
+    width: 2.5rem
+    margin: 10px 20px
+    background-image: url("/static/images/logo-circle.png")
+    background-position: center
+    background-size: 2.5rem 2.5rem
+    background-repeat: no-repeat
+
+    &:hover
+        transition: ease-out 0.2s
+        border: 4px solid #ff6d6d91
+        -webkit-transition: ease-out 0.2s
+

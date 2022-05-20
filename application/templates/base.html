@@ -8,7 +8,7 @@
         {% else %} <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         {% endif %}
         <link rel="stylesheet"
-              href="{{ url_for('static', filename='sass/main.css') }}">
+              href="{{ url_for('static', filename='old_sass/main.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -22,54 +22,46 @@
         {% block head %}
         {% endblock %}
     </head>
-    <body class="background">
+
+    <body>
+        <div id="loader"></div>
         <!-- Main Content -->
-        <main>
+        <div id="main">
             <!-- Header -->
             <header>
                 <div class="header wrapper">
-                    <a href="{{ url_for('home') }}" class="logo-circle">
-                        <img height="40" width="40" src="{{ url_for('static', filename='images/logo-circle.png') }}">
-                    </a>
-                    <span style="font-size: 1.5rem;">Queer Theatre Kalamazoo</span>
-                    <a data-enable-remember="true" id="sidebar-toggle"></a>
-                </div>
-            </header>
-
-            <!-- Page Breadcrumbs and Title -->
-            <div class="page-title">
-                {% for breadcrumb in breadcrumbs %}
+                    <a href="{{ url_for('home') }}" class="logo-circle"></a>
+                    <span class="org-name">Queer Theatre Kalamazoo</span>
+                    <div style="flex: 1 1 auto;"></div>
+                    {% for breadcrumb in breadcrumbs %}
                     <a class="fancy-link" href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>
                     {{ '&nbsp;/&nbsp;'|safe if not loop.last }}
                 {% endfor %}
+                </div>
+            </header>
+
+            <!-- Horizontal Navbar -->
+            <div class="navbar">
+                <div class="wrapper">
+                    {% include "partials/navigation.html" %}
+                </div>
             </div>
 
             <!-- Container -->
-            <div class="flex-container">
-                <!-- Sidebar GoTo Menu -->
-                <aside class="navigation">
-                    <div class="sidebar">
-                    {% block navigation %}
-                        {% include "partials/navigation.html" %}
-                    {% endblock %}
-                    </div>
-                </aside>
-                <!-- Container -->
-                <div id="content" class="content-section background scrollbar">
-                    <div class="wrapper">
-                        <div class="flex">
-                            <div class="grow">
-                            {% block content %}{% endblock %}
-                            </div>
-                            {% if sidebar %}
-                            <div class="sidebar info">
-                            {% block sidebar_image %}{% endblock %}
-                                <div>
-                                {% block aside %}{% endblock %}
-                                </div>
-                            </div>
-                            {% endif %}
+            <div id="content" class="content-section background scrollbar">
+                <div class="wrapper">
+                    <div class="flex">
+                        <div class="grow">
+                        {% block content %}{% endblock %}
                         </div>
+                        {% if sidebar %}
+                        <div class="sidebar info">
+                        {% block sidebar_image %}{% endblock %}
+                            <div>
+                            {% block aside %}{% endblock %}
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -92,12 +84,19 @@
             </div>
 
 
-        </main>
+        </div class="main">
         {% block styles %}
         {% endblock %}
         <script src="https://cdn.jsdelivr.net/npm/a11y-dialog@7/dist/a11y-dialog.min.js"></script>
         <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
         <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
         <script type="module" src="{{ url_for('static', filename='js/base.js') }}"></script>
+        <script type="text/javascript">
+            window.onload = function(){
+              setTimeout(function(){
+                document.getElementById("loader").remove();
+              },1000);
+            };
+        </script>
     </body>
 </html>

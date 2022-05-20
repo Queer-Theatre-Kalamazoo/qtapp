@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hello, world!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" type="text/css" href="fadein-loader.css" />
+  <link rel="stylesheet" type="text/css" href="sass/boilerplate/app.css" />
+</head>
+<body id="BODY">
+  <div id="loader"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="wrapper">
+
+            <!-- Branding (top) -->
+            <div>
+                <span>Let's put some more text in the header, shall we?</span>
+            </div>
+
+            <!-- Breadcrumbs (bottom) -->
+            <div>
+                <span>
+                    <a href="">Home</a> > <a href="">Link1</a> > <a href="">Link2</a>
+                </span>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside>
+        <div id="mainSidenav" class="sidenav" tabindex="-1">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+    </aside>
+
+    <!-- Body -->
+    <section id="main">
+        <div class="wrapper">
+            <div class="">
+                <p>Let's just put a bunch of meaningless nonesense here shall we? And then a little bit more.</p>
+            </div>
+            <div class="">
+                <p>We're not done yet though, oh no! There's so much more fun to be had!</p>
+                <span tabindex="0" onclick="openNav()">open</span>
+            </div>
+        </div>
+    </section>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript">
+  window.onload = function(){
+    setTimeout(function(){
+      document.getElementById("loader").remove();
+    },1000);
+  };
+  </script>
+</body>
+</html>

@@ -42,7 +42,7 @@
 
 {% block styles %}
 <style>
-    div.production-listing {
+    div.production-listing-archive {
         margin: 30px auto;
         padding: 0 20px;
         display: grid;
@@ -50,14 +50,21 @@
         grid-auto-rows: 175px;
         /*Define our columns */
         grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-        grid-gap: 1em;
+        grid-gap: 1rem;
+    }
+
+    div.production-listing {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 1.5rem;
+        column-gap: 1.5rem;
     }
 
     div.block {
         display: flex;
         align-items: center;
-        
-        padding: 5px;
+        padding: 1rem;
+        width: 100%;
         background-color: #181818;
         border-radius: 2px;
     }
