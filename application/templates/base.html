@@ -47,24 +47,27 @@
                 </div>
             </div>
 
-            <!-- Container -->
-            <div id="content" class="content-section background scrollbar">
+
+            <!-- Container with Sidebar -->
+            
+            <div id="content" class="margin-top">
                 <div class="wrapper">
-                    <div class="flex">
-                        <div class="grow">
-                        {% block content %}{% endblock %}
+                    <div class="flex-row gap-2">
+                        <div class="flex-col flex-7">
+                            {% block content %}{% endblock %}
                         </div>
                         {% if sidebar %}
-                        <div class="sidebar info">
-                        {% block sidebar_image %}{% endblock %}
+                        <div class="sidebar info flex-3">
+                            {% block sidebar_image %}{% endblock %}
                             <div>
-                            {% block aside %}{% endblock %}
+                                {% block aside %}{% endblock %}
                             </div>
                         </div>
                         {% endif %}
                     </div>
                 </div>
             </div>
+            
 
 
             <div class="dialog-container" id="about-site-dialog" aria-hidden="true" aria-labelledby="about-site-title"

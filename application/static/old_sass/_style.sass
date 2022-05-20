@@ -1,8 +1,6 @@
 @import "base/variables"
 
 header
-    background: $bg-dark
-
     .header
         display: flex
         flex-direction: row
@@ -22,15 +20,21 @@ header
         opacity: 35%
 
     a
-        color: #ffffffec
-        text-size: 0.65rem
+        color: #f1f1f1
+        font-weight: 600
+
+        &:hover
+            color: #dad0d0
+
+        &::before
+            background-color: #dad0d0
 
 #poster,
 #headshot
     // background-image: url('../images/poster.png')
     background-size: contain
     background-position: center center
-    height: 100%
+    // height: 100%
     width: 100%
     // max-height: calc(100vh - 120px)
     border-radius: 4px
