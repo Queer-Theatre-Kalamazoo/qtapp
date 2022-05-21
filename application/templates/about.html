@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% set active_page = "about" %}
 
 {% block content %}
 
-<h5>Current Staff:</h5>
-<div class="staff-board-container">
+<h2 class="text-center">Current Staff</h2>
+<div class="card-container justify-center">
     {% for person in staff %}
-    <div class="block">
+    <div style="flex-basis: 300px;" class="card clean img">
         <!-- Grab artist headshot or placeholder if none -->
         <a class="circle" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">
             <img height="40" width="40"
@@ -15,20 +16,20 @@
                     src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
                 {% endif %} />
         </a>
-        <div class="block-wrapper">
-            <h5 class="person-name">
+        <div class="card-wrapper">
+            <h3 class="person-name no-margin-top no-margin-bottom">
                 <a class="fancy-link" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
-            </h5>
-            <p class="person-role"><span>{{ person.title }}</span></p>
+            </h3>
+            <p class="person-role no-margin-bottom"><span>{{ person.title }}</span></p>
         </div>
     </div>
     {% endfor %}
 </div>
 
-<h5>Current Board:</h5>
-<div class="staff-board-container">
+<h2 class="text-center margin-top">Current Board</h2>
+<div class="card-container justify-center">
     {% for person in board %}
-    <div class="block">
+    <div style="flex-basis: 300px;" class="card clean img">
         <!-- Grab artist headshot or placeholder if none -->
         <a class="circle" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">
             <img height="40" width="40"
@@ -38,76 +39,23 @@
                     src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
                 {% endif %} />
         </a>
-        <div class="block-wrapper">
-            <h5 class="person-name">
+        <div class="card-wrapper">
+            <h3 class="person-name no-margin-top no-margin-bottom">
                 <a class="fancy-link" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
-            </h5>
-            <p class="person-role"><span>{{ person.title }}</span></p>
+            </h3>
+            <p class="person-role no-margin-bottom"><span>{{ person.title }}</span></p>
         </div>
     </div>
     {% endfor %}
 </div>
-
-
-
-
-
-
 
 {% endblock %}
 
+
+
 {% block styles %}
 <style>
-    p.production-director {
-        font-size: 1.3rem;
-    }
 
-    div.staff-board-container {
-        display: flex;
-        flex-wrap: wrap;
-        column-gap: 1.5rem;
-        row-gap: 1.5rem;
-        width: 100%;
-    }
-
-    div.block {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        padding: 0.5rem;
-        background-color: #e4c0c0;
-        border-radius: 2px;
-        min-width: 45%;
-        border-left: 4px solid rgb(124, 18, 18);
-    }
-
-    @media screen and (max-width: 700px) {
-        div.block {
-            width: 100%;
-        }
-    }
-
-    div.block a.circle {
-        margin: 0 20px 0 20px;
-    }
-
-    div.block-wrapper {
-        text-align: left;
-    }
-
-    h5.person-name {
-        font-size: 1.2rem;
-        margin: 0 0 0.25rem 0;
-    }
-
-    p.person-role {
-        margin: 0;
-    }
-
-    p.person-role>span {
-        font-style: italic;
-    }
     .circle {
         line-height: 0;
         display: inline-block;

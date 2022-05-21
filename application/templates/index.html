@@ -1,36 +1,54 @@
 {% extends "base.html" %}
+{% set active_page = "index" %}
+
+{% block page %}
+<div class="page wrapper">
+    <h2 class="text-center">Welcome to Queer Theatre Kalamazoo!</h2>
+    <div class="justify-center flex-row">
+        <p style="max-width: 700px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam.</p>
+    </div>
+    <hr />
+    <div class="card-container margin-top">
+
+        <!-- Job Posting Block -->
+        <div style="flex: 1 1 auto;" class="card full-width secondary">
+            <div class="card-wrapper">
+                <h3>Employment Opportunity</h3>
+                <p>We are seeking a part-time <strong>Managing Director</strong> to join our small team! Compensation is $21 per hour (approx. 12 hours per month) with a $1,000 stipend at the conclusion of a six-month contract.</p>
+                <p>The managing director oversees fundraising efforts and engagement, organization governance in collaboration with the Board of Directors, strategic initiatives, and other financial and administrative functions.</p>
+                <a href="">Click here to see the full posting here.</a>
+            </div>
+        </div>
+
+        <!-- Upcoming Production block -->
+        <div style="flex: 1 0 300px;" class="card accent">
+            <div class="card-wrapper">
+                <h3>Coming Up: <a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=next_prod.production_id, slug=next_prod.slug) }}">{{ next_prod.title }}</a></h3>
+                <span>Running {{ prod_date_range.open_date | format_date_short() }} to {{ prod_date_range.close_date | format_date_short() }}</span>
+                <p>{{ next_prod.description | safe | truncate(300) }}</p>
+            </div>
+        </div>
+
+        <!-- Donation block -->
+        <div style="flex: 1 0 300px;" class="card accent">
+            <div class="card-wrapper">
+                <h3>Three reasons to donate, you won't <i>believe</i> #2!!</h3>
+                <ol style="list-style">
+                    <li>We pay every artist who works with us</li>
+                    <li></li>
+                    <li>Ticket prices are decided by guests at checkout</li>
+                </ol>
+                <a href="#_givealways" class="button accent-button">Donate Now</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
 
 {% block content %}
-<h1>Heading 1</h1>
-<h2>Heading 2</h2>
-<h3>Heading 3</h3>
-<h4>Heading 4</h4>
-<h5>Heading 5</h5>
-<p>Lorem ipsum, dolor sit amet <a class="fancy-link" href="#">consectetur adipisicing</a> elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam.</p>
-<ol>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-</ol>
 
-<h4>Heading 4</h4>
-<h5>Heading 5</h5>
-<p>Lorem ipsum, dolor sit amet <a class="fancy-link" href="#">consectetur adipisicing</a> elit. Eum recusandae ab exercitationem atque
-    nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic
-    inventore aliquam.</p>
-<ol>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-</ol>
 
-<h5>Heading 5</h5>
-<p>Lorem ipsum, dolor sit amet <a class="fancy-link" href="#">consectetur adipisicing</a> elit. Eum recusandae ab exercitationem atque
-    nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic
-    inventore aliquam.</p>
-<ol>
-
-<h2>Heading 2</h2>
-<h3>Heading 3</h3>
 
 {% endblock %}

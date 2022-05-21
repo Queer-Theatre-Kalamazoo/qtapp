@@ -1,100 +1,25 @@
 {% extends "base.html" %}
+{% set active_page = "news" %}
 
 {% block content %}
 <h1>News</h1>
 
 
 
-<div class="cast-crew-container">
+<div class="card-container">
     {% for post in posts %}
 
-    <div class="block">
-        <div class="block-wrapper">
-            <h5 class="person-name"><a class="fancy-link"
+    <div style="flex:20rem;" class="card accent">
+        <div class="card-wrapper">
+            <h3 class="person-name"><a class="fancy-link"
                     href="{{ url_for('bp_post.display_post', category=post.category, post_id=post.post_id) }}">{{
-                    post.title }}</a></h5>
-            <p class="person-role"><span>{{ post.subtitle }}</span></p>
+                    post.title }}</a></h3>
+            <h4 class="person-role"><span>{{ post.subtitle }}</span></h4>
             <p>{{ post.snippet|truncate(256) }}</p>
-            <p>Posted {{ post.create_date | format_post_date }} by <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a></p>
+            <p>{{ post.create_date | format_post_date }} — <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a></p>
         </div>
     </div>
 
     {% endfor %}
 </div>
-{% endblock %}
-
-{% block styles %}
-<style>
-div.post-preview {
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    padding: 1rem;
-    background-color: rgba(214, 214, 214, 0.1);
-}
-
-h2.post-title {
-    font-size: 1.5rem;
-    margin: 5px 0 0.5rem 0;
-}
-
-h3.post-subtitle {
-    font-size: 1.25rem;
-    margin: 5px 0 0.75rem 0;
-}
-
-hr.post-divider {
-    margin: 1rem auto;
-    opacity: 0.2;
-    width: 75%;
-}
-
-
-div.cast-crew-container {
-    margin: 30px auto;
-    display: grid;
-    /* Define Auto Row size */
-    grid-auto-rows: auto;
-    /*Define our columns */
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    grid-gap: 1em;
-}
-
-div.block {
-    display: flex;
-    align-items: center;
-    
-    padding: 5px;
-    background-color: #e4c0c0;
-    border-radius: 2px;
-    border-left: 4px solid rgb(124, 18, 18);
-}
-
-div.block a.circle {
-    margin: 0 20px 0 20px;
-}
-
-div.block p {
-    margin-top: 0.5rem;
-    margin-bottom: 0;
-}
-
-div.block-wrapper {
-    text-align: left;
-    padding: 1rem;
-}
-
-h5.person-name {
-    font-size: 1.2rem;
-    margin: 0 0 0.25rem 0;
-}
-
-p.person-role {
-    margin: 0;
-}
-
-p.person-role>span {
-    font-style: italic;
-}
-</style>
-
 {% endblock %}

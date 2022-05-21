@@ -3,7 +3,7 @@ import application.blueprints.common.schema as schema
 
 # Import utilities
 from application.models import Base
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text, Boolean, Date, select
+from sqlalchemy import func, Column, DateTime, ForeignKey, Integer, String, Text, Boolean, Date, select
 
 from sqlalchemy.orm import relationship
 from application.database import Session
@@ -223,6 +223,18 @@ class Production(Base):
 
     def get_url(self):
         return url_for('bp_production.display_production', prod_id=self.production_id, slug=self.slug)
+
+    def get_date_range(self):
+        with Session.begin() as session:
+            datetimes = session.execute(select(
+                func.min(Performance.datetime).label('open_date'),
+                func.max(Performance.datetime).label('close_date')
+                ).where(Performance.production_id == self.production_id)).one()
+            print(f'From { datetimes.open_date } to { datetimes.close_date }')
+            return datetimes
+            
+            # results = session.execute(query).all()
+            # return f'{ results.open_date } to { results.close_date }'
 
     def __repr__(self):
         with Session.begin() as session:

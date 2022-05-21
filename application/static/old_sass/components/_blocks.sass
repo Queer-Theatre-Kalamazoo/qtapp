@@ -1,0 +1,38 @@
+// A card with with a left border, good for text content.
+div.card-container
+    display: flex
+    flex-wrap: wrap
+    column-gap: 1.5rem
+    row-gap: 1.5rem
+
+    .card 
+        // display: flex-inline
+        align-items: center
+        padding: 5px
+        border-radius: 4px
+
+        .card-wrapper 
+            text-align: left
+            padding: 1rem
+
+        &.primary
+            background-color: #e4c0c0
+            border-left: 4px solid $primary-color
+
+        &.secondary
+            background-color: #cbc0e4
+            border-left: 4px solid $secondary-color
+
+        &.accent
+            background-color: #e4e3e3
+            border-left: 4px solid $accent-color
+        
+        &.clean
+            background-color: transparent
+            border: 1px solid $accent-color
+
+        &.img
+            display: flex
+
+
+

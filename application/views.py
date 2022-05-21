@@ -1,4 +1,3 @@
-from math import prod
 from flask import render_template
 from flask_breadcrumbs import register_breadcrumb
 from flask import current_app
@@ -10,7 +9,13 @@ from sqlalchemy import select, and_, func
 @current_app.route('/')
 @register_breadcrumb(current_app, '.', 'Home')
 def home():
-    return render_template('index.html', title='Home')
+    with Session.begin() as session:
+        # Get next performance's production
+        query = select(Performance).where(Performance.datetime > func.now()).order_by(Performance.datetime.asc())
+        perf = session.execute(query).scalars().first()
+        prod = session.execute(select(Production.production_id, Production.slug, Production.title, Production.description).where(Production.production_id == perf.production_id)).one()
+        date_range = Production.get_date_range(prod)
+        return render_template('index.html', title='Home', next_prod=prod, prod_date_range=date_range)
 
 
 @current_app.route('/events')
@@ -18,7 +23,7 @@ def home():
 def events():
     with Session.begin() as session:
         query_productions = select(
-                        Production.title.label('prod_desc'),
+                        Production.title,
                         Production.slug,
                         Production.poster,
                         Production.production_id).\

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% set active_page = active_page|default('index') -%}
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,9 +49,12 @@
                 </div>
             </div>
 
+            <!-- Page -->
+            {% block page %}
+            {% endblock %}
 
-            <!-- Container with Sidebar -->
-            
+
+            <!-- Content -->
             <div id="content" class="margin-top">
                 <div class="wrapper">
                     <div class="flex-row gap-2">

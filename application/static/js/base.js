@@ -26,7 +26,7 @@ $(document).ready(function () {
   });
 });
 
-
+/* Accordions, currently used for production notices */
 const accordion = document.getElementsByClassName('prod-content-container');
 var i = 0;
 for (i=0; i<accordion.length; i++) {
@@ -34,3 +34,13 @@ for (i=0; i<accordion.length; i++) {
     this.classList.toggle('active')
   })
 }
+
+/* Philantro script */
+(function() {
+  const s = document.createElement('script');
+  const ph = document.getElementsByTagName('script')[0];
+  s.type = 'text/javascript'; s.async = true;
+  s.src = 'https://philantro.s3.amazonaws.com/pdf/philantro.js';
+  window.options = {OID: '954681622'};
+  ph.parentNode.insertBefore(s, ph);
+  })();

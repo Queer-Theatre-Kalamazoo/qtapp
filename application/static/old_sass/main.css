@@ -102,6 +102,13 @@ a.fancy-link::before,
   transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 
+a.fancy-link.active,
+.link-like.active,
+.post-content a.active,
+.prod-content-wrapper a.active {
+  color: #ff9a9a;
+}
+
 mark {
   background: #ffeea8;
   padding: 0 0.2rem;
@@ -380,6 +387,10 @@ div.content-section {
 .responsive-image {
   max-width: 100%;
   height: auto;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .show {
@@ -844,6 +855,76 @@ caption {
     top: 1em;
     right: 1em;
   }
+}
+
+div.card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-column-gap: 1.5rem;
+          column-gap: 1.5rem;
+  row-gap: 1.5rem;
+}
+
+div.card-container .card {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+div.card-container .card .card-wrapper {
+  text-align: left;
+  padding: 1rem;
+}
+
+div.card-container .card.primary {
+  background-color: #e4c0c0;
+  border-left: 4px solid #a31800;
+}
+
+div.card-container .card.secondary {
+  background-color: #cbc0e4;
+  border-left: 4px solid #5334a8;
+}
+
+div.card-container .card.accent {
+  background-color: #e4e3e3;
+  border-left: 4px solid #cdcdcd;
+}
+
+div.card-container .card.clean {
+  background-color: transparent;
+  border: 1px solid #cdcdcd;
+}
+
+div.card-container .card.img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a.poster {
+  line-height: 0;
+  display: inline-block;
+  border: 4px solid rgba(200, 200, 200, 0.4);
+  border-radius: 4px;
+  -webkit-transition: linear 0.25s;
+  transition: linear 0.25s;
+  margin: 10px 20px;
+}
+
+a.poster:hover {
+  transition: ease-out 0.2s;
+  border: 4px solid #ff6d6d91;
+  -webkit-transition: ease-out 0.2s;
+}
+
+a.poster img {
+  border-radius: 4px;
 }
 
 /**
