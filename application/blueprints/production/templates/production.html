@@ -13,12 +13,12 @@
     
     {% if notices %}
     <h2>Notices</h2>
-    <div class="accordion-body margin-top">
-        <div class="accordion">
+    <div class="notice-accordion-body margin-top">
+        <div class="notice-accordion">
             {% for pt, notice, notice_type in notices %}
-            <div class="prod-content-container">
+            <div class="notice-container">
                 <div class="label">{{ notice_type.description }}</div>
-                <div class="prod-content">{{ notice.content | safe }}</div>
+                <div class="notice-content">{{ notice.content | safe }}</div>
             </div>
             <!-- # {{ '<hr \>'|safe if not loop.last }} -->
             {% endfor %}
@@ -227,7 +227,7 @@ aria-describedby="ploxel-description">
 
     
 
-    .accordion {
+    .notice-accordion {
         /* width: 800px;
         margin: 90px auto; 
         color: black;
@@ -235,7 +235,7 @@ aria-describedby="ploxel-description">
         padding: 45px 45px;*/
     }
     
-    .accordion .prod-content-container {
+    .notice-accordion .notice-container {
         position: relative;
         margin-bottom: 10px;
         background-color: #e4c0c0;
@@ -244,14 +244,14 @@ aria-describedby="ploxel-description">
         border-left: 4px solid rgb(124, 18, 18);
     }
     
-    .accordion .label {
+    .notice-accordion .label {
         position: relative;
         padding: 10px 0;
         cursor: pointer;
         font-weight: 700;
     }
     
-    .accordion .label::before {
+    .notice-accordion .label::before {
         content: '+';
         position: absolute;
         top: 50%;
@@ -259,7 +259,7 @@ aria-describedby="ploxel-description">
         transform: translateY(-50%);
     }
     
-    .accordion .prod-content {
+    .notice-accordion .notice-content {
         position: relative;
         height: 0;
         text-align: left;
@@ -267,12 +267,12 @@ aria-describedby="ploxel-description">
         overflow: hidden;
     }
     
-    .accordion .prod-content-container.active .prod-content {
+    .notice-accordion .notice-container.active .notice-content {
         height: auto;
         margin-bottom: 10px;
     }
     
-    .accordion .prod-content-container.active .label::before {
+    .notice-accordion .notice-container.active .label::before {
         content: '-';
         font-size: 30px;
     }

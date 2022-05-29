@@ -760,6 +760,7 @@ header .header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .navbar {
@@ -770,15 +771,13 @@ header .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   height: 3rem;
-  -webkit-column-gap: 1rem;
-          column-gap: 1rem;
 }
 
 .navbar span {
@@ -1011,28 +1010,29 @@ a.poster img {
  */
 @media only screen and (max-width: 800px) {
   div.sidebar,
-  .breadcrumbs {
+  #brand-name,
+  .navbar {
     display: none;
   }
 }
 
 #artist-credits-mobile,
-#artist-credits-title {
+#artist-credits-title,
+#nav-menu-trigger {
   display: block;
 }
 
 @media only screen and (min-width: 800px) {
   #artist-credits-mobile,
-  #artist-credits-title {
+  #artist-credits-title,
+  #nav-menu-trigger {
     display: none;
   }
 }
 
 @media only screen and (max-width: 800px) {
   #header-brand {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    border-bottom: 3px solid #a31800;
   }
 }
 /*# sourceMappingURL=main.css.map */

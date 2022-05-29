@@ -4,13 +4,16 @@
 
 // Hide when under 800px
 div.sidebar,
-.breadcrumbs
+#brand-name,
+.navbar
     @media only screen and (max-width: 800px)
         display: none
 
+
 // Show when over 800px
 #artist-credits-mobile,
-#artist-credits-title
+#artist-credits-title,
+#nav-menu-trigger
     display: block
     
     @media only screen and (min-width: 800px)
@@ -19,4 +22,5 @@ div.sidebar,
 // Center when under 800px
 #header-brand
     @media only screen and (max-width: 800px)
-        justify-content: center
+        border-bottom: 3px solid $primary-color
+
