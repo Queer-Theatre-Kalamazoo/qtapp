@@ -3,7 +3,10 @@
 {% block content %}
 <h1>{{ production.title }}</h1>
 <p class="production-director">Directed by <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=director.artist_id) }}">{{ director.credit_name }}</a></p>
-<div><a class="button round-button accent-button" data-a11y-dialog-show="cast-crew-dialog">Production Credits</a></div>
+<div>
+    <a class="button round-button muted-button" data-a11y-dialog-show="cast-crew-dialog">Production Credits</a>
+    <a class="button round-button accent-button" data-a11y-dialog-show="">Get Tickets</a>
+</div>
 <div class="production-body-content">
     
     {% if notices %}
@@ -32,14 +35,14 @@
     <div class="dialog-overlay" data-a11y-dialog-hide></div>
     <div class="dialog-content center" role="document">
         <button data-a11y-dialog-hide class="dialog-close" aria-label="Close this dialog window">&times;</button>
-        <h1 id="cast-crew-title"></h1>
-        <p id="cast-crew-description">
+        {% if cast %}
         <h2>Cast</h2>
         <div class="card-container text-center justify-center">
             {% for person in cast %}
 
-            <div class="card clean img">
+            <div class="card clean {% if person.artist_id %}img{% endif %}">
                 <!-- Grab artist headshot or placeholder if none -->
+                {% if person.artist_id %}
                 <a class="circle"
                     href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
                     <img height="40" width="40" {% if person.headshot
@@ -47,21 +50,32 @@
                         {%else%}src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
                         {% endif %} />
                 </a>
+                {% endif %}
                 <div class="card-wrapper">
-                    <h5 class="person-name"><a class="fancy-link"
+                    <p class="person-name no-margin-bottom">
+                        {% if person.artist_id %}
+                        <a class="fancy-link"
                             href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
-                            person.credit_name }}</a></h5>
+                            person.credit_name }}
+                        </a>
+                        {% else %}
+                        {{ person.credit_name }}
+                        {% endif %}
+                    </p>
                     <p class="person-role">as <span>{{ person.role }}</span></p>
                 </div>
             </div>
 
             {% endfor %}
         </div>
+        {% endif %}
+        {% if crew %}
         <h2>Crew</h2>
         <div class="card-container text-center justify-center">
             {% for person in crew %}
-            <div class="card clean img">
+            <div class="card clean {% if person.artist_id %}img{% endif %}">
                 <!-- Grab artist headshot or placeholder if none -->
+                {% if person.artist_id %}
                 <a class="circle"
                     href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
                     <img height="40" width="40" {% if person.headshot
@@ -69,16 +83,24 @@
                         {%else%}src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
                         {% endif %} />
                 </a>
+                {% endif %}
                 <div class="card-wrapper">
-                    <h5 class="person-name"><a class="fancy-link"
+                    <p class="person-name no-margin-bottom">
+                        {% if person.artist_id %}
+                        <a class="fancy-link"
                             href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
-                            person.credit_name }}</a></h5>
+                            person.credit_name }}
+                        </a>
+                        {% else %}
+                        {{ person.credit_name }}
+                        {% endif %}
+                    </p>
                     <p class="person-role"><span>{{ person.role }}</span></p>
                 </div>
             </div>
             {% endfor %}
         </div>
-        </p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
@@ -170,7 +192,7 @@
         transition: linear 0.25s;
         height: 40px;
         width: 40px;
-        margin: 10px 20px;
+        margin-left: 10px;
     }
 
     .circle img {

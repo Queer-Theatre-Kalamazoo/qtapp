@@ -62,14 +62,14 @@ def display_production(prod_id, **slug):
             select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
             .select_from(Credit)
             .where(and_(Credit.production_id == production.production_id, Credit.category == "Cast"))
-            .join(Artist)
+            .outerjoin(Artist)
         ).all()
 
         crew = session.execute(
             select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
             .select_from(Credit)
             .where(and_(Credit.production_id == production.production_id, Credit.category == "Crew"))
-            .join(Artist)
+            .outerjoin(Artist)
         ).all()
 
         director = session.execute(

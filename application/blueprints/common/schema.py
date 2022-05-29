@@ -40,7 +40,7 @@ class Credit(Base):
 
     credit_id = Column(Integer, primary_key=True)
     artist_id = Column(
-        Integer, ForeignKey("artists.artist_id"), nullable=False, index=True
+        Integer, ForeignKey("artists.artist_id"), index=True
     )
     performance_id = Column(
         Integer, ForeignKey("performances.performance_id"), index=True
@@ -52,6 +52,7 @@ class Credit(Base):
     category = Column(String(20))
     role = Column(String(100), nullable=False)
     credit_name = Column(String(100), nullable=False)
+    title_credit = Column(Boolean, default = False)
 
     def __repr__(self):
         with Session.begin() as session:
