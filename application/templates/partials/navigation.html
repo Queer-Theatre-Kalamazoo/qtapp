@@ -2,7 +2,7 @@
 <span> | </span>
 <a class="fancy-link {{ 'active' if active_page == 'events' else '' }}" href="{{ url_for('events') }}">Events</a>
 <span> | </span>
-<a class="fancy-link {{ 'active' if active_page == 'news' else '' }}" href="{{ url_for('news') }}">News</a>
+<a class="fancy-link {{ 'active' if active_page == 'news' else '' }}" href="{{ url_for('bp_post.index_news') }}">News</a>
 <span> | </span>
 <a class="fancy-link {{ 'active' if active_page == 'about' else '' }}" href="{{ url_for('about') }}">About</a>
 <span> | </span>

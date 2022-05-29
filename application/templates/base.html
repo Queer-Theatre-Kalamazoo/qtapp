@@ -31,16 +31,10 @@
         <div id="main">
             <!-- Header -->
             <header>
-                <div class="header wrapper">
+                <div id="header-brand" class="header wrapper">
                     <a href="{{ url_for('home') }}" class="logo-circle"></a>
                     <span class="org-name">Queer Theatre Kalamazoo</span>
-                    <div style="flex: 1 1 auto;"></div>
-                    <div class="breadcrumbs">
-                        {% for breadcrumb in breadcrumbs %}
-                        <a class="fancy-link" href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>
-                        {{ '&nbsp;/&nbsp;'|safe if not loop.last }}
-                                        {% endfor %}
-                    </div>
+                    
                 </div>
             </header>
 

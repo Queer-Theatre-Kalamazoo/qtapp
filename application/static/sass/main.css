@@ -980,12 +980,20 @@ div.card-container .card.img {
   display: flex;
 }
 
+#index-welcome {
+  margin: 4rem 0;
+}
+
 #poster,
 #headshot {
   width: 100%;
   border-radius: 4px;
   -o-object-fit: scale-down;
      object-fit: scale-down;
+}
+
+a.poster img {
+  margin-left: 1rem;
 }
 
 .sidebar {
@@ -1017,6 +1025,14 @@ div.card-container .card.img {
   #artist-credits-mobile,
   #artist-credits-title {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #header-brand {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 /*# sourceMappingURL=main.css.map */

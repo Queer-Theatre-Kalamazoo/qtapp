@@ -1,14 +1,11 @@
-
-
-var about_site_modal = document.getElementById('about-site-dialog')
-var about_site_dialog = new A11yDialog(about_site_modal)
-
-about_site_dialog.on('show', function (about_site_modal, about_site_trigger) {
-  console.log(about_site_modal)
-  console.log(about_site_trigger)
-})
-
-
+/* Accordions, currently used for production notices */
+const notice_accordion = document.getElementsByClassName('prod-content-container');
+var i = 0;
+for (i=0; i<notice_accordion.length; i++) {
+  notice_accordion[i].addEventListener('click', function () {
+    this.classList.toggle('active')
+  })
+}
 
 var cast_crew_modal = document.getElementById('cast-crew-dialog')
 if(cast_crew_modal){
@@ -30,20 +27,8 @@ if(ploxel_modal){
   })
 }
 
-$(document).ready(function () {
-  $("#sidebar-toggle").on("click", function () {
-      $("aside.navigation").toggleClass("no-sidebar");
-  });
-});
 
-/* Accordions, currently used for production notices */
-const accordion = document.getElementsByClassName('prod-content-container');
-var i = 0;
-for (i=0; i<accordion.length; i++) {
-  accordion[i].addEventListener('click', function () {
-    this.classList.toggle('active')
-  })
-}
+
 
 /* Philantro script */
 (function() {

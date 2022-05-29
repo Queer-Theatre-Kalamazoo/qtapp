@@ -1,6 +1,5 @@
 from flask import redirect, render_template, current_app, request, url_for
 from flask_login import current_user
-from flask_breadcrumbs import register_breadcrumb, default_breadcrumb_root
 from . import bp_production
 
 # Import remote models
@@ -19,17 +18,9 @@ from application.blueprints.common.schema import (
 from application.database import Session
 from sqlalchemy import select, and_
 
-def bc_view_production(*args, **kwargs):
-    with Session.begin() as session:
-        prod_id = request.view_args['prod_id']
-        production_query = select(Production.production_id, Production.title, Production.slug).where(Production.production_id == prod_id)
-        production = session.execute(production_query).one()
-        return [{'text': production.title, 'url': Production.get_url(production)}]
-
 
 @bp_production.route("/<int:prod_id>")
 @bp_production.route("/<int:prod_id>/<string:slug>")
-@register_breadcrumb(bp_production, '.production', '', dynamic_list_constructor=bc_view_production)
 def display_production(prod_id, **slug):
     with Session.begin() as session:
 
@@ -104,8 +95,3 @@ def display_production(prod_id, **slug):
             director=director,
             notices=notices,
         )
-
-@bp_production.route("/")
-@register_breadcrumb(bp_production, '.', 'Production')
-def production_index():
-    return redirect(url_for('events'))

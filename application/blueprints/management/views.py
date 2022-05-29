@@ -1,6 +1,5 @@
 from . import bp_management
 from flask import render_template, redirect, url_for
-from flask_breadcrumbs import register_breadcrumb, default_breadcrumb_root
 
 # Import forms
 from .forms import PostForm
@@ -12,13 +11,11 @@ import datetime
 from sqlalchemy import select
 
 @bp_management.route("/")
-@register_breadcrumb(bp_management, '.', 'Management')
 def dashboard():
     return render_template("index_management.html", title="Management Dashboard")
 
 
 @bp_management.route("/post/new", methods=['GET', 'POST'])
-@register_breadcrumb(bp_management, '.post_new', 'New Post')
 def post_new():
     form = PostForm()
 
@@ -37,7 +34,6 @@ def post_new():
 
 
 @bp_management.route("/post/update/<int:post_id>", methods=['GET', 'POST'])
-@register_breadcrumb(bp_management, '.post_update', 'Update Post')
 def post_update(post_id):
     with Session.begin() as session:
         post = session.execute(select(Post).where(Post.post_id == post_id)).scalars().one()

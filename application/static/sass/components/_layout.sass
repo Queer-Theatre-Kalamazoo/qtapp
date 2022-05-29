@@ -2,14 +2,21 @@
  * Layout
  */
 
+// Hide when under 800px
 div.sidebar,
 .breadcrumbs
     @media only screen and (max-width: 800px)
         display: none
 
+// Show when over 800px
 #artist-credits-mobile,
 #artist-credits-title
     display: block
     
     @media only screen and (min-width: 800px)
         display: none
+
+// Center when under 800px
+#header-brand
+    @media only screen and (max-width: 800px)
+        justify-content: center

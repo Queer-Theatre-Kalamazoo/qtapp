@@ -30,7 +30,7 @@ def init_app():
         # app.register_blueprint(bp_admin, url_prefix = '/admin')
         app.register_blueprint(bp_management, url_prefix = '/app')
         app.register_blueprint(bp_production, url_prefix = '/production')
-        app.register_blueprint(bp_person, url_prefix = '/person')
+        app.register_blueprint(bp_person)
         app.register_blueprint(bp_post)
 
         # Dec 11, 2021 at 07:30:00 PM

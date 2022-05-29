@@ -1,5 +1,4 @@
 from flask import render_template
-from flask_breadcrumbs import register_breadcrumb
 from flask import current_app
 from application.database import Session
 from application.blueprints.common.schema import Season, Production, Post, Person, Relationship, Artist, Credit, Performance
@@ -7,7 +6,6 @@ from sqlalchemy import select, and_, func
 
 
 @current_app.route('/')
-@register_breadcrumb(current_app, '.', 'Home')
 def home():
     with Session.begin() as session:
         # Get next performance's production
@@ -19,7 +17,6 @@ def home():
 
 
 @current_app.route('/events')
-@register_breadcrumb(current_app, '.events', 'Events')
 def events():
     with Session.begin() as session:
         query_productions = select(
@@ -50,17 +47,8 @@ def events():
         return render_template('events.html', title='Events', productions=productions, performances=performances, directors=directors)
 
 
-@current_app.route('/news')
-@register_breadcrumb(current_app, '.news', 'News')
-def news():
-    with Session.begin() as session:
-        # So I guess you use just .all() if there's a join, or .scalars().all() otherwise?
-        posts = session.execute(select(Post.title, Post.subtitle, Post.content, Post.snippet, Post.post_id, Post.category, Post.create_date, Artist.name.label('name'), Artist.slug.label('artist_slug'), Artist.artist_id).where(Post.category == "news").join(Artist, Post.author_id == Artist.artist_id).order_by(Post.create_date.desc())).all()
-        return render_template('news.html', title='News', posts=posts)
-
 
 @current_app.route('/about')
-@register_breadcrumb(current_app, '.about', 'About Us')
 def about():
     with Session.begin() as session:
         with Session.begin() as session:

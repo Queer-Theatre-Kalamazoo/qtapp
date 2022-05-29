@@ -144,6 +144,9 @@ class Post(Base):
     create_date = Column(DateTime)
     last_updated = Column(DateTime)
 
+    def get_url(self):
+        return url_for('bp_post.display_post', category=self.category, post_id=self.post_id)
+
     def __repr__(self):
         return self.title
 
