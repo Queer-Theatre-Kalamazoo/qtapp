@@ -92,7 +92,7 @@ def display_production(prod_id, **slug):
 
         return render_template(
             "production.html",
-            title=Production.title,
+            title=production.title,
             poster=poster_filename,
             sidebar=True,
             current_user=current_user,

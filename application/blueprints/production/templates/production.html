@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2 class="">{{ production.title }}</h2>
+<h1>{{ production.title }}</h1>
 <p class="production-director">Directed by <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=director.artist_id) }}">{{ director.credit_name }}</a></p>
-
+<div><a class="button round-button accent-button" data-a11y-dialog-show="cast-crew-dialog">Production Credits</a></div>
 <div class="production-body-content">
     
     {% if notices %}
-    <div class="accordion-body">
+    <h2>Notices</h2>
+    <div class="accordion-body margin-top">
         <div class="accordion">
             {% for pt, notice, notice_type in notices %}
             <div class="prod-content-container">
@@ -20,9 +21,8 @@
     </div>
     {% endif %}
     
-    <h4>Description</h4>
+    <h2>Description</h2>
     <span class="prod-content-wrapper">{{ production.description | safe }}</span>
-    <a class="button" data-a11y-dialog-show="cast-crew-dialog">Full Cast and Crew</a>
 </div>
 
 
@@ -34,11 +34,11 @@
         <button data-a11y-dialog-hide class="dialog-close" aria-label="Close this dialog window">&times;</button>
         <h1 id="cast-crew-title"></h1>
         <p id="cast-crew-description">
-        <h3>Cast</h3>
-        <div class="cast-crew-container">
+        <h2>Cast</h2>
+        <div class="card-container text-center justify-center">
             {% for person in cast %}
 
-            <div class="block">
+            <div class="card clean img">
                 <!-- Grab artist headshot or placeholder if none -->
                 <a class="circle"
                     href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
@@ -47,7 +47,7 @@
                         {%else%}src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
                         {% endif %} />
                 </a>
-                <div class="block-wrapper">
+                <div class="card-wrapper">
                     <h5 class="person-name"><a class="fancy-link"
                             href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
                             person.credit_name }}</a></h5>
@@ -57,10 +57,10 @@
 
             {% endfor %}
         </div>
-        <h3>Crew</h3>
-        <div class="cast-crew-container">
+        <h2>Crew</h2>
+        <div class="card-container text-center justify-center">
             {% for person in crew %}
-            <div class="block">
+            <div class="card clean img">
                 <!-- Grab artist headshot or placeholder if none -->
                 <a class="circle"
                     href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
@@ -69,7 +69,7 @@
                         {%else%}src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
                         {% endif %} />
                 </a>
-                <div class="block-wrapper">
+                <div class="card-wrapper">
                     <h5 class="person-name"><a class="fancy-link"
                             href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
                             person.credit_name }}</a></h5>
@@ -85,7 +85,7 @@
 
 {% block sidebar_image %}
 {% if poster %}
-<img src="{{ url_for('bp_production.static', filename=poster) }}" id="poster" alt="" srcset="">
+<img class="shadow" src="{{ url_for('bp_production.static', filename=poster) }}" id="poster" alt="" srcset="">
 {% else %}
 <!-- <img src="{{ url_for('bp_production.static', filename='/images/posters/placeholder.jpg') }}" id="poster" alt="" srcset=""> -->
 {% endif %}
