@@ -9,6 +9,17 @@ div.sidebar,
     @media only screen and (max-width: 800px)
         display: none
 
+// Show when under 800px
+#mb_prod-poster
+    @include margin-center
+    display: block
+    width: 60vw
+
+    // Hide when over 800px
+    @media only screen and (min-width: 800px)
+        display: none
+        width: 90vw
+
 
 // Show when over 800px
 #artist-credits-mobile,
@@ -22,5 +33,5 @@ div.sidebar,
 // Center when under 800px
 #header-brand
     @media only screen and (max-width: 800px)
-        border-bottom: 3px solid $primary-color
+        background-color: $primary-color
 

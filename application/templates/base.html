@@ -30,13 +30,14 @@
 <body>
     <!-- Main Content -->
     <div id="main">
+
         <!-- Header -->
         <header>
             <div id="header-brand" class="header wrapper">
                 <a href="{{ url_for('home') }}" class="logo-circle"></a>
                 <span id="brand-name">Queer Theatre Kalamazoo</span>
                 <div style="flex: 1 1 auto;"></div>
-                <!--<button id="nav-menu-trigger" style="margin: auto auto;">Menu</button>-->
+                <button id="nav-menu-trigger" class="light-button" style="margin: auto auto;">Menu</button>
             </div>
         </header>
 
@@ -93,9 +94,15 @@
         </div>
 
 
-    </div class="main">
+    </div>
+
+    <!--<div class="dialog-overlay">
+        <h1>Header</h1>
+    </div>-->
+
     {% block styles %}
     {% endblock %}
+
     <script src="https://cdn.jsdelivr.net/npm/a11y-dialog@7/dist/a11y-dialog.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>

@@ -2,7 +2,7 @@
 {% set active_page = "events" %}
 
 {% block content %}
-<h3>Season 9</h3>
+<h1>Season 9</h1>
 
 
 <div class="card-container margin-top margin-bottom">
@@ -23,27 +23,42 @@
         <div class="card-wrapper">
 
             <!-- Title and link -->
-            <h3>
-                <a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=prod.production_id, slug=prod.slug) }}">{{ prod.title }}</a>
+            <h3 class="no-margin-top no-margin-bottom">
+                <a class="fancy-link h3" href="{{ url_for('bp_production.display_production', prod_id=prod.production_id, slug=prod.slug) }}">{{ prod.title }}</a>
             </h3>
 
-            <!-- Director and link -->
-            <p class="director">
-                {% for dir in directors %}
-                    {% if dir.production_id == prod.production_id %}
-                    Directed by <span><a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=dir.artist_id) }}">{{ dir.credit_name }}</a></span>
-                    {% endif %}
-                {% endfor %}
-            </p>
+            {% if title_credits %}
+            <ul class="unstyled-list no-margin-bottom">
+                <li>By
+            {% for credit in title_credits if ( (credit.role=="Playwright") and (credit.production_id==prod.production_id) ) %}
+            
+            {{ credit.credit_name }}{{ " and " if not loop.last }}
 
-            <!-- Production perf date range -->
-            <p>
-                {% for perf in performances %}
-                    {% if perf.production_id == prod.production_id %}
-                    Running {{ perf.open_date | format_date_short() }} through {{ perf.close_date | format_date_short() }}, {{ perf.close_date | format_date_year() }}
-                    {% endif %}
-                {% endfor %}
-            </p>
+            {% endfor %}
+                </li>
+                <!-- Director and link -->
+                <li>
+                    {% for dir in directors %}
+                        {% if dir.production_id == prod.production_id %}
+                        Directed by <span><a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=dir.artist_id) }}">{{ dir.credit_name }}</a></span>
+                        {% endif %}
+                    {% endfor %}
+                </li>
+                <!-- Production perf date range -->
+                <li>
+                    {% for perf in performances %}
+                        {% if perf.production_id == prod.production_id %}
+                        Running {{ perf.open_date | format_date_short() }} through {{ perf.close_date | format_date_short() }}, {{ perf.close_date | format_date_year() }}
+                        {% endif %}
+                    {% endfor %}
+                </li>
+            </ul>
+            {% endif %}
+
+            
+            
+
+            
         </div>
     </div>
 

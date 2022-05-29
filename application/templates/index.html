@@ -4,7 +4,7 @@
 {% block page %}
 <div class="page wrapper">
     <div id="index-welcome">
-        <h2 class="text-center">Welcome to Queer Theatre Kalamazoo!</h2>
+        <h2 class="text-center margin-bottom">Welcome to Queer Theatre Kalamazoo!</h2>
         <div class="full-width">
             <p style="max-width: 700px; margin-left: auto; margin-right: auto;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam.</p>
         </div>
@@ -15,7 +15,7 @@
         <!-- Job Posting Block -->
         <div style="flex: 1 1 auto;" class="card full-width secondary">
             <div class="card-wrapper">
-                <h3>Employment Opportunity</h3>
+                <h2 class="margin-bottom h5">Employment Opportunity</h2>
                 <p>We are seeking a part-time <strong>Managing Director</strong> to join our small team! Compensation is $21 per hour (approx. 12 hours per month) with a $1,000 stipend at the conclusion of a six-month contract.</p>
                 <p>The managing director oversees fundraising efforts and engagement, organization governance in collaboration with the Board of Directors, strategic initiatives, and other financial and administrative functions.</p>
                 <a href="">Click here to see the full posting here.</a>
@@ -25,7 +25,7 @@
         <!-- Upcoming Production block -->
         <div style="flex: 1 0 300px;" class="card accent">
             <div class="card-wrapper">
-                <h3>Coming Up: <a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=next_prod.production_id, slug=next_prod.slug) }}">{{ next_prod.title }}</a></h3>
+                <h2 class="h5">Coming Up: <a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=next_prod.production_id, slug=next_prod.slug) }}">{{ next_prod.title }}</a></h2>
                 <span>Running {{ prod_date_range.open_date | format_date_short() }} to {{ prod_date_range.close_date | format_date_short() }}</span>
                 <p>{{ next_prod.description | safe | truncate(300) }}</p>
             </div>
@@ -34,7 +34,7 @@
         <!-- Donation block -->
         <div style="flex: 1 0 300px;" class="card accent">
             <div class="card-wrapper">
-                <h3>Three reasons to donate, you won't <i>believe</i> #2!!</h3>
+                <h2 class="h5">Three reasons to donate, you won't <i>believe</i> #2!!</h2>
                 <ol style="list-style">
                     <li>We pay every artist who works with us</li>
                     <li></li>
@@ -44,6 +44,20 @@
             </div>
         </div>
 
+        <div class="full-width">
+            <h1>Heading 1</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <h2>Heading 2</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <h3>Heading 3</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <h4>Heading 4</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <h5>Heading 5</h5>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <h6>Heading 6</h6>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+        </div>
     </div>
 </div>
 {% endblock %}

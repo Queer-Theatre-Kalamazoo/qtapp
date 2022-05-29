@@ -21,6 +21,7 @@
   cursor: pointer
   text-decoration: none
   line-height: 1
+  transition-duration: 0.5s
 
 // Buttons on hover
 
@@ -29,6 +30,7 @@
     background: $button-background-hover
     color: $button-color
     text-decoration: none
+    transition: all 0.5s
 
 // Buttons on focus
 
@@ -80,6 +82,17 @@ a.muted-button
     color: $muted-color-hover
     border: $muted-border-hover
     background: $muted-background-hover
+
+.light-button,
+a.light-button
+  background: #ebebeb
+  border: #ebebeb
+  color: #161616
+
+  &:hover,
+  &:focus,
+  &:active
+    
 
 // Round buttons
 .round-button,

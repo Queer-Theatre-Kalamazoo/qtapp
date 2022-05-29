@@ -29,6 +29,28 @@ def events():
 
         prod_ids = select(Production.production_id).where(Season.season_id == 1).subquery()
 
+        # title_credits = session.execute(
+        #     select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
+        #     .select_from(Credit)
+        #     .where(and_(Credit.production_id == production.production_id, Credit.title_credit == True))
+        #     .outerjoin(Artist)
+        # ).all()
+
+        query_title_credits = select(
+                                Credit.role, 
+                                Credit.credit_name,
+                                Credit.production_id, 
+                                Artist.artist_id, 
+                                Artist.slug, 
+                                Artist.headshot
+                ).select_from(Credit).where(
+                    and_(
+                        Credit.title_credit == True, 
+                        Credit.production_id.in_(prod_ids)
+                        )
+                ).outerjoin(Artist).subquery()
+        title_credits = session.query(query_title_credits)
+
         query_directors = select(
                             Credit.credit_name,
                             Credit.artist_id,
@@ -44,7 +66,7 @@ def events():
         performances = session.query(query_performances)
 
         
-        return render_template('events.html', title='Events', productions=productions, performances=performances, directors=directors)
+        return render_template('events.html', title='Events', productions=productions, performances=performances, directors=directors, title_credits=title_credits)
 
 
 

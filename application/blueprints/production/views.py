@@ -50,6 +50,13 @@ def display_production(prod_id, **slug):
             .all()
         )
 
+        title_credits = session.execute(
+            select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
+            .select_from(Credit)
+            .where(and_(Credit.production_id == production.production_id, Credit.title_credit == True))
+            .outerjoin(Artist)
+        ).all()
+
         cast = session.execute(
             select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
             .select_from(Credit)
@@ -90,6 +97,7 @@ def display_production(prod_id, **slug):
             current_user=current_user,
             production=production,
             performances=performances,
+            title_credits=title_credits,
             cast=cast,
             crew=crew,
             director=director,

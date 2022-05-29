@@ -2,7 +2,18 @@
 
 {% block content %}
 <h1>{{ production.title }}</h1>
-<p class="production-director">Directed by <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=director.artist_id) }}">{{ director.credit_name }}</a></p>
+
+{% if title_credits %}
+<ul class="unstyled-list no-margin-bottom">
+    <li>By
+{% for credit in title_credits if credit.role=="Playwright" %}
+{{ credit.credit_name }}{{ " and " if not loop.last }}
+{% endfor %}
+    </li>
+</ul>
+{% endif %}
+
+<p>Directed by <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=director.artist_id) }}">{{ director.credit_name }}</a></p>
 <div>
     <a class="button round-button muted-button" data-a11y-dialog-show="cast-crew-dialog">Production Credits</a>
     {% if production.ploxel_iframe %}
@@ -26,8 +37,13 @@
     </div>
     {% endif %}
     
-    <h2>Description</h2>
+    <h2 class="margin-bottom margin-top">Description</h2>
     <span class="prod-content-wrapper">{{ production.description | safe }}</span>
+    {% if poster %}
+    <div id="mb_prod-poster">
+        <img class="shadow" src="{{ url_for('bp_production.static', filename=poster) }}" id="poster" alt="" srcset="">
+    </div>
+    {% endif %}
 </div>
 
 
@@ -36,7 +52,10 @@
     aria-describedby="cast-crew-description">
     <div class="dialog-overlay" data-a11y-dialog-hide></div>
     <div class="dialog-content center" role="document">
-        <button data-a11y-dialog-hide class="dialog-close" aria-label="Close this dialog window">&times;</button>
+        <button data-a11y-dialog-hide class="dialog-close">Back</button>
+        <br />
+        <br />
+        <div class="full-width"></div>
         {% if cast %}
         <h2>Cast</h2>
         <div class="card-container text-center justify-center">
@@ -104,13 +123,15 @@
             {% endfor %}
         </div>
         {% endif %}
+        <div class="spacer full-width"></div>
     </div>
 </div>
 
 <div class="dialog-container" id="ploxel-dialog" aria-hidden="true" aria-labelledby="ploxel-title"
-aria-describedby="ploxel-description">
+    aria-describedby="ploxel-description">
     <div class="dialog-overlay" data-a11y-dialog-hide></div>
     <div class="dialog-content center" role="document">
+        <button data-a11y-dialog-hide class="dialog-close">Back</button>
         {% if production.ploxel_iframe %}
         {{ production.ploxel_iframe | safe }}
         {% endif %}
