@@ -20,6 +20,16 @@ if(cast_crew_modal){
   })
 }
 
+var ploxel_modal = document.getElementById('ploxel-dialog')
+if(ploxel_modal){
+  var cast_crew_dialog = new A11yDialog(ploxel_modal)
+
+  ploxel_dialog.on('show', function (ploxel_modal, ploxel_trigger) {
+    console.log(ploxel_modal)
+    console.log(ploxel_trigger)
+  })
+}
+
 $(document).ready(function () {
   $("#sidebar-toggle").on("click", function () {
       $("aside.navigation").toggleClass("no-sidebar");

@@ -218,6 +218,7 @@ class Production(Base):
     )
     play_id = Column(Integer, ForeignKey("plays.play_id"), nullable=False, index=True)
     poster = Column(String(100))
+    ploxel_iframe = Column(String(500))
     credits = relationship("Credit", backref="Production")
     notices = relationship("ProductionNotice", backref="Production")
     performances = relationship("Performance", backref="Production")

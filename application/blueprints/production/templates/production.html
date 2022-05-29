@@ -5,7 +5,9 @@
 <p class="production-director">Directed by <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=director.artist_id) }}">{{ director.credit_name }}</a></p>
 <div>
     <a class="button round-button muted-button" data-a11y-dialog-show="cast-crew-dialog">Production Credits</a>
-    <a class="button round-button accent-button" data-a11y-dialog-show="">Get Tickets</a>
+    {% if production.ploxel_iframe %}
+    <a class="button round-button accent-button" data-a11y-dialog-show="ploxel-dialog">Get Tickets</a>
+    {% endif %}
 </div>
 <div class="production-body-content">
     
@@ -69,6 +71,7 @@
             {% endfor %}
         </div>
         {% endif %}
+
         {% if crew %}
         <h2>Crew</h2>
         <div class="card-container text-center justify-center">
@@ -92,7 +95,7 @@
                             person.credit_name }}
                         </a>
                         {% else %}
-                        {{ person.credit_name }}
+                        <em>{{ person.credit_name }}</em>
                         {% endif %}
                     </p>
                     <p class="person-role"><span>{{ person.role }}</span></p>
@@ -103,13 +106,24 @@
         {% endif %}
     </div>
 </div>
+
+<div class="dialog-container" id="ploxel-dialog" aria-hidden="true" aria-labelledby="ploxel-title"
+aria-describedby="ploxel-description">
+    <div class="dialog-overlay" data-a11y-dialog-hide></div>
+    <div class="dialog-content center" role="document">
+        {% if production.ploxel_iframe %}
+        {{ production.ploxel_iframe | safe }}
+        {% endif %}
+    </div>
+</div>
+
 {% endblock %}
 
 {% block sidebar_image %}
 {% if poster %}
 <img class="shadow" src="{{ url_for('bp_production.static', filename=poster) }}" id="poster" alt="" srcset="">
 {% else %}
-<!-- <img src="{{ url_for('bp_production.static', filename='/images/posters/placeholder.jpg') }}" id="poster" alt="" srcset=""> -->
+<img src="{{ url_for('bp_production.static', filename='/images/posters/placeholder.jpg') }}" id="poster" alt="" srcset="">
 {% endif %}
 {% endblock %}
 

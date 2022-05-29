@@ -41,6 +41,7 @@ def display_production(prod_id, **slug):
                                 Production.description,
                                 Production.slug,
                                 Production.poster,
+                                Production.ploxel_iframe,
                                 Season.description.label('season_description')
                                 )
                             .where(Production.production_id == prod_id).
