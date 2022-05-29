@@ -3,6 +3,16 @@
 {% block content %}
     <h2>{{ artist.name }}</h2>
     {{ artist.biography | safe }}
+    {% if credits %}
+    <h3 id="artist-credits-title">Queer Theatre Credits</h3>
+    <div id="artist-credits-mobile">
+        <ul class="unstyled-list">
+            {% for c in credits %}
+            <li><a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=c.production_id, slug=c.slug) }}">{{ c.title }}</a>, {{ c.role }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %} 
 {% endblock %}
 
 {% block sidebar_image %}

@@ -1,3 +1,15 @@
 /**
  * Layout
  */
+
+div.sidebar,
+.breadcrumbs
+    @media only screen and (max-width: 800px)
+        display: none
+
+#artist-credits-mobile,
+#artist-credits-title
+    display: block
+    
+    @media only screen and (min-width: 800px)
+        display: none

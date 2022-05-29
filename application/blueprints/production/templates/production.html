@@ -95,7 +95,7 @@
 {% if performances %}
 <h4 class="hug">Performances:</h4>
 {% endif %}
-<ul>
+<ul class="unstyled-list">
     {% for p in performances %}
     <span>
         <li>{{ p.datetime|format_datetime() }}</li>

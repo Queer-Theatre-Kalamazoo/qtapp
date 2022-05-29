@@ -33,10 +33,10 @@ def init_app():
         app.register_blueprint(bp_person, url_prefix = '/person')
         app.register_blueprint(bp_post)
 
-        # Sat Dec 11, 2021 at 07:30:00 PM
+        # Dec 11, 2021 at 07:30:00 PM
         @app.template_filter()
         def format_datetime(value):
-            return value.strftime("%a %b %d, %Y at %I:%M:%S %p")
+            return value.strftime("%b %d, %Y at %I:%M:%S %p")
 
         # Dec 11
         @app.template_filter()
