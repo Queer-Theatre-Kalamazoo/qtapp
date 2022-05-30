@@ -1,5 +1,4 @@
-from flask import redirect, render_template, current_app, request, url_for
-from flask_login import current_user
+from flask import render_template
 from . import bp_production
 
 # Import remote models

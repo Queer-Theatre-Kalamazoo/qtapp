@@ -1,6 +1,5 @@
 from flask import Flask
 from sqlalchemy import create_engine
-from flask_breadcrumbs import Breadcrumbs
 from flask_ckeditor import CKEditor
 
 def init_app():
@@ -13,8 +12,7 @@ def init_app():
     else:
         app.config.from_object("application.config.DevelopmentConfig")
 
-    # Flask-Breadcrumbs instantiation
-    Breadcrumbs(app)
+    # WYSIWYG editor form field
     ckeditor = CKEditor(app)
 
 
