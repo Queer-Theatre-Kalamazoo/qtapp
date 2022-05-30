@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hello from Person</h1>
+    <h2 class="mb-2">{{ person.name }}</h2>
 {% endblock %}
+
+{% block sidebar_image %}
+    {% if person.headshot %}
+        <img class="shadow" src="{{ url_for('bp_person.static', filename='/images/headshots/' + person.headshot) }}" id="headshot" alt="" srcset="">
+    {% endif %}
+{% endblock %}
+
+{% block aside %}
+
+{%endblock%}

@@ -99,6 +99,9 @@ class Person(Base):
     person_id = Column(Integer, primary_key=True)
     artist_id = Column(Integer, ForeignKey('artists.artist_id'))
     name = Column(String(100), nullable=False)
+    biography = Column(Text)
+    headshot = Column(String(100))
+    slug = Column(String(100))
     posts = relationship('Post', backref='Author')
 
     def get_url(self):

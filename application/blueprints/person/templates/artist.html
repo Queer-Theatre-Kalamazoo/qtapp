@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{ artist.name }}</h2>
+    <h2 class="mb-2">{{ artist.name }}</h2>
     {{ artist.biography | safe }}
     {% if credits %}
     <h3 id="artist-credits-title">Queer Theatre Credits</h3>
@@ -16,16 +16,16 @@
 {% endblock %}
 
 {% block sidebar_image %}
-    {% if headshot %}
-        <img class="shadow" src="{{ url_for('bp_person.static', filename=headshot) }}" id="headshot" alt="" srcset="">
+    {% if artist.headshot %}
+        <img class="shadow" src="{{ url_for('bp_person.static', filename='/images/headshots/' + artist.headshot) }}" id="headshot" alt="" srcset="">
     {% endif %}
 {% endblock %}
 
 {% block aside %}
 
     {% if credits %}
-        <h3 class="no-margin-bottom">Artist Credits</h3>
-        <p class="hug"><i>at Queer Theatre Kalamazoo</i></p>
+        <h3>Artist Credits</h3>
+        <p class="mb-1"><i>at Queer Theatre Kalamazoo</i></p>
         {% for c in credits %}
         <a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=c.production_id, slug=c.slug) }}">{{ c.title }}</a>, {{ c.role }}<br />
         {% endfor %} 

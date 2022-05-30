@@ -38,10 +38,11 @@ def events():
         productions = session.query(query_prod)
 
         query_title_credits = select(
-                                Credit.role, 
+                                Credit.role,
                                 Credit.name,
                                 Credit.production_id, 
                                 Artist.artist_id, 
+                                Artist.biography,
                                 Artist.slug, 
                                 Artist.headshot
                 ).select_from(Credit).where(
