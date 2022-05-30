@@ -1,10 +1,10 @@
-from flask import render_template
+from flask import render_template, redirect, url_for
 from flask import current_app
 from application.database import Session
 from application.blueprints.common.schema import Season, Production, Post, Person, Relationship, Artist, Credit, Performance
 from sqlalchemy import select, and_, func, desc
 from application.forms import ContactUsForm
-
+from flask_mail import Message
 
 @current_app.route('/')
 def home():
@@ -90,7 +90,16 @@ def about():
         return render_template('about.html', title="About Us", staff=staff, board=board, get_headshot=get_artist_headshot)
 
 
-@current_app.route("/contact")
+@current_app.route("/contact", methods = ['GET', 'POST'])
 def contact_us():
     form = ContactUsForm()
+    if form.validate_on_submit():
+        print(f"Subject: { form.subject.data }, Message: { form.message.data }")
+
+        msg = Message(form.subject.data, recipients=["hazel@queertk.org"])
+        msg.body = f'Subject: , Message: { form.message.data }'
+        current_app.mail.send(msg)
+
+        return redirect(url_for('contact_us'))
+
     return render_template('contact.html', title = 'Contact Us', form = form)
