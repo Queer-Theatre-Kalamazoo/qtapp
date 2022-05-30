@@ -33,8 +33,7 @@
             {% if title_credits %}
             <ul class="unstyled-list no-margin-bottom">
                 <li>By
-                    {% for credit in title_credits if ( (credit.role=="Playwright") and
-                    (credit.production_id==prod.production_id) ) %}
+                    {% for credit in title_credits if ( ( (credit.role=="Playwright") or (credit.role=="Playwright, Lyricist") ) and (credit.production_id==prod.production_id) ) %}
 
                     {% if credit.artist_id %}
                     <a class="fancy-link" href="{{ url_for("bp_person.display_artist", artist_id=credit.artist_id, slug=credit.slug) }}">{{ credit.credit_name }}</a>

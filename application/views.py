@@ -41,7 +41,7 @@ def events():
 
         query_title_credits = select(
                                 Credit.role, 
-                                Credit.credit_name,
+                                Credit.name,
                                 Credit.production_id, 
                                 Artist.artist_id, 
                                 Artist.slug, 
@@ -55,7 +55,7 @@ def events():
         title_credits = session.query(query_title_credits)
 
         query_directors = select(
-                            Credit.credit_name,
+                            Credit.name,
                             Credit.artist_id,
                             Credit.production_id
                         ).where(and_(Credit.role == "Director", Credit.production_id.in_(prod_ids))).subquery()

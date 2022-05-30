@@ -28,7 +28,7 @@
             <p>{{ post.snippet|truncate(128) }}</p>
             {% endif %}
 
-            <p class="no-margin-bottom">{{ post.create_date | format_post_date }} — <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a></p>
+            <p class="no-margin-bottom">{{ post.create_date | format_post_date }} — <a class="fancy-link" href="{{ url_for('bp_person.display_person', person_id=post.person_id) }}">{{ post.name }}</a></p>
         </div>
     </div>
 

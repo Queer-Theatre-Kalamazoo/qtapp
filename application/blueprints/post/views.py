@@ -1,7 +1,7 @@
 from flask import render_template, url_for, request, redirect
 
 # Import remote models
-from application.blueprints.common.schema import Artist, Post
+from application.blueprints.common.schema import Artist, Post, Person
 
 # Import local models
 from . import bp_post
@@ -23,14 +23,26 @@ def bc_view_post(*args, **kwargs):
 def display_post(category, post_id):
     category = category.lower()
     with Session.begin() as session:
-        post = session.execute(select(Post.post_id, Post.category, Post.title, Post.subtitle, Post.content, Post.author_id).where(Post.post_id == post_id)).one()
+        post = session.execute(select(Post.post_id, Post.category, Post.title, Post.subtitle, Post.content, Post.person_id).where(Post.post_id == post_id)).one()
         author = (
-            session.execute(select(Artist).where(Artist.artist_id == post.author_id)).scalars().one()
+            session.execute(select(Person).where(Person.person_id == post.person_id)).scalars().one()
         )
         return render_template("post.html", post=post, author=author, title=post.title)
 
 @bp_post.route("/news")
 def index_news():
     with Session.begin() as session:
-        posts = session.execute(select(Post.title, Post.subtitle, Post.content, Post.snippet, Post.post_id, Post.category, Post.create_date, Artist.name.label('name'), Artist.slug.label('artist_slug'), Artist.artist_id).where(Post.category == "news").join(Artist, Post.author_id == Artist.artist_id).order_by(Post.create_date.desc())).all()
+        posts = session.execute(
+            select(
+                Post.title, 
+                Post.subtitle, 
+                Post.content, 
+                Post.snippet, 
+                Post.post_id, 
+                Post.category, 
+                Post.create_date, 
+                Person.name, 
+                Person.person_id
+            ).where(Post.category == "news").join(Person, Post.person_id == Person.person_id).order_by(Post.create_date.desc())
+            ).all()
         return render_template('index_news.html', title='News', posts=posts)

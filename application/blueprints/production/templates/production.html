@@ -7,14 +7,19 @@
 {% if title_credits %}
 <ul class="unstyled-list no-margin-bottom">
     <li>By
-{% for credit in title_credits if credit.role=="Playwright" %}
-{{ credit.credit_name }}{{ " and " if not loop.last }}
+{% for credit in title_credits if ( (credit.role=="Playwright") or (credit.role=="Playwright, Lyricist") ) %}
+{% if credit.artist_id %}
+<a class="fancy-link" href="{{ url_for("bp_person.display_artist", artist_id=credit.artist_id, slug=credit.slug) }}">{{ credit.name }}</a>
+{% else %}
+{{ credit.name }}
+{% endif %}
+{{ " and " if not loop.last }}
 {% endfor %}
     </li>
 </ul>
 {% endif %}
 
-<p>Directed by <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=director.artist_id) }}">{{ director.credit_name }}</a></p>
+<p>Directed by <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=director.artist_id) }}">{{ director.name }}</a></p>
 <div>
     <a class="button round-button muted-button" data-a11y-dialog-show="cast-crew-dialog">Production Credits</a>
     {% if production.ploxel_iframe %}
@@ -78,10 +83,10 @@
                         {% if person.artist_id %}
                         <a class="fancy-link"
                             href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
-                            person.credit_name }}
+                            person.name }}
                         </a>
                         {% else %}
-                        {{ person.credit_name }}
+                        {{ person.name }}
                         {% endif %}
                     </p>
                     <p class="person-role">as <span>{{ person.role }}</span></p>
@@ -112,10 +117,10 @@
                         {% if person.artist_id %}
                         <a class="fancy-link"
                             href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
-                            person.credit_name }}
+                            person.name }}
                         </a>
                         {% else %}
-                        <em>{{ person.credit_name }}</em>
+                        <em>{{ person.name }}</em>
                         {% endif %}
                     </p>
                     <p class="person-role"><span>{{ person.role }}</span></p>

@@ -50,28 +50,28 @@ def display_production(prod_id, **slug):
         )
 
         title_credits = session.execute(
-            select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
+            select(Credit.role, Credit.name, Artist.artist_id, Artist.slug, Artist.headshot)
             .select_from(Credit)
             .where(and_(Credit.production_id == production.production_id, Credit.title_credit == True))
             .outerjoin(Artist)
         ).all()
 
         cast = session.execute(
-            select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
+            select(Credit.role, Credit.name, Artist.artist_id, Artist.slug, Artist.headshot)
             .select_from(Credit)
             .where(and_(Credit.production_id == production.production_id, Credit.category == "Cast"))
             .outerjoin(Artist)
         ).all()
 
         crew = session.execute(
-            select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
+            select(Credit.role, Credit.name, Artist.artist_id, Artist.slug, Artist.headshot)
             .select_from(Credit)
             .where(and_(Credit.production_id == production.production_id, Credit.category == "Crew"))
             .outerjoin(Artist)
         ).all()
 
         director = session.execute(
-            select(Credit.credit_name, Credit.artist_id).where(and_(Credit.production_id == production.production_id, Credit.role == "Director"))
+            select(Credit.name, Credit.artist_id).where(and_(Credit.production_id == production.production_id, Credit.role == "Director"))
         ).one()
 
         notices = session.execute(
@@ -93,7 +93,6 @@ def display_production(prod_id, **slug):
             title=production.title,
             poster=poster_filename,
             sidebar=True,
-            current_user=current_user,
             production=production,
             performances=performances,
             title_credits=title_credits,

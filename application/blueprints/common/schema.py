@@ -26,7 +26,6 @@ class Artist(Base):
     headshot = Column(String(100))
     slug = Column(String(100))
     credits = relationship('Credit', backref='Artist')
-    posts = relationship('Post', backref='Author')
     
     def get_url(self):
         return url_for('bp_person.display_artist', artist_id=self.artist_id)
@@ -51,7 +50,7 @@ class Credit(Base):
     order_no = Column(Integer)
     category = Column(String(20))
     role = Column(String(100), nullable=False)
-    credit_name = Column(String(100), nullable=False)
+    name = Column(String(100), nullable=False)
     title_credit = Column(Boolean, default = False)
 
     def __repr__(self):
@@ -100,6 +99,7 @@ class Person(Base):
     person_id = Column(Integer, primary_key=True)
     artist_id = Column(Integer, ForeignKey('artists.artist_id'))
     name = Column(String(100), nullable=False)
+    posts = relationship('Post', backref='Author')
 
     def get_url(self):
         return url_for('bp_person.display_person', person_id=self.person_id)
@@ -133,8 +133,8 @@ class Post(Base):
     __tablename__ = "posts"
 
     post_id = Column(Integer, primary_key=True, autoincrement=True)
-    author_id = Column(
-        Integer, ForeignKey("artists.artist_id"), nullable=False, index=True
+    person_id = Column(
+        Integer, ForeignKey("people.person_id"), nullable=False, index=True
     )
     category = Column(String(50))
     title = Column(String(100), nullable=False)
