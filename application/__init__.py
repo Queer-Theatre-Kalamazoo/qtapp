@@ -59,4 +59,5 @@ def init_app():
 
         return app
 
+# Remove or comment the line below when running via WSGI
 app = init_app()
