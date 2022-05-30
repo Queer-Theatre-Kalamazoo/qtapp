@@ -628,6 +628,22 @@ div.content-section {
   width: 2rem;
 }
 
+.mt-0 {
+  margin-top: 0rem;
+}
+
+.mb-0 {
+  margin-bottom: 0rem;
+}
+
+.ml-0 {
+  margin-left: 0rem;
+}
+
+.mr-0 {
+  margin-right: 0rem;
+}
+
 .mt-1 {
   margin-top: 0.75rem;
 }

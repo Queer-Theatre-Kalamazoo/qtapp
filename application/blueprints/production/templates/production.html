@@ -63,7 +63,7 @@
         <br />
         <div class="full-width"></div>
         {% if cast %}
-        <h2 class="margin-bottom">Cast</h2>
+        <h2 class="mt-4 mb-2">Cast</h2>
         <div class="card-container text-center justify-center">
             {% for person in cast %}
 
@@ -79,7 +79,7 @@
                 </a>
                 {% endif %}
                 <div class="card-wrapper">
-                    <p class="person-name no-margin-bottom">
+                    <p class="person-name mb-0">
                         {% if person.artist_id %}
                         <a class="fancy-link"
                             href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
@@ -98,14 +98,17 @@
         {% endif %}
 
         {% if crew %}
-        <h2 class="margin-bottom">Crew</h2>
+        <h2 class="mt-2 mb-2">Crew</h2>
         <div class="card-container text-center justify-center">
             {% for person in crew %}
             <div class="card clean {% if person.artist_id %}img{% endif %}">
                 <!-- Grab artist headshot or placeholder if none -->
                 {% if person.artist_id %}
                 <a class="circle"
-                    href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">
+                    {% if person.biography %}
+                    href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}"
+                    {% endif %}
+                    >
                     <img height="40" width="40" {% if person.headshot
                         %}src="{{ url_for('bp_person.static', filename=('images/headshots/' + person.headshot)) }}"
                         {%else%}src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
@@ -113,12 +116,16 @@
                 </a>
                 {% endif %}
                 <div class="card-wrapper">
-                    <p class="person-name no-margin-bottom">
+                    <p class="person-name mb-0">
                         {% if person.artist_id %}
+                        {% if person.biography %}
                         <a class="fancy-link"
                             href="{{ url_for('bp_person.display_artist', artist_id=person.artist_id, slug=person.slug) }}">{{
                             person.name }}
                         </a>
+                        {% else %}
+                        {{ person.name }}
+                        {% endif %}
                         {% else %}
                         <em>{{ person.name }}</em>
                         {% endif %}

@@ -36,9 +36,9 @@
                     {% for credit in title_credits if ( ( (credit.role=="Playwright") or (credit.role=="Playwright, Lyricist") ) and (credit.production_id==prod.production_id) ) %}
 
                     {% if credit.artist_id %}
-                    <a class="fancy-link" href="{{ url_for("bp_person.display_artist", artist_id=credit.artist_id, slug=credit.slug) }}">{{ credit.credit_name }}</a>
+                    <a class="fancy-link" href="{{ url_for("bp_person.display_artist", artist_id=credit.artist_id, slug=credit.slug) }}">{{ credit.name }}</a>
                     {% else %}
-                    {{ credit.credit_name }}
+                    {{ credit.name }}
                     {% endif %}
                     {{ " and " if not loop.last }}
 
@@ -49,7 +49,7 @@
                     {% for dir in directors %}
                     {% if dir.production_id == prod.production_id %}
                     Directed by <span><a class="fancy-link"
-                            href="{{ url_for('bp_person.display_artist', artist_id=dir.artist_id) }}">{{ dir.credit_name
+                            href="{{ url_for('bp_person.display_artist', artist_id=dir.artist_id) }}">{{ dir.name
                             }}</a></span>
                     {% endif %}
                     {% endfor %}

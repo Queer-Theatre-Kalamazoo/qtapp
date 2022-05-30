@@ -28,7 +28,7 @@ def events():
                             where(Season.season_id == 1)
         just_productions = session.execute(query_productions).all()
 
-        prod_ids = select(Production.production_id).where(Season.season_id == 1).subquery()
+        prod_ids = select(Production.production_id).where(Season.season_id == 1)
 
         query_prod = select(
             Production, 
@@ -36,8 +36,6 @@ def events():
             ).select_from(Production).where(Production.production_id.in_(prod_ids)
             ).group_by(Production.production_id).order_by(desc("first_perf")).join(Performance).subquery()
         productions = session.query(query_prod)
-        for p in productions:
-            print(p)
 
         query_title_credits = select(
                                 Credit.role, 
