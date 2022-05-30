@@ -2,9 +2,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.engine.url import URL
 from flask import current_app
-# from application import app
-
-# db_conn_string = current_app.config.get('SQLALCHEMY_DATABASE_URI')
 
 db_conn_string = URL.create(
     drivername = 'mysql+mysqlconnector',

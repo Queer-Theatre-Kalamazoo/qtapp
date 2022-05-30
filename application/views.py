@@ -97,7 +97,7 @@ def contact_us():
         print(f"Subject: { form.subject.data }, Message: { form.message.data }")
 
         msg = Message(form.subject.data, recipients=["hazel@queertk.org"])
-        msg.body = f'Subject: , Message: { form.message.data }'
+        msg.html = f'<p>Sender Name: { form.name.data }</p><p>Sender Email: { form.email.data }</p><p>Message: { form.message.data }</p>'
         current_app.mail.send(msg)
 
         return redirect(url_for('contact_us'))

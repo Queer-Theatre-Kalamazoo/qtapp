@@ -10,7 +10,7 @@
         </p>
     </div>
     <div class="spacer"></div>
-    <form method="POST" action="/" class="flex-4">
+    <form method="POST" action="{{ url_for('contact_us') }}" class="flex-4">
         {{ form.csrf_token }}
         {{ form.name.label }} {{ form.name(size=50) }}
         {{ form.email.label }} {{ form.email(size=120) }}

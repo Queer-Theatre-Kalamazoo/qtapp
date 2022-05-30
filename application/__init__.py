@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_mail import Mail
 from sqlalchemy import create_engine
 from flask_ckeditor import CKEditor
 
@@ -12,24 +13,27 @@ def init_app():
     else:
         app.config.from_object("application.config.DevelopmentConfig")
 
-    # WYSIWYG editor form field
-    ckeditor = CKEditor(app)
+    # Globally accessible libraries?
+    ckeditor = CKEditor()
+    mail = Mail()
 
 
     with app.app_context():
         from application.blueprints.common import bp_common
-        # from application.blueprints.admin import bp_admin
         from application.blueprints.management import bp_management
         from application.blueprints.production import bp_production
         from application.blueprints.person import bp_person
         from application.blueprints.post import bp_post
 
         app.register_blueprint(bp_common)
-        # app.register_blueprint(bp_admin, url_prefix = '/admin')
         app.register_blueprint(bp_management, url_prefix = '/app')
         app.register_blueprint(bp_production, url_prefix = '/production')
         app.register_blueprint(bp_person)
         app.register_blueprint(bp_post)
+
+        ckeditor.init_app(app)
+        mail.init_app(app)
+        app.mail = mail
 
         # Dec 11, 2021 at 07:30:00 PM
         @app.template_filter()
