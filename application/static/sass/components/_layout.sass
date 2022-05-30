@@ -3,14 +3,16 @@
  */
 
 // Hide when under 800px
-div.sidebar,
-#brand-name,
-.navbar
+div.sidebar, // Content area sidebar i.e. /production, /artist
+#brand-name, // QTK name in header
+.navbar, // Horizontal subheader navigation
+a.poster, // I think in /news?
+#contact-form .spacer
     @media only screen and (max-width: 800px)
         display: none
 
 // Show when under 800px
-#mb_prod-poster
+#mb_prod-poster // Production poster in body when sidebar disappears
     @include margin-center
     display: block
     width: 60vw
@@ -35,3 +37,6 @@ div.sidebar,
     @media only screen and (max-width: 800px)
         background-color: $primary-color
 
+#contact-form
+    @media only screen and (max-width: 800px)
+        flex-direction: column

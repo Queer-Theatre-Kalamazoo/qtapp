@@ -235,7 +235,6 @@ class Production(Base):
                 func.min(Performance.datetime).label('open_date'),
                 func.max(Performance.datetime).label('close_date')
                 ).where(Performance.production_id == self.production_id)).one()
-            print(f'From { datetimes.open_date } to { datetimes.close_date }')
             return datetimes
             
             # results = session.execute(query).all()

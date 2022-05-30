@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% set active_page = "contact" %}
+
+{% block content %}
+<div id="contact-form" class="flex-row wrapper">
+    <div class="flex-3">
+        <h1 class="text-center h2 margin-bottom">Contact Us</h1>
+        <p class="">
+            Email us at <a href="mailto:info@queertk.org">info@queertk.org</a> or fill out the form on this page. Only a subject and message are required - if you choose not to provide a name and email, your message will be completely anonymous.
+        </p>
+    </div>
+    <div class="spacer"></div>
+    <form method="POST" action="/" class="flex-4">
+        {{ form.csrf_token }}
+        {{ form.name.label }} {{ form.name(size=50) }}
+        {{ form.email.label }} {{ form.email(size=120) }}
+        {{ form.subject.label }} {{ form.subject(size=100) }}
+        {{ form.message.label }} {{ form.message(size=500) }}
+        <input class="mt-2" type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}

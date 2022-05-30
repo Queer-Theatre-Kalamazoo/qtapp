@@ -2,7 +2,8 @@ from flask import render_template
 from flask import current_app
 from application.database import Session
 from application.blueprints.common.schema import Season, Production, Post, Person, Relationship, Artist, Credit, Performance
-from sqlalchemy import select, and_, func
+from sqlalchemy import select, and_, func, desc
+from application.forms import ContactUsForm
 
 
 @current_app.route('/')
@@ -25,16 +26,18 @@ def events():
                         Production.poster,
                         Production.production_id).\
                             where(Season.season_id == 1)
-        productions = session.execute(query_productions).all()
+        just_productions = session.execute(query_productions).all()
 
         prod_ids = select(Production.production_id).where(Season.season_id == 1).subquery()
 
-        # title_credits = session.execute(
-        #     select(Credit.role, Credit.credit_name, Artist.artist_id, Artist.slug, Artist.headshot)
-        #     .select_from(Credit)
-        #     .where(and_(Credit.production_id == production.production_id, Credit.title_credit == True))
-        #     .outerjoin(Artist)
-        # ).all()
+        query_prod = select(
+            Production, 
+            func.min(Performance.datetime).label("first_perf")
+            ).select_from(Production).where(Production.production_id.in_(prod_ids)
+            ).group_by(Production.production_id).order_by(desc("first_perf")).join(Performance).subquery()
+        productions = session.query(query_prod)
+        for p in productions:
+            print(p)
 
         query_title_credits = select(
                                 Credit.role, 
@@ -85,3 +88,9 @@ def about():
                                     ).one()
                 return artist.headshot
         return render_template('about.html', title="About Us", staff=staff, board=board, get_headshot=get_artist_headshot)
+
+
+@current_app.route("/contact")
+def contact_us():
+    form = ContactUsForm()
+    return render_template('contact.html', title = 'Contact Us', form = form)

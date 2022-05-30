@@ -1,5 +1,5 @@
-#poster,
-#headshot
+#headshot,
+#poster
     // background-image: url('../images/poster.png')
     // background-size: contain
     // background-position: center center
@@ -9,9 +9,16 @@
     object-fit: scale-down
     // padding: 20px
 
+
 a.poster img
+    @include shadow
     margin-left: 1rem
+    border-radius: 4px
 
 .sidebar
     display: flex
     flex-direction: column
+
+#news-list .card
+    @include margin-center
+    max-width: 650px

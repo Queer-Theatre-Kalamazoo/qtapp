@@ -3,10 +3,10 @@
 
 {% block content %}
 
-<h2 class="text-center">Current Staff</h2>
+<h2 class="text-center margin-bottom h3">Current Staff</h2>
 <div class="card-container justify-center">
     {% for person in staff %}
-    <div style="flex-basis: 300px;" class="card clean img">
+    <div style="flex-basis: auto;" class="card clean img">
         <!-- Grab artist headshot or placeholder if none -->
         <a class="circle" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">
             <img height="40" width="40"
@@ -18,7 +18,7 @@
         </a>
         <div class="card-wrapper">
             <h3 class="person-name no-margin-top no-margin-bottom">
-                <a class="fancy-link" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
+                <a class="fancy-link h6" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
             </h3>
             <p class="person-role no-margin-bottom"><span>{{ person.title }}</span></p>
         </div>
@@ -26,10 +26,10 @@
     {% endfor %}
 </div>
 
-<h2 class="text-center margin-top">Current Board</h2>
-<div class="card-container justify-center">
+<h2 class="text-center margin-top margin-bottom h3">Current Board</h2>
+<div class="card-container justify-center margin-bottom">
     {% for person in board %}
-    <div style="flex-basis: 300px;" class="card clean img">
+    <div style="flex-basis: auto; width: 400px" class="card clean img">
         <!-- Grab artist headshot or placeholder if none -->
         <a class="circle" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">
             <img height="40" width="40"
@@ -41,7 +41,7 @@
         </a>
         <div class="card-wrapper">
             <h3 class="person-name no-margin-top no-margin-bottom">
-                <a class="fancy-link" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
+                <a class="fancy-link h6" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
             </h3>
             <p class="person-role no-margin-bottom"><span>{{ person.title }}</span></p>
         </div>

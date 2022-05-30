@@ -2,21 +2,33 @@
 {% set active_page = "news" %}
 
 {% block content %}
-<h1>News</h1>
+<h1 class="margin-bottom text-center">News</h1>
 
 
 
-<div class="card-container">
+<div id="news-list" class="card-container">
     {% for post in posts %}
 
-    <div style="flex:20rem;" class="card accent">
+    <div class="card accent">
         <div class="card-wrapper">
-            <h3 class="person-name"><a class="fancy-link"
-                    href="{{ url_for('bp_post.display_post', category=post.category, post_id=post.post_id) }}">{{
-                    post.title }}</a></h3>
-            <h4 class="person-role"><span>{{ post.subtitle }}</span></h4>
-            <p>{{ post.snippet|truncate(256) }}</p>
-            <p>{{ post.create_date | format_post_date }} — <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a></p>
+
+            <!-- Post Title -->
+            <h2><a class="fancy-link h5" href="{{ url_for('bp_post.display_post', category=post.category, post_id=post.post_id) }}">
+                    {{ post.title }}
+                </a>
+            </h2>
+
+            <!-- Post Subtitle -->
+            {% if post.subtitle %}
+            <p style="font-weight: 600;">{{ post.subtitle }}</p>
+            {% endif %}
+
+            <!-- Post Snippet -->
+            {% if post.snippet %}
+            <p>{{ post.snippet|truncate(128) }}</p>
+            {% endif %}
+
+            <p class="no-margin-bottom">{{ post.create_date | format_post_date }} — <a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=post.artist_id, slug=post.artist_slug) }}">{{ post.name }}</a></p>
         </div>
     </div>
 

@@ -17,6 +17,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     {% if title %}
     <title>{{ title }}</title>
@@ -26,6 +31,11 @@
     {% block head %}
     {% endblock %}
 </head>
+
+<!--
+Let's at some point switch from Jinja2 to Mako (https://www.makotemplates.org)
+Use Flask-Mako (https://pythonhosted.org/Flask-Mako)
+-->
 
 <body>
     <!-- Main Content -->
@@ -39,20 +49,14 @@
                 <div style="flex: 1 1 auto;"></div>
                 <button id="nav-menu-trigger" class="light-button" style="margin: auto auto;">Menu</button>
             </div>
-        </header>
-
-
-        
-
-
-        <!-- Horizontal Navbar -->
-        <div class="navbar">
-            <div class="wrapper">
-                {% include "partials/navigation.html" %}
+            <!-- Horizontal Navbar -->
+            <div class="navbar">
+                <div class="wrapper">
+                    {% include "partials/navigation.html" %}
+                </div>
             </div>
-        </div>
-
-
+        </header>
+        
 
         <!-- Page -->
         {% block page %}
@@ -69,7 +73,7 @@
                     {% if sidebar %}
                     <div class="sidebar card-container flex-3">
                         {% block sidebar_image %}{% endblock %}
-                        <div class="card accent full-width">
+                        <div class="card accent">
 
                             <div class="card-wrapper">
                                 {% block aside %}{% endblock %}

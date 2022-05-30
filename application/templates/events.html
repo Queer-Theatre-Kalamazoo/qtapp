@@ -2,7 +2,7 @@
 {% set active_page = "events" %}
 
 {% block content %}
-<h1>Season 9</h1>
+<h1 class="h2 text-center">Season 9</h1>
 
 
 <div class="card-container margin-top margin-bottom">
@@ -12,59 +12,63 @@
     <div style="flex: 1 1 auto;" class="full-width card accent img">
 
         <!-- Production poster -->
-        <a class="poster" href="{{ url_for('bp_production.display_production', prod_id=prod.production_id, slug=prod.slug) }}">
+        <a class="poster"
+            href="{{ url_for('bp_production.display_production', prod_id=prod.production_id, slug=prod.slug) }}">
             <img height="150" {% if prod.poster
                 %}src="{{ url_for('bp_production.static', filename=('images/posters/' + prod.poster)) }}"
-                {%else%}src="{{ url_for('bp_production.static', filename=('images/posters/' + 'placeholder.jpg')) }}"
-                {% endif %} />
+                {%else%}src="{{ url_for('bp_production.static', filename=('images/posters/' + 'placeholder.jpg')) }}" {%
+                endif %} />
         </a>
 
         <!-- Production title and director -->
         <div class="card-wrapper">
 
             <!-- Title and link -->
-            <h3 class="no-margin-top no-margin-bottom">
-                <a class="fancy-link h3" href="{{ url_for('bp_production.display_production', prod_id=prod.production_id, slug=prod.slug) }}">{{ prod.title }}</a>
-            </h3>
+            <h2 class="no-margin-top no-margin-bottom">
+                <a class="fancy-link h5"
+                    href="{{ url_for('bp_production.display_production', prod_id=prod.production_id, slug=prod.slug) }}">{{
+                    prod.title }}</a>
+            </h2>
 
             {% if title_credits %}
             <ul class="unstyled-list no-margin-bottom">
                 <li>By
-            {% for credit in title_credits if ( (credit.role=="Playwright") and (credit.production_id==prod.production_id) ) %}
-            
-            {{ credit.credit_name }}{{ " and " if not loop.last }}
+                    {% for credit in title_credits if ( (credit.role=="Playwright") and
+                    (credit.production_id==prod.production_id) ) %}
 
-            {% endfor %}
+                    {% if credit.artist_id %}
+                    <a class="fancy-link" href="{{ url_for("bp_person.display_artist", artist_id=credit.artist_id, slug=credit.slug) }}">{{ credit.credit_name }}</a>
+                    {% else %}
+                    {{ credit.credit_name }}
+                    {% endif %}
+                    {{ " and " if not loop.last }}
+
+                    {% endfor %}
                 </li>
                 <!-- Director and link -->
                 <li>
                     {% for dir in directors %}
-                        {% if dir.production_id == prod.production_id %}
-                        Directed by <span><a class="fancy-link" href="{{ url_for('bp_person.display_artist', artist_id=dir.artist_id) }}">{{ dir.credit_name }}</a></span>
-                        {% endif %}
+                    {% if dir.production_id == prod.production_id %}
+                    Directed by <span><a class="fancy-link"
+                            href="{{ url_for('bp_person.display_artist', artist_id=dir.artist_id) }}">{{ dir.credit_name
+                            }}</a></span>
+                    {% endif %}
                     {% endfor %}
                 </li>
+                
                 <!-- Production perf date range -->
                 <li>
                     {% for perf in performances %}
-                        {% if perf.production_id == prod.production_id %}
-                        Running {{ perf.open_date | format_date_short() }} through {{ perf.close_date | format_date_short() }}, {{ perf.close_date | format_date_year() }}
-                        {% endif %}
+                    {% if perf.production_id == prod.production_id %}
+                    Running {{ perf.open_date | format_date_short() }} through {{ perf.close_date | format_date_short()
+                    }}, {{ perf.close_date | format_date_year() }}
+                    {% endif %}
                     {% endfor %}
                 </li>
             </ul>
             {% endif %}
-
-            
-            
-
-            
         </div>
     </div>
-
     {% endfor %}
-
 </div>
-
-
 {% endblock %}

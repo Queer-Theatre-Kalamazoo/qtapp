@@ -107,6 +107,7 @@
   width: 1px
   overflow: hidden
 
+// Flex-related
 .flex-col
   display: flex
   flex-direction: column
@@ -115,11 +116,19 @@
   display: flex
   flex-direction: row
 
-.flex-3
-  flex: 3
-
-.flex-6
-  flex: 6
+.flex
+  &-1
+    flex: 1
+  &-2
+    flex: 2
+  &-3
+    flex: 3
+  &-4
+    flex: 4
+  &-5
+    flex: 5
+  &-6
+    flex: 6
 
 .gap-2
   column-gap: 2rem
@@ -134,3 +143,124 @@
 
 .spacer
   padding: 1em 0
+  width: 2rem
+
+$margin-increment: 0.75rem
+.m
+  &t-1
+    margin-top: $margin-increment * 1
+  &b-1
+    margin-bottom: $margin-increment * 1
+  &l-1
+    margin-left: $margin-increment * 1
+  &r-1
+    margin-right: $margin-increment * 1
+  &t-2
+    margin-top: $margin-increment * 2
+  &b-2
+    margin-bottom: $margin-increment * 2
+  &l-2
+    margin-left: $margin-increment * 2
+  &r-2
+    margin-right: $margin-increment * 2
+  &t-3
+    margin-top: $margin-increment * 3
+  &b-3
+    margin-bottom: $margin-increment * 3
+  &l-3
+    margin-left: $margin-increment * 3
+  &r-3
+    margin-right: $margin-increment * 3
+  &t-4
+    margin-top: $margin-increment * 4
+  &b-4
+    margin-bottom: $margin-increment * 4
+  &l-4
+    margin-left: $margin-increment * 4
+  &r-4
+    margin-right: $margin-increment * 4
+  &t-5
+    margin-top: $margin-increment * 5
+  &b-5
+    margin-bottom: $margin-increment * 5
+  &l-5
+    margin-left: $margin-increment * 5
+  &r-5
+    margin-right: $margin-increment * 5
+  &t-6
+    margin-top: $margin-increment * 6
+  &b-6
+    margin-bottom: $margin-increment * 6
+  &l-6
+    margin-left: $margin-increment * 6
+  &r-6
+    margin-right: $margin-increment * 6
+  &t-auto
+    margin-top: auto
+  &b-auto
+    margin-bottom: auto
+  &l-auto
+    margin-left: auto
+  &r-auto
+    margin-right: auto
+
+$padding-increment: 0.50rem
+.p
+  &t-1
+    padding-top: $padding-increment * 1
+  &b-1
+    padding-bottom: $padding-increment * 1
+  &l-1
+    padding-left: $padding-increment * 1
+  &r-1
+    padding-right: $padding-increment * 1
+  &t-2
+    padding-top: $padding-increment * 2
+  &b-2
+    padding-bottom: $padding-increment * 2
+  &l-2
+    padding-left: $padding-increment * 2
+  &r-2
+    padding-right: $padding-increment * 2
+  &t-3
+    padding-top: $padding-increment * 3
+  &b-3
+    padding-bottom: $padding-increment * 3
+  &l-3
+    padding-left: $padding-increment * 3
+  &r-3
+    padding-right: $padding-increment * 3
+  &t-4
+    padding-top: $padding-increment * 4
+  &b-4
+    padding-bottom: $padding-increment * 4
+  &l-4
+    padding-left: $padding-increment * 4
+  &r-4
+    padding-right: $padding-increment * 4
+  &t-5
+    padding-top: $padding-increment * 5
+  &b-5
+    padding-bottom: $padding-increment * 5
+  &l-5
+    padding-left: $padding-increment * 5
+  &r-5
+    padding-right: $padding-increment * 5
+  &t-6
+    padding-top: $padding-increment * 6
+  &b-6
+    padding-bottom: $padding-increment * 6
+  &l-6
+    padding-left: $padding-increment * 6
+  &r-6
+    padding-right: $padding-increment * 6
+
+.mxw
+  &-90
+    max-width: 90%
+  &-80
+    max-width: 80%
+  &-70
+    max-width: 70%
+  &-60
+    max-width: 60%

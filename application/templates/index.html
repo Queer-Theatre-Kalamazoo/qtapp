@@ -4,43 +4,46 @@
 {% block page %}
 <div class="page wrapper">
     <div id="index-welcome">
-        <h2 class="text-center margin-bottom">Welcome to Queer Theatre Kalamazoo!</h2>
+        <h1 class="text-center margin-bottom h2">Welcome to Queer Theatre Kalamazoo!</h1>
         <div class="full-width">
-            <p style="max-width: 700px; margin-left: auto; margin-right: auto;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam.</p>
+            <div class="" style="max-width: 550px; margin-left: auto; margin-right: auto;">
+                <p style="max-width: 550px; margin-left: auto; margin-right: auto;">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam.
+                </p>
+                <a class="button" href="" style="width: 550px;">Read More</a>
+            </div>
         </div>
     </div>
 
     <div class="card-container margin-top">
 
         <!-- Job Posting Block -->
-        <div style="flex: 1 1 auto;" class="card full-width secondary">
+        <div style="flex: 1 1 auto;" class="card full-width accent">
             <div class="card-wrapper">
-                <h2 class="margin-bottom h5">Employment Opportunity</h2>
+                <h2 class="mb-1 h3 text-center">Now Hiring: Managing Director</h2>
                 <p>We are seeking a part-time <strong>Managing Director</strong> to join our small team! Compensation is $21 per hour (approx. 12 hours per month) with a $1,000 stipend at the conclusion of a six-month contract.</p>
                 <p>The managing director oversees fundraising efforts and engagement, organization governance in collaboration with the Board of Directors, strategic initiatives, and other financial and administrative functions.</p>
-                <a href="">Click here to see the full posting here.</a>
+                <p class="no-margin-bottom text-center"><a class="fancy-link" href="">Click here to see the full posting here.</a></p>
             </div>
         </div>
 
         <!-- Upcoming Production block -->
-        <div style="flex: 1 0 300px;" class="card accent">
+        <div style="flex: 1;" class="card accent">
             <div class="card-wrapper">
-                <h2 class="h5">Coming Up: <a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=next_prod.production_id, slug=next_prod.slug) }}">{{ next_prod.title }}</a></h2>
-                <span>Running {{ prod_date_range.open_date | format_date_short() }} to {{ prod_date_range.close_date | format_date_short() }}</span>
+                <h2 class="h5 text-center">Coming Up: <br /><a class="fancy-link" href="{{ url_for('bp_production.display_production', prod_id=next_prod.production_id, slug=next_prod.slug) }}">{{ next_prod.title }}</a></h2>
+                <p class="text-center">Running {{ prod_date_range.open_date | format_date_short() }} to {{ prod_date_range.close_date | format_date_short() }}</p>
                 <p>{{ next_prod.description | safe | truncate(300) }}</p>
             </div>
         </div>
 
         <!-- Donation block -->
-        <div style="flex: 1 0 300px;" class="card accent">
+        <div class="card accent flex-1">
             <div class="card-wrapper">
-                <h2 class="h5">Three reasons to donate, you won't <i>believe</i> #2!!</h2>
-                <ol style="list-style">
-                    <li>We pay every artist who works with us</li>
-                    <li></li>
-                    <li>Ticket prices are decided by guests at checkout</li>
-                </ol>
-                <a href="#_givealways" class="button accent-button">Donate Now</a>
+                <h2 class="h5 text-center mb-1">Make a donation today</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum recusandae ab exercitationem atque nulla quas eligendi corporis aliquam. Ad eligendi aliquid doloribus ratione facilis excepturi rem accusantium hic inventore aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                <div class="full-width">
+                    <a href="#_givealways" class="button">Donate Now</a>
+                </div>
             </div>
         </div>
 

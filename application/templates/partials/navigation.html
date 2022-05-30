@@ -6,7 +6,7 @@
 <span style="color: white;"> | </span>
 <a class="fancy-link {{ 'active' if active_page == 'about' else '' }}" href="{{ url_for('about') }}">About</a>
 <span style="color: white;"> | </span>
-<a class="fancy-link {{ 'active' if active_page == 'contact' else '' }}" href="#">Contact</a>
+<a class="fancy-link {{ 'active' if active_page == 'contact' else '' }}" href="{{ url_for('contact_us') }}">Contact</a>
 <span style="color: white;"> | </span>
 <a class="fancy-link" href="/#_givealways">Donate</a>
 <span style="color: white;"> | </span>
