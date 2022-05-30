@@ -73,12 +73,14 @@ Use Flask-Mako (https://pythonhosted.org/Flask-Mako)
                     {% if sidebar %}
                     <div class="sidebar card-container flex-3">
                         {% block sidebar_image %}{% endblock %}
+                        {% block sidebar_content %}
                         <div class="card accent">
 
                             <div class="card-wrapper">
                                 {% block aside %}{% endblock %}
                             </div>
                         </div>
+                        {% endblock %}
                     </div>
                     {% endif %}
                 </div>

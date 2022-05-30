@@ -6,23 +6,38 @@
 <h2 class="text-center margin-bottom h3 mt-4">Current Staff</h2>
 <div class="card-container justify-center">
     {% for person in staff %}
-    <div style="flex-basis: auto;" class="card clean img">
-        <!-- Grab artist headshot or placeholder if none -->
-        <a class="circle" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">
-            <img height="40" width="40"
-                {% if person.artist_id %}
-                    src="{{ url_for('bp_person.static', filename=('images/headshots/' + get_headshot(person.artist_id))) }}"
-                {%else%}
-                    src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
-                {% endif %} />
-        </a>
-        <div class="card-wrapper">
-            <h3 class="person-name no-margin-top no-margin-bottom">
-                <a class="fancy-link h6" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
-            </h3>
-            <p class="person-role no-margin-bottom"><span>{{ person.title }}</span></p>
+        <div style="flex-basis: auto;" class="card clean img">
+            <!-- Grab artist headshot or placeholder if none -->
+            {% if person.biography %}
+            <a class="circle" href="{{ url_for('bp_person.display_person', person_id=person.person_id, slug=person.slug) }}">
+                <img height="40" width="40"
+                    {% if person.headshot %}
+                        src="{{ url_for('bp_person.static', filename=('images/headshots/' + person.headshot)) }}"
+                    {%else%}
+                        src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
+                    {% endif %} />
+            </a>
+            {% else %}
+            <a class="circle">
+                <img height="40" width="40"
+                    {% if person.headshot %}
+                        src="{{ url_for('bp_person.static', filename=('images/headshots/' + person.headshot)) }}"
+                    {%else%}
+                        src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
+                    {% endif %} />
+            </a>
+            {% endif %}
+            <div class="card-wrapper">
+                <h3 class="person-name no-margin-top no-margin-bottom">
+                    {% if person.biography %}
+                    <a class="fancy-link h6" href="{{ url_for('bp_person.display_person', person_id=person.person_id, slug=person.slug) }}">{{ person.name }}</a>
+                    {% else %}
+                    <h6>{{ person.name }}</h6>
+                    {% endif %}
+                </h3>
+                <p class="person-role no-margin-bottom"><span>{{ person.title }}</span></p>
+            </div>
         </div>
-    </div>
     {% endfor %}
 </div>
 
@@ -33,15 +48,19 @@
         <!-- Grab artist headshot or placeholder if none -->
         <a class="circle" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">
             <img height="40" width="40"
-                {% if person.artist_id %}
-                    src="{{ url_for('bp_person.static', filename=('images/headshots/' + get_headshot(person.artist_id))) }}"
+                {% if person.headshots %}
+                    src="{{ url_for('bp_person.static', filename=('images/headshots/' + person.headshot)) }}"
                 {%else%}
                     src="{{ url_for('bp_person.static', filename=('images/headshots/' + 'placeholder.jpg')) }}"
                 {% endif %} />
         </a>
         <div class="card-wrapper">
             <h3 class="person-name no-margin-top no-margin-bottom">
+                {% if person.biography %}
                 <a class="fancy-link h6" href="{{ url_for('bp_person.display_person', person_id=person.person_id) }}">{{ person.name }}</a>
+                {% else %}
+                <h6>{{ person.name }}</h6>
+                {% endif %}
             </h3>
             <p class="person-role no-margin-bottom"><span>{{ person.title }}</span></p>
         </div>
