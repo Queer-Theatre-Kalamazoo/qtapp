@@ -2,7 +2,7 @@ from flask import Flask
 from flask_mail import Mail
 from sqlalchemy import create_engine
 from flask_ckeditor import CKEditor
-
+# Test Comment
 def init_app():
     # Initialize the core application
     app = Flask(__name__, instance_relative_config=True)
