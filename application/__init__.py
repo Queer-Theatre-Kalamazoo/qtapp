@@ -12,7 +12,7 @@ def init_app():
         app.config.from_object("application.config.ProductionConfig")
     else:
         app.config.from_object("application.config.DevelopmentConfig")
-
+    app.config.from_object("application.config.DevelopmentConfig") 
     # Globally accessible libraries?
     ckeditor = CKEditor()
     mail = Mail()
@@ -60,4 +60,4 @@ def init_app():
         return app
 
 # Remove or comment the line below when running via WSGI
-app = init_app()
+# app = init_app()
